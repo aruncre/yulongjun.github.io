@@ -1,0 +1,813 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python3,modularization," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="基本概念：在Python中，模块（modules)、包（packages）和库（librarys）的概念并没有那么清晰，通常我们认为：
+
+一个.py文件就是一个模块（module），模块名就是文件名,例如foo.py，模块名就是foo。
+一个目录，包含了__init__.py就是一个包。
+当一个包或者若干包，包含一个setup.py就认为是一个可分发的库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14-模块化（Modularization)">
+<meta property="og:url" content="http://yoursite.com/2016/04/10/14-modularization/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="基本概念：在Python中，模块（modules)、包（packages）和库（librarys）的概念并没有那么清晰，通常我们认为：
+
+一个.py文件就是一个模块（module），模块名就是文件名,例如foo.py，模块名就是foo。
+一个目录，包含了__init__.py就是一个包。
+当一个包或者若干包，包含一个setup.py就认为是一个可分发的库。">
+<meta property="og:image" content="http://yoursite.com/images/modularization/1.png">
+<meta property="og:image" content="http://yoursite.com/images/modularization/2.png">
+<meta property="og:image" content="http://yoursite.com/images/modularization/3.png">
+<meta property="og:image" content="http://yoursite.com/images/modularization/4.png">
+<meta property="og:image" content="http://yoursite.com/images/modularization/5.png">
+<meta property="og:image" content="http://yoursite.com/images/modularization/6.png">
+<meta property="og:updated_time" content="2016-04-16T06:14:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14-模块化（Modularization)">
+<meta name="twitter:description" content="基本概念：在Python中，模块（modules)、包（packages）和库（librarys）的概念并没有那么清晰，通常我们认为：
+
+一个.py文件就是一个模块（module），模块名就是文件名,例如foo.py，模块名就是foo。
+一个目录，包含了__init__.py就是一个包。
+当一个包或者若干包，包含一个setup.py就认为是一个可分发的库。">
+<meta name="twitter:image" content="http://yoursite.com/images/modularization/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 14-模块化（Modularization) | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th-large fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                14-模块化（Modularization)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-10T15:03:23+08:00" content="2016-04-10">
+              2016-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3成长之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/10/14-modularization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/10/14-modularization/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><p>在Python中，模块（modules)、包（packages）和库（librarys）的概念并没有那么清晰，通常我们认为：</p>
+<ul>
+<li>一个<code>.py</code>文件就是一个模块（module），模块名就是文件名,例如<code>foo.py</code>，模块名就是<code>foo</code>。</li>
+<li>一个目录，包含了<code>__init__.py</code>就是一个包。</li>
+<li>当一个包或者若干包，包含一个<code>setup.py</code>就认为是一个可分发的库。</li>
+</ul>
+<a id="more"></a>
+<p>导入模块语法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module</span><br><span class="line"><span class="keyword">from</span> module <span class="keyword">import</span> submodule</span><br></pre></td></tr></table></figure></p>
+<p>例子：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">In [1]: import os #直接导入一级模块，明明空间要带全</span><br><span class="line"></span><br><span class="line">In [2]: os.path.basename('/a/b/c.py')</span><br><span class="line">Out[2]: 'c.py'</span><br><span class="line"></span><br><span class="line">In [3]: import os.path # 直接导入二级模块，命名空间要带全</span><br><span class="line"></span><br><span class="line">In [4]: os.path.basename('/a/b/c.py')</span><br><span class="line">Out[4]: 'c.py'</span><br><span class="line"></span><br><span class="line">In [5]: import os.path.basename #最底层模块无法直接导入</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ImportError                               Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-5-fceecbf39c0c&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 import os.path.basename</span><br><span class="line"></span><br><span class="line">ImportError: No module named 'os.path.basename'; 'os.path' is not a package</span><br><span class="line"></span><br><span class="line">In [6]: from os import path #从一级导入二级模块</span><br><span class="line"></span><br><span class="line">In [8]: path.basename('/a/b/c.py') #只写二级模块名就可以了</span><br><span class="line">Out[8]: 'c.py'</span><br><span class="line"></span><br><span class="line">In [9]: from os.path import basename #从二级导入三级模块</span><br><span class="line"></span><br><span class="line">In [10]: basename('/a/b/c.py') #  只写三级模块就可以了</span><br><span class="line">Out[10]: 'c.py'</span><br></pre></td></tr></table></figure></p>
+<h2 id="导入模块后重命名"><a href="#导入模块后重命名" class="headerlink" title="导入模块后重命名"></a>导入模块后重命名</h2><p>当模块名字太长，或者有函数和模块重名，就可以用<code>as</code>来重命名：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">7</span>]: <span class="function"><span class="keyword">def</span> <span class="title">basename</span><span class="params">()</span>:</span></span><br><span class="line">   ...:     <span class="keyword">return</span> <span class="string">'ha ha ha'</span></span><br><span class="line">   ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: <span class="keyword">from</span> os.path <span class="keyword">import</span> basename <span class="keyword">as</span> b</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: b(<span class="string">'/a/b/c.py'</span>)</span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'c.py'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><p>导入模块其实是导入了模块所在的文件本身。</p>
+<p>在我们写自定义模块的时候，要尽量避免那种全局语句，比如下面这两个<code>.py</code>文件，<code>main.py</code>调用<code>foo.py</code>：</p>
+<p><code>foo.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"I'm foo"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"I'm bar in foo"</span>)</span><br></pre></td></tr></table></figure>
+<p><code>main.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> foo</span><br><span class="line">foo.bar()</span><br></pre></td></tr></table></figure>
+<p>执行<code>main.py</code>,输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I&apos;m foo</span><br><span class="line">I&apos;m bar in foo</span><br></pre></td></tr></table></figure>
+<p>即使是<code>from foo import bar()</code>，输出结果还是上面那两句话,第一行<code>print(&quot;I&#39;m foo&quot;)</code>就是一个全局语句，这是我们不想看到的结果，我们可能只想输出<code>I&#39;m bar in foo</code>所以， 要尽量避免全局语句。</p>
+<h2 id="7-4-绝对导入和相对导入"><a href="#7-4-绝对导入和相对导入" class="headerlink" title="7.4 绝对导入和相对导入"></a>7.4 绝对导入和相对导入</h2><p>举个例子，我们有个<code>magedu</code>的包，我们定义了三个模块 <code>foo.py</code>, <code>bar.py</code>, <code>main.py</code>:</p>
+<p><img src="/images/modularization/1.png" alt="1.png"></p>
+<p>我们看到，这三个是同级的，所以<code>bar.py</code>可以相对引入<code>foo.py</code>：<code>from foo import fn</code>。</p>
+<p>也可以像<code>main.py</code>一样，打全绝对路径，绝对引入<code>foo.py</code>：<code>from magedu.bar import bar</code></p>
+<p>如果是不同级呢，我们建一个<code>sub</code>子模块，子模块下有个<code>x.py</code>，再在<code>sub</code>下建一个子模块<code>subsub</code>，下面有个<code>y.py</code>:</p>
+<p><img src="/images/modularization/2.png" alt="2.png"></p>
+<p>我们看到x.py和y.py都是写的相对路径，而main中的3个语句都可以执行（main中有的写相对路径，有的写绝对路径）。</p>
+<p>如果是不同的包之间引用，一般是用绝对导入。</p>
+<h2 id="7-5-循环导入"><a href="#7-5-循环导入" class="headerlink" title="7.5 循环导入"></a>7.5 循环导入</h2><p>应该尽量避免循环导入:</p>
+<p><img src="/images/modularization/3.png" alt="3.png"></p>
+<h2 id="7-6-发布自己的库"><a href="#7-6-发布自己的库" class="headerlink" title="7.6 发布自己的库"></a>7.6 发布自己的库</h2><p>写一个setup.py就可以了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line">setup(&#123;</span><br><span class="line">    name=<span class="string">'package_name'</span>,</span><br><span class="line">    version=<span class="string">'0.0.1'</span>,</span><br><span class="line">    package=[],</span><br><span class="line">    requires:=[]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>name</code>是起的模块名，<code>version</code>是版本，<code>packages</code>有三个，包括二级包和三级包，<code>requires</code>是需求什么模块。</p>
+<p>例子：</p>
+<p><img src="/images/modularization/4.png" alt="4.png"></p>
+<p>在目录下运行下面命令生成模块：</p>
+<p><img src="/images/modularization/5.png" alt="5"></p>
+<p><code>build</code>将会在build文件夹下面创建包，<code>install</code>就会把这个包安装。</p>
+<p>由于要写出所有的packages，如果有很多，一个个写太麻烦了，我们还可以用<code>setuptools</code>来简化<code>packages</code>的写法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, find_packages</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">'magedu'</span>,</span><br><span class="line">    version=<span class="string">'0.0.1'</span></span><br><span class="line">    packages=find_requests(),</span><br><span class="line">    install_requires=[<span class="string">'requests=2.9.0'</span>]</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>packages直接写find_requests()会自动找多层的包，install_requires可以写具体的版本（不指定就是安装最新版）</p>
+<p><strong>pip命令：</strong><br><code>install</code>、<code>uninstall</code>就不用说了，有个<code>freeze</code>介绍一下。</p>
+<p><code>pip freeze</code>会把当前所有安装的库列出来:</p>
+<p><img src="/images/modularization/6.png" alt="6.png"><br>有什么用呢？可以这样用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt;requirements.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">#在一个新的环境中，就可以导入requirements里面的所有包，保持和原来环境一样。</span></span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python3/" rel="tag">#Python3</a>
+          
+            <a href="/tags/modularization/" rel="tag">#modularization</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/06/13-exceptions/" rel="next" title="13-异常（Exceptions）">
+                <i class="fa fa-chevron-left"></i> 13-异常（Exceptions）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/10/15-singly-linked-list/" rel="prev" title="15-单向链表（Singly linked list）">
+                15-单向链表（Singly linked list） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/10/14-modularization/"
+           data-title="14-模块化（Modularization)" data-url="http://yoursite.com/2016/04/10/14-modularization/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念："><span class="nav-number">1.</span> <span class="nav-text">基本概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块后重命名"><span class="nav-number">2.</span> <span class="nav-text">导入模块后重命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义模块"><span class="nav-number">3.</span> <span class="nav-text">自定义模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-绝对导入和相对导入"><span class="nav-number">4.</span> <span class="nav-text">7.4 绝对导入和相对导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-5-循环导入"><span class="nav-number">5.</span> <span class="nav-text">7.5 循环导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-6-发布自己的库"><span class="nav-number">6.</span> <span class="nav-text">7.6 发布自己的库</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,875 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,GitHub," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git的读音为/gɪt/。Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+百度百科">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSX下git和Github使用笔记">
+<meta property="og:url" content="http://yoursite.com/2016/04/04/git-Github/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git的读音为/gɪt/。Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+百度百科">
+<meta property="og:image" content="http://yoursite.com/images/git-github/1.png">
+<meta property="og:image" content="http://yoursite.com/images/git-github/2.png">
+<meta property="og:updated_time" content="2016-04-06T08:11:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OSX下git和Github使用笔记">
+<meta name="twitter:description" content="Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git的读音为/gɪt/。Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+百度百科">
+<meta name="twitter:image" content="http://yoursite.com/images/git-github/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OSX下git和Github使用笔记 | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th-large fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OSX下git和Github使用笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-04T13:40:12+08:00" content="2016-04-04">
+              2016-04-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git-GitHub/" itemprop="url" rel="index">
+                    <span itemprop="name">git&GitHub</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/04/git-Github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/git-Github/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。Git的读音为/gɪt/。<br>Git是一个开源的分布式版本控制系统，用以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</p>
+<footer><strong>百度百科</strong></footer></blockquote>
+<a id="more"></a>
+<h3 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h3><p>Mac上已经安装了<code>git</code>了，目前OSX的版本是<strong>10.11.4</strong>，自带的git的版本是<strong>2.6.4</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[yulongjun@MBP ~ ]$ git --version</span><br><span class="line">git version 2.6.4 (Apple Git-63)</span><br></pre></td></tr></table></figure></p>
+<p>我们可以用<code>brew</code>命令来更新到最新版。<code>brew</code>命令类似于<strong>RHEL</strong>的<code>yum</code>和<strong>ubuntu</strong>的<code>apt-get</code>命令。<br><strong>OS X</strong>没有自带<code>brew</code>，登陆<a href="http://brew.sh" target="_blank" rel="external">Homebrew</a>网站，找到<code>ruby</code>代码来安装<code>brew</code><br>目前的安装代码是：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
+<p>安装好<code>brew</code>后，就可以用<code>brew</code>来安装<code>git</code>的最新版本了，而且会自动下载依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install git</span><br></pre></td></tr></table></figure>
+<p>查看<code>git</code>的版本：<br>(如果版本还是显示的2.6.4，可以重启下控制台，就好了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git -- version</span><br><span class="line">git version 2.8.1</span><br></pre></td></tr></table></figure>
+<h3 id="本机git初始设置"><a href="#本机git初始设置" class="headerlink" title="本机git初始设置"></a>本机git初始设置</h3><h4 id="设置姓名和邮箱地址"><a href="#设置姓名和邮箱地址" class="headerlink" title="设置姓名和邮箱地址"></a>设置姓名和邮箱地址</h4><p>终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Firstname Lastname&quot;</span><br><span class="line">$ git config --global user.email &quot;your_email@your_example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>我用我的名字和邮箱来设置的，命令会在<code>~/.gitconfig</code>文件里生成以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">name = Yu Longjun</span><br><span class="line">email = tianshoulong@sina.com</span><br></pre></td></tr></table></figure>
+<h4 id="高亮命令输出的文字（可选）"><a href="#高亮命令输出的文字（可选）" class="headerlink" title="高亮命令输出的文字（可选）"></a>高亮命令输出的文字（可选）</h4><p>把color.ui设置成auto</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global color.ui auto</span><br></pre></td></tr></table></figure>
+<p><code>~/.gitconfig</code>会增加下面几行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[color]</span><br><span class="line">ui = auto</span><br></pre></td></tr></table></figure>
+<h3 id="GitHub设置"><a href="#GitHub设置" class="headerlink" title="GitHub设置"></a>GitHub设置</h3><h4 id="注册GitHub"><a href="#注册GitHub" class="headerlink" title="注册GitHub"></a>注册GitHub</h4><p>登陆<a href="https://github.com" target="_blank" rel="external">https://github.com</a> 注册并设置个人信息（这个就不写了）</p>
+<h4 id="设置ssh-key"><a href="#设置ssh-key" class="headerlink" title="设置ssh key"></a>设置ssh key</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[yulongjun@MBP ~]$ ssh-keygen -t rsa -C &quot;tianshoulong@sina.com&quot;</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/Users/yulongjun/.ssh/id_rsa): `按回车键`</span><br><span class="line">Enter passphrase (empty for no passphrase): `输入密码,可以不填直接回车`</span><br><span class="line">Enter same passphrase again: `再次输入密码，可以不填直接回车`</span><br><span class="line">Your identification has been saved in /Users/yulongjun/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /home/yulongjun/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">28:15:a9:38:93:c5:3f:36:b1:6f:76:3f:af:28:45:77 tianshoulong@sina.com</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+--[ RSA 2048]----+</span><br><span class="line">|   .  ..         |</span><br><span class="line">|    o o.         |</span><br><span class="line">|   + o.o         |</span><br><span class="line">`略`</span><br></pre></td></tr></table></figure>
+<h4 id="把本机生成的公开密钥添加到github中"><a href="#把本机生成的公开密钥添加到github中" class="headerlink" title="把本机生成的公开密钥添加到github中"></a>把本机生成的公开密钥添加到github中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br><span class="line"></span><br><span class="line">ssh-rsa AAAAB3NzaC1...Rrjx6t33i5 tianshoulong@sina.com</span><br></pre></td></tr></table></figure>
+<p>打开github登陆后，点击自己头像下箭头，找到<code>settings</code>（设置），在左边栏目里面选择<code>SSH keys</code>,然后点击<code>Add SSH key</code>，随便填一个<code>Title</code>，把上面把<code>cat</code>出来的内容<strong>全部</strong>添加到<code>key</code>文本框里，然后点击<code>add key</code>。</p>
+<p>添加成功后，创建github时用到的邮箱会收到GitHub发的一个<code>&quot;A new public key was add to your account&quot;</code>的邮件。</p>
+<h4 id="使用私人密钥与GitHub进行认证和通信"><a href="#使用私人密钥与GitHub进行认证和通信" class="headerlink" title="使用私人密钥与GitHub进行认证和通信"></a>使用私人密钥与GitHub进行认证和通信</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">The authenticity of host &apos;github.com (192.30.252.130)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line">Warning: Permanently added &apos;github.com,192.30.252.130&apos; (RSA) to the list of known hosts.</span><br><span class="line">Enter passphrase for key &apos;/Users/yulongjun/.ssh/id_rsa&apos;: #输入3.1步骤中的密码，没有设置可以直接回车`</span><br></pre></td></tr></table></figure>
+<p>出现如下结果，表示成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi yulongjun! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git基本命令和操作"><a href="#Git基本命令和操作" class="headerlink" title="Git基本命令和操作"></a>Git基本命令和操作</h3><h4 id="git-int（初始化仓库）"><a href="#git-int（初始化仓库）" class="headerlink" title="git int（初始化仓库）"></a>git int（初始化仓库）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir Git-GitHub-Note</span><br><span class="line">$ <span class="built_in">cd</span> Git-GitHub-note</span><br><span class="line">$ git init</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> /Users/yulongjun/Git-GitHub-Note/.git/</span><br></pre></td></tr></table></figure>
+<h4 id="git-status（查看仓库状态）"><a href="#git-status（查看仓库状态）" class="headerlink" title="git status（查看仓库状态）"></a>git status（查看仓库状态）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master <span class="comment">#在master分支</span></span><br><span class="line"></span><br><span class="line">Initial commit   <span class="comment">#初始化提交</span></span><br><span class="line"></span><br><span class="line">nothing to commit(create/copy files and use <span class="string">"git add"</span> to track)  <span class="comment">#没有文件提交（创建/复制文件 或者用git add 来添加文件）</span></span><br></pre></td></tr></table></figure>
+<p>创建一个README.md文件后，再查看状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ touch README.md</span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master  <span class="comment">#在master分支</span></span><br><span class="line"></span><br><span class="line">Initial commit    <span class="comment">#初始化提交</span></span><br><span class="line"></span><br><span class="line">Untracked files:  <span class="comment">#未追踪的文件：</span></span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line">  <span class="comment">#用 "git add &lt;file&gt;..."去添加用来提交的文件</span></span><br><span class="line"></span><br><span class="line">	README.md   </span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</span><br><span class="line"><span class="comment">#没有文件添加到提交，但是有未跟踪的文件（用"git add"来追踪）</span></span><br></pre></td></tr></table></figure>
+<h4 id="git-add（向暂存区中添加文件）"><a href="#git-add（向暂存区中添加文件）" class="headerlink" title="git add（向暂存区中添加文件）"></a>git add（向暂存区中添加文件）</h4><p>把4.2中的untracked files添加到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md</span><br><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On  branch master    <span class="comment">#在master分支</span></span><br><span class="line"></span><br><span class="line">Initial commit       <span class="comment">#初始化提交</span></span><br><span class="line"></span><br><span class="line">Changes to be committed: <span class="comment">#提交改变：</span></span><br><span class="line">  (use <span class="string">"git rm --cached &lt;file&gt;..."</span> to unstage)</span><br><span class="line">  <span class="comment"># 用"git rm --cache &lt;file&gt;..."来去掉暂存文件</span></span><br><span class="line"></span><br><span class="line">	new file:   README.md  <span class="comment">#新文件：README.md</span></span><br></pre></td></tr></table></figure>
+<h4 id="git-commit-提交仓库的历史记录）"><a href="#git-commit-提交仓库的历史记录）" class="headerlink" title="git commit(提交仓库的历史记录）"></a>git commit(提交仓库的历史记录）</h4><p><code>git commit</code> 后跟的<code>-m</code>的意思是<code>message</code>，意味着添加一段描述性文字描述此次提交。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"First commit"</span></span><br><span class="line"></span><br><span class="line">[master (root-commit) 7919beb] First commit</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 README.md</span><br></pre></td></tr></table></figure></p>
+<p>提交完后看状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line"></span><br><span class="line">On branch master  <span class="comment">#在master分支</span></span><br><span class="line">nothing to commit, working directory clean</span><br><span class="line"><span class="comment">#无东西提交，工作目录干净的。</span></span><br></pre></td></tr></table></figure>
+<h4 id="git-log（查看提交日志）"><a href="#git-log（查看提交日志）" class="headerlink" title="git log（查看提交日志）"></a>git log（查看提交日志）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line">commit 7919bebdb5a7635238719556dfc9e2a0d1</span><br><span class="line">Author: Yu Longjun &lt;tianshoulong@sina.com&gt;<span class="comment">#作者</span></span><br><span class="line">Date:   Thu Jul 30 15:35:25 2015 +0800 <span class="comment">#日期</span></span><br><span class="line"></span><br><span class="line">    第一次提交</span><br></pre></td></tr></table></figure>
+<p>单独查看某个文件或某个目录的权限，比如只查看README.md的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> README.md</span><br></pre></td></tr></table></figure>
+<p>想查看提交前后的改动，可以用下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> -p</span><br></pre></td></tr></table></figure>
+<p>当然，单独某个文件或文件夹，也可以查看改动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p  README.md</span><br></pre></td></tr></table></figure>
+<h4 id="git-diff（查看更改前后的不同）"><a href="#git-diff（查看更改前后的不同）" class="headerlink" title="git diff（查看更改前后的不同）"></a>git diff（查看更改前后的不同）</h4><p>更改了文件后，未<code>git add</code>，也未<code>git commit</code>，此时用<code>git diff</code>命令可以查看不同之处。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line"></span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index e69de29..74ab05b 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@(git github)@ -0,0 +1 @@</span><br><span class="line">+Git 教程</span><br></pre></td></tr></table></figure>
+<p>更改了文件后，用<code>git add</code>添加到缓存区了，但是未<code>git commit</code>，此时用<code>git diff HEAD</code>命令可以查看不同之处。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git diff HEAD</span><br><span class="line"></span><br><span class="line">diff --git a/README.md b/README.md</span><br><span class="line">index e69de29..74ab05b 100644</span><br><span class="line">--- a/README.md</span><br><span class="line">+++ b/README.md</span><br><span class="line">@@ -0,0 +1 @@</span><br><span class="line">+Git 教程</span><br></pre></td></tr></table></figure>
+<p>把图中红框的SSH clone URL复制一下，URL的格式为：<code>git@github.com:用户名/仓库名</code>。</p>
+<p>在终端输入<code>git clone</code>+<code>复制内容</code>，就把此仓库clone下来了</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:yulongjun/A-Byte-of-Markdown.git</span><br><span class="line"></span><br><span class="line">Cloning into <span class="string">'A-Byte-of-Markdown'</span>...</span><br><span class="line">remote: Counting objects: 33, done.</span><br><span class="line">remote: Compressing objects: 100% (31/31), done.</span><br><span class="line">remote: Total 33 (delta 13), reused 0 (delta 0), pack-reused 0</span><br><span class="line">Receiving objects: 100% (33/33), 25.87 KiB | 6.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (13/13), done.</span><br><span class="line">Checking connectivity... done.</span><br></pre></td></tr></table></figure>
+<h3 id="git分支操作"><a href="#git分支操作" class="headerlink" title="git分支操作"></a>git分支操作</h3><h4 id="git-branch（显示分支一览表或者创建一个新分支）"><a href="#git-branch（显示分支一览表或者创建一个新分支）" class="headerlink" title="git branch（显示分支一览表或者创建一个新分支）"></a>git branch（显示分支一览表或者创建一个新分支）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br><span class="line">* master</span><br><span class="line"><span class="comment">#显示分支一览表，当前只有一个分支master</span></span><br><span class="line"></span><br><span class="line">$ git branch feature-A</span><br><span class="line"><span class="comment">#创建分支feature-A</span></span><br><span class="line"></span><br><span class="line">$ git branch</span><br><span class="line">  feature-A</span><br><span class="line">* master</span><br><span class="line"><span class="comment"># 显示分支一览表，有两个分支，当前处于master分支</span></span><br></pre></td></tr></table></figure>
+<p><code>* 分支</code>表示当前所处的分支。</p>
+<h4 id="git-checkout-（切换、创建分支）"><a href="#git-checkout-（切换、创建分支）" class="headerlink" title="git checkout （切换、创建分支）"></a>git checkout （切换、创建分支）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout feature-A</span><br><span class="line"></span><br><span class="line">M	README.md</span><br><span class="line">Switched to branch <span class="string">'feature-A'</span></span><br><span class="line"><span class="comment">#切换到 ‘feature-A’分支</span></span><br><span class="line"></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line">* feature-A</span><br><span class="line">  master</span><br><span class="line"><span class="comment">#显示当前分支一览表，切换到了‘feature-A’分支</span></span><br><span class="line"></span><br><span class="line">$ git checkout -b fix-B</span><br><span class="line"></span><br><span class="line">M	README.md</span><br><span class="line">Switched to a new branch <span class="string">'fix-B'</span></span><br><span class="line"><span class="comment">#新建并切换到‘fix-B’</span></span><br><span class="line"></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line">  feature-A</span><br><span class="line">* fix-B</span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
+<p>让我们看看切换分支编辑的效果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout feature-A</span><br><span class="line"></span><br><span class="line">M	README.md</span><br><span class="line">Switched to branch <span class="string">'feature-A'</span></span><br><span class="line"><span class="comment">#切换到分支`feature-A`</span></span><br><span class="line"></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line">* feature-A</span><br><span class="line">  fix-B</span><br><span class="line">  master</span><br><span class="line"> <span class="comment">#查看当前分支一览表</span></span><br><span class="line"></span><br><span class="line">$ vim README.md</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文档里添加一行`- feature-A`</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ git add README.md</span><br><span class="line"><span class="comment">#添加`README.md`到暂存区</span></span><br><span class="line"></span><br><span class="line">$ git commit -m <span class="string">"Add feature-A"</span></span><br><span class="line"></span><br><span class="line">[feature-A 944df3c] Add feature-A</span><br><span class="line"> 1 file changed, 1 insertions(+)</span><br><span class="line"><span class="comment">#提交更改</span></span><br><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line">Switched to branch <span class="string">'master'</span></span><br><span class="line"><span class="comment">#切换到`master`分支</span></span><br><span class="line"></span><br><span class="line">$ cat README.md</span><br><span class="line"></span><br><span class="line">Git教程</span><br><span class="line">只显示原来的哪一行</span><br><span class="line"></span><br><span class="line">$ git checkout -</span><br><span class="line"><span class="comment">#切换至上一个分支，即分支`feature-A`</span></span><br></pre></td></tr></table></figure>
+<h4 id="git-merge（合并分支）"><a href="#git-merge（合并分支）" class="headerlink" title="git merge（合并分支）"></a>git merge（合并分支）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"><span class="comment">#切换到`master`主干分支</span></span><br><span class="line"></span><br><span class="line">$ git merge --no-ff feature-A</span><br><span class="line"><span class="comment"># `master`分支合并`feature-A`分支,出现的填写信息框，`：wq`保存退出就合并完成，如果想写点合并的原因，可以自行编辑。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#出现以下内容就表示合并完毕</span></span><br><span class="line">Merge made by the <span class="string">'recursive'</span> strategy.<span class="comment">#用递归策略合并</span></span><br><span class="line"> README.md | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+<h4 id="git-log-–graph-（以图标的形式查看分支）"><a href="#git-log-–graph-（以图标的形式查看分支）" class="headerlink" title="git log –graph （以图标的形式查看分支）"></a>git log –graph （以图标的形式查看分支）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --graph</span><br><span class="line"></span><br><span class="line">*   commit 64d2d5e9f8f32e890b04ba3c684f803767e650e1</span><br><span class="line">|\  Merge: 6ba50f6 399cae8</span><br><span class="line">| | Author: Yu Longjun &lt;tianshoulong@sina.com&gt;</span><br><span class="line">| | Date:   Thu Jul 30 21:56:05 2015 +0800</span><br><span class="line">| |</span><br><span class="line">| |     Merge branch <span class="string">'feature-A'</span></span><br><span class="line">| |   </span><br><span class="line">| * commit 399cae80e4f5a1ec3a24b697c5222d89763c08a8</span><br><span class="line">|/  Author: Yu Longjun &lt;tianshoulong@sina.com&gt;</span><br><span class="line">|   Date:   Thu Jul 30 21:44:57 2015 +0800</span><br><span class="line">|   </span><br><span class="line">|       Add feature-A</span><br><span class="line">|  </span><br><span class="line">* commit 6ba50f6beddfa8cc5d0d2c6ead46c8dd293a8f20</span><br><span class="line">| Author: Yu Longjun &lt;tianshoulong@sina.com&gt;</span><br><span class="line">| Date:   Thu Jul 30 21:41:17 2015 +0800</span><br><span class="line">|</span><br><span class="line">|     Add index</span><br><span class="line">|  </span><br><span class="line">* commit a357886ac799f3e7d2ccff329ab1b7ef2a9a9f70</span><br><span class="line">  Author: Yu Longjun &lt;tianshoulong@sina.com&gt;</span><br><span class="line">  Date:   Thu Jul 30 21:39:43 2015 +0800</span><br><span class="line"></span><br><span class="line">      First commit</span><br></pre></td></tr></table></figure>
+<h3 id="更改提交的操作"><a href="#更改提交的操作" class="headerlink" title="更改提交的操作"></a>更改提交的操作</h3><h4 id="git-reset（回溯历史版本）"><a href="#git-reset（回溯历史版本）" class="headerlink" title="git reset（回溯历史版本）"></a>git reset（回溯历史版本）</h4><p>看上面最后一个<code>git log --graph</code>的图标，我们要把先回溯到<code>feature-A</code>分支创建前，然后创建一个fix-B分支。</p>
+<ul>
+<li>回退到“Add index”时候的状态，用<code>git reset --hard 哈希值</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 6ba50f6beddfa8cc5d0d2c6ead46c8dd293a8f20</span><br><span class="line"></span><br><span class="line">HEAD is now at 6ba50f6 Add index</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建<code>fix-B</code>分支<br>创建特性分支<code>fix-B</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b fix-B</span><br><span class="line">Switched to a new branch &apos;fix-B&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改<code>READ.md</code>文件，添加一行<code>- fix-B</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git教程</span><br><span class="line">- fix-B</span><br></pre></td></tr></table></figure>
+<ul>
+<li>提交<code>READ.md</code>文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md</span><br><span class="line">$ git commit -m &quot;fix-B&quot;</span><br><span class="line"></span><br><span class="line">[fix-B 767957a] fix-B</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推进至feature-A分支合并后的状态<br><code>git log</code>  只能查看当前状态为终点的历史日志。要查看整个仓库的所有操作日志，要用<code>git reflog</code>，找到回溯历史之前的哈希值，通过<code>git reset --hard</code>来恢复到回溯之前的状态。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line">767957a HEAD@&#123;0&#125;: commit: fix-B</span><br><span class="line">6ba50f6 HEAD@&#123;1&#125;: checkout: moving from master to fix-B</span><br><span class="line">6ba50f6 HEAD@&#123;2&#125;: reset: moving to 6ba50f6beddfa8cc5d0d2c6ead46c8dd293a8f20</span><br><span class="line">64d2d5e HEAD@&#123;3&#125;: merge feature-A: Merge made by the <span class="string">'recursive'</span> strategy.</span><br><span class="line">6ba50f6 HEAD@&#123;4&#125;: checkout: moving from feature-A to master</span><br><span class="line">399cae8 HEAD@&#123;5&#125;: checkout: moving from master to feature-A</span><br><span class="line">6ba50f6 HEAD@&#123;6&#125;: checkout: moving from feature-A to master</span><br><span class="line">399cae8 HEAD@&#123;7&#125;: commit: Add feature-A</span><br><span class="line">6ba50f6 HEAD@&#123;8&#125;: checkout: moving from master to feature-A</span><br><span class="line">6ba50f6 HEAD@&#123;9&#125;: checkout: moving from feature-B to master</span><br><span class="line">6ba50f6 HEAD@&#123;10&#125;: checkout: moving from master to feature-B</span><br><span class="line">6ba50f6 HEAD@&#123;11&#125;: commit: Add index</span><br><span class="line">a357886 HEAD@&#123;12&#125;: commit (initial): First commit</span><br></pre></td></tr></table></figure>
+<ul>
+<li>看到第四行<code>64d2d5e HEAD@{3}: merge feature-A: Merge made by the &#39;recursive&#39; strategy.</code>,是feature-A特性分支合并后的状态，对应的哈希值是<code>64d2d5e</code>，我们将HEAD、暂存区、工作树恢复到这个时间点的状态。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br><span class="line"></span><br><span class="line">$ git reset --hard 64d2d5e</span><br><span class="line"></span><br><span class="line">HEAD is now at 64d2d5e Merge branch <span class="string">'feature-A'</span></span><br></pre></td></tr></table></figure>
+<h4 id="消除冲突"><a href="#消除冲突" class="headerlink" title="消除冲突"></a>消除冲突</h4><ul>
+<li>合并<code>fix-B</code>分支,发现<code>README.md</code>出现冲突</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff fix-B</span><br><span class="line"></span><br><span class="line">Auto-merging README.md</span><br><span class="line">CONFLICT (content): Merge conflict in README.md</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看冲突并解决<br>查看<code>README.md</code>,发现变成这个样子</li>
+</ul>
+<blockquote>
+<p>Git教程<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>- feature-A<br>\=======<br>- fix-B<br>>&gt;&gt;&gt;&gt;&gt;&gt; fix-B<br>></p>
+</blockquote>
+<p>我们在编辑器将其编程想要的样子</p>
+<blockquote>
+<p>Git教程<br>- feature-A<br>- fix-B</p>
+<ul>
+<li>提交结果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;Fix conflict&quot;</span><br><span class="line"></span><br><span class="line">[master 3df8965] Fix conflict</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h4 id="git-commit-–amend（修改提交信息）"><a href="#git-commit-–amend（修改提交信息）" class="headerlink" title="git commit –amend（修改提交信息）"></a>git commit –amend（修改提交信息）</h4><p>上次提交commit，信息记为”Fix conflict”，不妥，其实是fix-B分支的合并，解决冲突只是过程之一，标记不妥，修改一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure></p>
+<p>执行上述命令后，编辑器启动,出现以下内容</p>
+<blockquote>
+<p>Fix conflict<br># Please enter the commit message for your changes. Lines starting<br># with ‘#’ will be ignored, and an empty message aborts the commit.<br>#<br># Date:      Fri Jul 31 10:49:28 2015 +0800<br>#<br># On branch master<br># Changes to be committed:<br>#       modified:   README.md</p>
+</blockquote>
+<p>修改第一行为<code>Merge branch &#39;fix-B&#39;</code>,保存退出。<br>终端出现以下内容表示修改该信息成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> [master 5759a34] Merge branch &apos;fix-B&apos;</span><br><span class="line">Date: Fri Jul 31 10:49:28 2015 +0800</span><br></pre></td></tr></table></figure></p>
+<h3 id="远程仓库操作"><a href="#远程仓库操作" class="headerlink" title="远程仓库操作"></a>远程仓库操作</h3><ul>
+<li>添加远程仓库</li>
+</ul>
+<p>首先在GitHub上创建一个空仓库：<br><img src="/images/git-github/1.png" alt=""><br>复制GitHub上的仓库路径<code>git@github.com:yulongjun/Git-GitHub-Note.git</code><br><img src="/images/git-github/2.png" alt=""></p>
+<p>运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:yulongjun/Git-GitHub-Note.git</span><br></pre></td></tr></table></figure>
+<p>添加远程仓库并把远程仓库设置成origin标识符。</p>
+<ul>
+<li>把master推送至远程仓库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送master以外的分支。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b feature-D #新建一个feature-D分支</span><br><span class="line">$ git push -u origin feature-D #推送feature-D到origin远程仓库</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+            <a href="/tags/GitHub/" rel="tag">#GitHub</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/04/a-byte-of-markdown/" rel="prev" title="markdown简明教程(A Byte of Markdown)">
+                markdown简明教程(A Byte of Markdown) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/04/git-Github/"
+           data-title="OSX下git和Github使用笔记" data-url="http://yoursite.com/2016/04/04/git-Github/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#git安装"><span class="nav-number">1.</span> <span class="nav-text">git安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本机git初始设置"><span class="nav-number">2.</span> <span class="nav-text">本机git初始设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置姓名和邮箱地址"><span class="nav-number">2.1.</span> <span class="nav-text">设置姓名和邮箱地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高亮命令输出的文字（可选）"><span class="nav-number">2.2.</span> <span class="nav-text">高亮命令输出的文字（可选）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub设置"><span class="nav-number">3.</span> <span class="nav-text">GitHub设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册GitHub"><span class="nav-number">3.1.</span> <span class="nav-text">注册GitHub</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置ssh-key"><span class="nav-number">3.2.</span> <span class="nav-text">设置ssh key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把本机生成的公开密钥添加到github中"><span class="nav-number">3.3.</span> <span class="nav-text">把本机生成的公开密钥添加到github中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用私人密钥与GitHub进行认证和通信"><span class="nav-number">3.4.</span> <span class="nav-text">使用私人密钥与GitHub进行认证和通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git基本命令和操作"><span class="nav-number">4.</span> <span class="nav-text">Git基本命令和操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-int（初始化仓库）"><span class="nav-number">4.1.</span> <span class="nav-text">git int（初始化仓库）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-status（查看仓库状态）"><span class="nav-number">4.2.</span> <span class="nav-text">git status（查看仓库状态）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-add（向暂存区中添加文件）"><span class="nav-number">4.3.</span> <span class="nav-text">git add（向暂存区中添加文件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-commit-提交仓库的历史记录）"><span class="nav-number">4.4.</span> <span class="nav-text">git commit(提交仓库的历史记录）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-log（查看提交日志）"><span class="nav-number">4.5.</span> <span class="nav-text">git log（查看提交日志）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-diff（查看更改前后的不同）"><span class="nav-number">4.6.</span> <span class="nav-text">git diff（查看更改前后的不同）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支操作"><span class="nav-number">5.</span> <span class="nav-text">git分支操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-branch（显示分支一览表或者创建一个新分支）"><span class="nav-number">5.1.</span> <span class="nav-text">git branch（显示分支一览表或者创建一个新分支）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-checkout-（切换、创建分支）"><span class="nav-number">5.2.</span> <span class="nav-text">git checkout （切换、创建分支）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-merge（合并分支）"><span class="nav-number">5.3.</span> <span class="nav-text">git merge（合并分支）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-log-–graph-（以图标的形式查看分支）"><span class="nav-number">5.4.</span> <span class="nav-text">git log –graph （以图标的形式查看分支）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改提交的操作"><span class="nav-number">6.</span> <span class="nav-text">更改提交的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git-reset（回溯历史版本）"><span class="nav-number">6.1.</span> <span class="nav-text">git reset（回溯历史版本）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消除冲突"><span class="nav-number">6.2.</span> <span class="nav-text">消除冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-commit-–amend（修改提交信息）"><span class="nav-number">6.3.</span> <span class="nav-text">git commit –amend（修改提交信息）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库操作"><span class="nav-number">7.</span> <span class="nav-text">远程仓库操作</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

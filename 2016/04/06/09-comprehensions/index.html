@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python3,comprehension," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="解析式是用一个或多个迭代器来快速建立数据结构的一种方法。可以将for循环和if判断结合，创造出一种简单快捷的语法糖，更加Pythonic。
+分为几种解析式：
+
+列表解析式（list comprehensions）
+集合解析式（set comprehensions）
+字典解析式（dict comprehensions）
+生成器解析式（generator comprehensions）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09-解析式（Comprehensions)">
+<meta property="og:url" content="http://yoursite.com/2016/04/06/09-comprehensions/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="解析式是用一个或多个迭代器来快速建立数据结构的一种方法。可以将for循环和if判断结合，创造出一种简单快捷的语法糖，更加Pythonic。
+分为几种解析式：
+
+列表解析式（list comprehensions）
+集合解析式（set comprehensions）
+字典解析式（dict comprehensions）
+生成器解析式（generator comprehensions）">
+<meta property="og:updated_time" content="2016-04-06T12:42:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="09-解析式（Comprehensions)">
+<meta name="twitter:description" content="解析式是用一个或多个迭代器来快速建立数据结构的一种方法。可以将for循环和if判断结合，创造出一种简单快捷的语法糖，更加Pythonic。
+分为几种解析式：
+
+列表解析式（list comprehensions）
+集合解析式（set comprehensions）
+字典解析式（dict comprehensions）
+生成器解析式（generator comprehensions）">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 09-解析式（Comprehensions) | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th-large fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                09-解析式（Comprehensions)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-06T08:46:31+08:00" content="2016-04-06">
+              2016-04-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3成长之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/06/09-comprehensions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/09-comprehensions/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>解析式是用一个或多个迭代器来快速建立数据结构的一种方法。可以将for循环和if判断结合，创造出一种简单快捷的语法糖，更加Pythonic。</strong></p>
+<p>分为几种解析式：</p>
+<ol>
+<li>列表解析式（list comprehensions）</li>
+<li>集合解析式（set comprehensions）</li>
+<li>字典解析式（dict comprehensions）</li>
+<li>生成器解析式（generator comprehensions）</li>
+</ol>
+<a id="more"></a>
+<h3 id="1-列表解析式（list-comprehensions）"><a href="#1-列表解析式（list-comprehensions）" class="headerlink" title="1. 列表解析式（list comprehensions）"></a>1. 列表解析式（list comprehensions）</h3><h5 id="1-1-最基本语法"><a href="#1-1-最基本语法" class="headerlink" title="1.1 最基本语法"></a>1.1 最基本语法</h5><p><strong>[ <em>expression</em> for <em>item</em> in <em>iterable</em> ]</strong></p>
+<p>用正常的<code>for</code>循环来建立一个列表：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: list1=[]</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">   ...:     list1.append(i)</span><br><span class="line">   ...:     </span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: list1</span><br><span class="line">Out[<span class="number">4</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>用列表解析式来建立：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [5]: list1=[i for i in range(6)]</span><br><span class="line"></span><br><span class="line">In [6]: list1</span><br><span class="line">Out[6]: [0, 1, 2, 3, 4, 5]</span><br></pre></td></tr></table></figure></p>
+<h5 id="1-2加上if条件表达式"><a href="#1-2加上if条件表达式" class="headerlink" title="1.2加上if条件表达式"></a>1.2加上<code>if</code>条件表达式</h5><p><strong>[  <em>expression</em> for <em>item</em> in <em>iterable</em> if condition ]</strong></p>
+<p>下面看示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: list2=[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>) <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: list2</span><br><span class="line">Out[<span class="number">9</span>]: [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<p>上面代码用传统方法来写就是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">10</span>]: list2=[]</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">   ....:     <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">   ....:         list2.append(i)</span><br><span class="line">   ....:         </span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: list2</span><br><span class="line">Out[<span class="number">12</span>]: [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure></p>
+<h5 id="1-3-多个if条件表达式"><a href="#1-3-多个if条件表达式" class="headerlink" title="1.3 多个if条件表达式"></a>1.3 多个<code>if</code>条件表达式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [24]: list3=[i for i in range(6) if i % 2 == 1 if i &gt; 2]</span><br><span class="line"></span><br><span class="line">In [25]: list3</span><br><span class="line">Out[25]: [3, 5]</span><br></pre></td></tr></table></figure>
+<p>传统方法来写就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [28]: list3=[]</span><br><span class="line"></span><br><span class="line">In [29]: for i in range(6):</span><br><span class="line">   ....:     if i%2 == 1:</span><br><span class="line">   ....:         if i &gt; 2:</span><br><span class="line">   ....:             list3.append(i)</span><br><span class="line">   ....:</span><br><span class="line"></span><br><span class="line">In [30]: list3</span><br><span class="line">Out[30]: [3, 5]</span><br></pre></td></tr></table></figure></p>
+<h5 id="1-4-笛卡尔积（多个for的嵌套循环）"><a href="#1-4-笛卡尔积（多个for的嵌套循环）" class="headerlink" title="1.4 笛卡尔积（多个for的嵌套循环）"></a>1.4 笛卡尔积（多个<code>for</code>的嵌套循环）</h5><p><strong>[  (<em>expression1</em>,<em>expression2</em> for <em>item1</em> in <em>iterable1</em> for <em>item2</em> in <em>iterable2</em> ]</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: list1=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: list2=[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: list3=[(x,y) <span class="keyword">for</span> x <span class="keyword">in</span> list1 <span class="keyword">for</span> y <span class="keyword">in</span> list2]</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: list3</span><br><span class="line">Out[<span class="number">4</span>]: [(<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">4</span>), (<span class="number">1</span>, <span class="number">6</span>), (<span class="number">3</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="number">3</span>, <span class="number">6</span>), (<span class="number">4</span>, <span class="number">2</span>), (<span class="number">4</span>, <span class="number">4</span>), (<span class="number">4</span>, <span class="number">6</span>)]</span><br></pre></td></tr></table></figure>
+<p>用传统方法来写就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [5]: list1=[1,3,5]</span><br><span class="line"></span><br><span class="line">In [6]: list2=[2,4,6]</span><br><span class="line"></span><br><span class="line">In [7]: list3=[]</span><br><span class="line"></span><br><span class="line">In [8]: for x in list1:</span><br><span class="line">   ...:     for y in list2:</span><br><span class="line">   ...:         list3.append((x,y))</span><br><span class="line">   ...:</span><br><span class="line"></span><br><span class="line">In [9]: list3</span><br><span class="line">Out[9]: [(1, 2), (1, 4), (1, 6), (3, 2), (3, 4), (3, 6), (5, 2), (5, 4), (5, 6)]</span><br></pre></td></tr></table></figure></p>
+<h5 id="1-5-列表解析式加上zip-函数（可以不看，延伸部分）"><a href="#1-5-列表解析式加上zip-函数（可以不看，延伸部分）" class="headerlink" title="1.5 列表解析式加上zip()函数（可以不看，延伸部分）"></a>1.5 列表解析式加上<code>zip()</code>函数（可以不看，延伸部分）</h5><p>先理解<code>zip()</code>函数，<code>zip()</code>函数可以对多个序列进行并行迭代<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [20]: uppers = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;]</span><br><span class="line"></span><br><span class="line">In [21]: lowers = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</span><br><span class="line"></span><br><span class="line">In [22]: nums = [1,2,3]</span><br><span class="line"></span><br><span class="line">In [23]: zip(uppers,lowers,nums)</span><br><span class="line">Out[23]: &lt;zip at 0x17c62a1c9c8&gt;</span><br><span class="line"></span><br><span class="line">In [24]: list(zip(uppers,lowers,nums))</span><br><span class="line">Out[24]: [(&apos;A&apos;, &apos;a&apos;, 1), (&apos;B&apos;, &apos;b&apos;, 2), (&apos;C&apos;, &apos;c&apos;, 3)]</span><br></pre></td></tr></table></figure></p>
+<p>下面两个是不一样的，第一个是笛卡尔积，第二个是<code>zip()</code>函数,结果是不一样的。<br>笛卡尔积：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [25]: list1=[(u,l,n) for u in uppers for l in lowers for n in lowers]</span><br><span class="line"></span><br><span class="line">In [26]: list1</span><br><span class="line">Out[26]:</span><br><span class="line">[(&apos;A&apos;, &apos;a&apos;, &apos;a&apos;), (&apos;A&apos;, &apos;a&apos;, &apos;b&apos;), (&apos;A&apos;, &apos;a&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;A&apos;, &apos;b&apos;, &apos;a&apos;), (&apos;A&apos;, &apos;b&apos;, &apos;b&apos;), (&apos;A&apos;, &apos;b&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;A&apos;, &apos;c&apos;, &apos;a&apos;), (&apos;A&apos;, &apos;c&apos;, &apos;b&apos;), (&apos;A&apos;, &apos;c&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;B&apos;, &apos;a&apos;, &apos;a&apos;), (&apos;B&apos;, &apos;a&apos;, &apos;b&apos;), (&apos;B&apos;, &apos;a&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;B&apos;, &apos;b&apos;, &apos;a&apos;), (&apos;B&apos;, &apos;b&apos;, &apos;b&apos;), (&apos;B&apos;, &apos;b&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;B&apos;, &apos;c&apos;, &apos;a&apos;), (&apos;B&apos;, &apos;c&apos;, &apos;b&apos;), (&apos;B&apos;, &apos;c&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;C&apos;, &apos;a&apos;, &apos;a&apos;), (&apos;C&apos;, &apos;a&apos;, &apos;b&apos;), (&apos;C&apos;, &apos;a&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;C&apos;, &apos;b&apos;, &apos;a&apos;), (&apos;C&apos;, &apos;b&apos;, &apos;b&apos;), (&apos;C&apos;, &apos;b&apos;, &apos;c&apos;),</span><br><span class="line"> (&apos;C&apos;, &apos;c&apos;, &apos;a&apos;), (&apos;C&apos;, &apos;c&apos;, &apos;b&apos;), (&apos;C&apos;, &apos;c&apos;, &apos;c&apos;)]</span><br></pre></td></tr></table></figure></p>
+<p><code>zip()</code>函数:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">30</span>]: list2=[(u,l,n) <span class="keyword">for</span> u,l,n <span class="keyword">in</span> zip(uppers,lowers,nums)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: list2</span><br><span class="line">Out[<span class="number">31</span>]: [(<span class="string">'A'</span>, <span class="string">'a'</span>, <span class="number">1</span>), (<span class="string">'B'</span>, <span class="string">'b'</span>, <span class="number">2</span>), (<span class="string">'C'</span>, <span class="string">'c'</span>, <span class="number">3</span>)]</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-集合解析式（set-comprehensions）"><a href="#2-集合解析式（set-comprehensions）" class="headerlink" title="2. 集合解析式（set comprehensions）"></a>2. 集合解析式（set comprehensions）</h3><p>类似于列表解析，只是中括号<code>[]</code>变成大括号<code>{}</code>.<br>集合有个区别是，是集合里面不重复元素:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">18</span>]: set1=&#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: &#123;x+<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> set1&#125;</span><br><span class="line">Out[<span class="number">19</span>]: &#123;<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-字典解析式（dict-comprehensions）"><a href="#3-字典解析式（dict-comprehensions）" class="headerlink" title="3. 字典解析式（dict comprehensions）"></a>3. 字典解析式（dict comprehensions）</h3><p><strong>{<em>key_exp</em> : <em>value_exp</em>   for <em>expresion</em> in <em>iterable</em>}</strong></p>
+<ul>
+<li><strong>通常是<code>keys</code>和<code>values</code>一起解析：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [1]: letters=[&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;]</span><br><span class="line"></span><br><span class="line">In [2]: nums=[1,2,3,4]</span><br><span class="line"></span><br><span class="line">In [3]:  dict1=&#123; k : v for k,v in zip(letters,nums)&#125;</span><br><span class="line"></span><br><span class="line">In [4]: dict1</span><br><span class="line">Out[4]: &#123;&apos;A&apos;: 1, &apos;B&apos;: 2, &apos;C&apos;: 3, &apos;D&apos;: 4&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>还有一种，<code>values</code>是<code>keys</code>的调用后的值，这种情况只解析<code>keys</code>就可以了：</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [7]: name = &apos;yulongjun&apos;</span><br><span class="line"></span><br><span class="line">In [8]: counts=&#123;letter: name.count(letter) for letter in set(name)&#125;</span><br><span class="line"></span><br><span class="line">In [9]: counts</span><br><span class="line">Out[9]: &#123;&apos;g&apos;: 1, &apos;j&apos;: 1, &apos;l&apos;: 1, &apos;n&apos;: 2, &apos;o&apos;: 1, &apos;u&apos;: 2, &apos;y&apos;: 1&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，由于<code>name</code>字符串里面有重复的字母，<code>name.count</code>计算了多遍重复的字母，可以有更pythonic的用法，如下，<code>set(name)</code>就把<code>name</code>中重复的字母去掉了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">counts=&#123;letter: name.count(letter) for letter in set(name)&#125;</span><br></pre></td></tr></table></figure></p>
+<p>。</p>
+<h3 id="4-生成器解析式（generator-comprehensions）"><a href="#4-生成器解析式（generator-comprehensions）" class="headerlink" title="4. 生成器解析式（generator comprehensions）"></a>4. 生成器解析式（generator comprehensions）</h3><p>生成器解析式和列表解析式用法差不多，只是把中括号<code>[]</code>变成小括号<code>()</code>，很多人会认为<code>()</code>生成的是元组（<code>tuple</code>），但其实是生成器（<code>generator</code>）:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">17</span>]: gen1=(i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: gen1</span><br><span class="line">Out[<span class="number">18</span>]: &lt;generator object &lt;genexpr&gt; at <span class="number">0x0000028944C86570</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: type(gen1)</span><br><span class="line">Out[<span class="number">19</span>]: generator</span><br></pre></td></tr></table></figure></p>
+<p>生成的生成器只能迭代完一次，再次从头迭代就不可用了:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">20</span>]: list2=list(gen1)</span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: list2</span><br><span class="line">Out[<span class="number">21</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: list1=list(gen1)</span><br><span class="line"></span><br><span class="line">In [<span class="number">23</span>]: list1</span><br><span class="line">Out[<span class="number">23</span>]: []</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python3/" rel="tag">#Python3</a>
+          
+            <a href="/tags/comprehension/" rel="tag">#comprehension</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/05/08-sets/" rel="next" title="08-集合（Sets)">
+                <i class="fa fa-chevron-left"></i> 08-集合（Sets)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/06/10-yield/" rel="prev" title="10-yield关键字(译文，有删减)">
+                10-yield关键字(译文，有删减) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/06/09-comprehensions/"
+           data-title="09-解析式（Comprehensions)" data-url="http://yoursite.com/2016/04/06/09-comprehensions/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-列表解析式（list-comprehensions）"><span class="nav-number">1.</span> <span class="nav-text">1. 列表解析式（list comprehensions）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-最基本语法"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 最基本语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2加上if条件表达式"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2加上if条件表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-多个if条件表达式"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3 多个if条件表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-笛卡尔积（多个for的嵌套循环）"><span class="nav-number">1.0.4.</span> <span class="nav-text">1.4 笛卡尔积（多个for的嵌套循环）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-列表解析式加上zip-函数（可以不看，延伸部分）"><span class="nav-number">1.0.5.</span> <span class="nav-text">1.5 列表解析式加上zip()函数（可以不看，延伸部分）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-集合解析式（set-comprehensions）"><span class="nav-number">2.</span> <span class="nav-text">2. 集合解析式（set comprehensions）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-字典解析式（dict-comprehensions）"><span class="nav-number">3.</span> <span class="nav-text">3. 字典解析式（dict comprehensions）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-生成器解析式（generator-comprehensions）"><span class="nav-number">4.</span> <span class="nav-text">4. 生成器解析式（generator comprehensions）</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
