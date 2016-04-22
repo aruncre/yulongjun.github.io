@@ -1,0 +1,818 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python3,token,tokenize," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="表达式解析使用了编译原理的一些东西。
+编译原理的基础：
+
+词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。
+语法分析：构建语法树 （Abstract Syntax Tree(AST)抽象语法树）
+语义分析：检查语法是否正确
+生成中间代码
+优化
+生成目标代码
+
+重点讲前三">
+<meta property="og:type" content="article">
+<meta property="og:title" content="24-logscan-matcher">
+<meta property="og:url" content="http://yoursite.com/2016/04/22/24-logscan-macher/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="表达式解析使用了编译原理的一些东西。
+编译原理的基础：
+
+词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。
+语法分析：构建语法树 （Abstract Syntax Tree(AST)抽象语法树）
+语义分析：检查语法是否正确
+生成中间代码
+优化
+生成目标代码
+
+重点讲前三">
+<meta property="og:image" content="http://yoursite.com/./1461046469920.png">
+<meta property="og:updated_time" content="2016-04-22T10:01:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="24-logscan-matcher">
+<meta name="twitter:description" content="表达式解析使用了编译原理的一些东西。
+编译原理的基础：
+
+词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。
+语法分析：构建语法树 （Abstract Syntax Tree(AST)抽象语法树）
+语义分析：检查语法是否正确
+生成中间代码
+优化
+生成目标代码
+
+重点讲前三">
+<meta name="twitter:image" content="http://yoursite.com/./1461046469920.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 24-logscan-matcher | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th-large fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                24-logscan-matcher
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-22T17:58:42+08:00" content="2016-04-22">
+              2016-04-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3成长之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/22/24-logscan-macher/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/24-logscan-macher/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>表达式解析使用了编译原理的一些东西。</p>
+<p>编译原理的基础：</p>
+<ol>
+<li>词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。</li>
+<li>语法分析：构建语法树 （Abstract Syntax Tree(AST)抽象语法树）</li>
+<li>语义分析：检查语法是否正确</li>
+<li>生成中间代码</li>
+<li>优化</li>
+<li>生成目标代码</li>
+</ol>
+<p>重点讲前三步。</p>
+<p>代码之前先学一些小技巧，有助于理解代码。</p>
+<ol>
+<li><strong><code>join</code>内置函数</strong>：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [4]: help(str.join)</span><br><span class="line"></span><br><span class="line">Help on method_descriptor:</span><br><span class="line"></span><br><span class="line">join(...)</span><br><span class="line">    S.join(iterable) -&gt; str</span><br><span class="line"></span><br><span class="line">    Return a string which is the concatenation of the strings in the</span><br><span class="line">    iterable.  The separator between elements is S.</span><br></pre></td></tr></table></figure>
+<p><code>字符.join(可迭代对象)</code> ——&gt;<code>字符串</code><br>举几个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">7</span>]: <span class="string">','</span>.join([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>])</span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">'a,b,c,d'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: <span class="string">''</span>.join([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>])</span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'abcd'</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><strong><code>__str__</code>和<code>__repr__</code></strong><br>引用自：<a href="http://blog.csdn.net/he_jian1/article/details/40980049" target="_blank" rel="external">http://blog.csdn.net/he_jian1/article/details/40980049</a><br>内建函数<code>str()</code>、<code>repr()</code>(representation，表达),可以方便地以字符串的方式获取对象的内容、类型、数值属性等信息。</li>
+</ol>
+<ul>
+<li>str()函数得到的字符串可读性好（故被print调用）。</li>
+<li>而repr()函数得到的字符串通常可以用来重新获得该对象，通常情况下 obj==eval(repr(obj)) 这个等式是成立的。这两个函数接受一个对象作为其参数，返回适当的字符串。</li>
+<li>repr()返回一个对象的“官方”字符串表示。其结果绝大多数情况下（不是所有）可以通过求值运算（内建函数eval()）重新得到该对象。</li>
+<li>str()则不同，它生成一个对象的可读性好的字符串表示，结果通常无法用eval()求值，但适合print输出。</li>
+</ul>
+<p>如下例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"a __str__"</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"a __repr__"</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dr = D()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> dr</span><br><span class="line">a __str__</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dr</span><br><span class="line">a __repr__</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"%s"</span> % dr</span><br><span class="line"><span class="string">'a __str__'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"%r"</span> % dr</span><br><span class="line"><span class="string">'a __repr__'</span></span><br></pre></td></tr></table></figure></p>
+<p>按照编译原理前三步来写：</p>
+<h3 id="词法分析：tokenize函数（调用Token类）"><a href="#词法分析：tokenize函数（调用Token类）" class="headerlink" title="词法分析：tokenize函数（调用Token类）"></a>词法分析：tokenize函数（调用Token类）</h3><p>直接上代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span><br><span class="line">match模块为字符串匹配模块，可以把自定义的表达式，</span><br><span class="line">如'#test# &amp; #abc# | (!#123# | #456#)'，转换成</span><br><span class="line">Python方便运算的格式。</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Token</span><span class="params">(object)</span>:</span>...</span><br><span class="line">    <span class="comment"># 左括号、右括号、符号、表达式，SYMBOLS逻辑符号</span></span><br><span class="line">    LEFT_BRACKETS = <span class="string">'LEFT_BRACKETS'</span></span><br><span class="line">    RIGHT_BRACKETS = <span class="string">'RIGHT_BRACKETS'</span></span><br><span class="line">    SYMBOL = <span class="string">'SYMBOL'</span></span><br><span class="line">    EXPRESSION = <span class="string">'EXPRESSION'</span></span><br><span class="line">    SYMBOLS = <span class="string">'&amp;|!'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># token的两个属性，一个值，一个类型。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value, type)</span>:</span></span><br><span class="line">        self.value = value</span><br><span class="line">        self.type = type</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span>  <span class="comment"># 人类可视的方法，对人友好，str()可调用这个方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;0&#125;&lt;&#123;1&#125;&gt;'</span>.format(self.value, self.type)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span> <span class="comment"># 机器可是的方法，对机器友好，print()调用这个方法</span></span><br><span class="line">        <span class="keyword">return</span> self.__str__()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># tokenize 传入一个原始串（origin）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(origin)</span>:</span></span><br><span class="line">    tokens = []</span><br><span class="line">    is_expr = <span class="keyword">False</span>  <span class="comment"># flags标签</span></span><br><span class="line">    expr = []</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> origin:</span><br><span class="line">        <span class="keyword">if</span> c == <span class="string">'#'</span>:</span><br><span class="line">            <span class="comment"># 如果表达式的flags是False，就把flags置为True</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">                is_expr = <span class="keyword">True</span></span><br><span class="line">            <span class="comment"># 如果表达式的flags是True， 就把flags置为False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                is_expr = <span class="keyword">False</span></span><br><span class="line">                token = Token(<span class="string">''</span>.join(expr), Token.EXPRESSION)</span><br><span class="line">                tokens.append(token)</span><br><span class="line">                <span class="comment"># 已经把表达式加入列表了，就把临时列表expr清空，下次使用</span></span><br><span class="line">                expr = []</span><br><span class="line">        <span class="keyword">elif</span> c <span class="keyword">in</span> Token.SYMBOLS <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.SYMBOL)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> c == <span class="string">'('</span> <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.LEFT_BRACKETS)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> c == <span class="string">')'</span> <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.RIGHT_BRACKETS)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> is_expr:</span><br><span class="line">            expr.append(c)</span><br><span class="line">        <span class="comment"># 空格这里直接不判断，相当于丢弃了</span></span><br><span class="line">    <span class="keyword">return</span> tokens</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    e = <span class="string">'#test# &amp; #abc# | (!#123# | #456#)'</span></span><br><span class="line">    <span class="comment"># print(str(x) for x in tokenize(e))</span></span><br><span class="line">    print(tokenize(e))   <span class="comment">#输出tokenize表达式后的结果,因为用了repr的方法，输出结果等同于上面被注释掉这行。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="语法分析，构建抽象语法树（调用ASTree类）"><a href="#语法分析，构建抽象语法树（调用ASTree类）" class="headerlink" title="语法分析，构建抽象语法树（调用ASTree类）"></a>语法分析，构建抽象语法树（调用ASTree类）</h3><p>在上面代码的基础上，把tokenize后的的结果创建成AST（抽象语法树）。（关于树的用法，如果忘了，可以回头看看<a href="http://www.yulongjun.com/2016/04/17/21-tree/" target="_blank" rel="external">22-树（tree）</a>，下面代码中的遍历树用的层序遍历，忘了也回头看看<a href="http://www.yulongjun.com/2016/04/17/21-tree/" target="_blank" rel="external">22-树（tree）</a>。）</p>
+<p>构建的抽象语法树示例图：<br><img src="./1461046469920.png" alt="Alt text"></p>
+<p>代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span><br><span class="line">match模块为字符串匹配模块，可以把自定义的表达式，</span><br><span class="line">如'#test# &amp; #abc# | (!#123# | #456#)'，转换成</span><br><span class="line">Python方便运算的格式。</span><br><span class="line">"""</span></span><br><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Token</span><span class="params">(object)</span>:</span>  <span class="comment">#此处省略，上面写过了</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ASTree</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, token)</span>:</span></span><br><span class="line">        self.root = token</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">visit</span><span class="params">(self)</span>:</span>  <span class="comment"># 层序遍历的方法</span></span><br><span class="line">        ret = []</span><br><span class="line">        q = Queue()</span><br><span class="line">        q.put(self)</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">            t = q.get()</span><br><span class="line">            ret.append(t.root)</span><br><span class="line">            <span class="keyword">if</span> t.left:</span><br><span class="line">                q.put(t.left)</span><br><span class="line">            <span class="keyword">if</span> t.right:</span><br><span class="line">                q.put(t.right)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(origin)</span>:</span>  <span class="comment">#此处省略，上面写过了</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_sub_ast</span><span class="params">(stack, t)</span>:</span></span><br><span class="line">    current = t</span><br><span class="line">    <span class="keyword">while</span> stack <span class="keyword">and</span> stack[<span class="number">-1</span>].root.type != Token.LEFT_BRACKETS:  <span class="comment"># 栈不为空或者栈顶不为空</span></span><br><span class="line">        node = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> node.root.type != Token.SYMBOL:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; but &#123;1&#125;'</span>.format(Token.SYMBOL, node.root))</span><br><span class="line">        node.right = current</span><br><span class="line">        <span class="keyword">if</span> node.root.value == <span class="string">'&amp;'</span> <span class="keyword">or</span> node.root.value == <span class="string">'|'</span>:</span><br><span class="line">            left = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> left.root.type != Token.SYMBOL <span class="keyword">and</span> left.root.type != Token.EXPRESSION:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; or &#123;1&#125; but &#123;2&#125;'</span>.format(Token.SYMBOL,</span><br><span class="line">                                                                                  Token.EXPRESSION, left.root))</span><br><span class="line">            node.left = left</span><br><span class="line">        current = node</span><br><span class="line">    stack.append(current)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_ast</span><span class="params">(tokens)</span>:</span></span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tokens:</span><br><span class="line">        tree = ASTree(t)</span><br><span class="line">        <span class="keyword">if</span> tree.root.type == Token.SYMBOL <span class="keyword">or</span> tree.root.type == Token.LEFT_BRACKETS:</span><br><span class="line">            stack.append(tree)</span><br><span class="line">        <span class="keyword">elif</span> tree.root.type == Token.EXPRESSION:</span><br><span class="line">            make_sub_ast(stack, tree)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sub_tree = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> sub_tree.root.type != Token.SYMBOL <span class="keyword">and</span> sub_tree.root.type != Token.EXPRESSION:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; or &#123;1&#125; but &#123;2&#125;'</span>.format(Token.SYMBOL,</span><br><span class="line">                                                                                  Token.EXPRESSION, sub_tree))</span><br><span class="line">            tmp = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> tmp.root.type != Token.LEFT_BRACKETS:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; but&#123;1&#125;'</span>.format(Token.LEFT_BRACKETS, tmp))</span><br><span class="line">            make_sub_ast(stack, sub_tree)</span><br><span class="line">    <span class="keyword">return</span> stack.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    e = <span class="string">'#test# &amp; #abc# | (!#123# | #456#)'</span></span><br><span class="line">    <span class="comment"># print(str(x) for x in tokenize(e))</span></span><br><span class="line">    print(tokenize(e))   <span class="comment">#输出tokenize表达式后的结果,因为用了__repr__的方法(__repr__里return了__str__)，输出结果等同于上面被注释掉这行。</span></span><br><span class="line"></span><br><span class="line">    ast = make_ast(tokenize(e))  <span class="comment">#把tokenize后的的结果创建成AST（抽象语法树）</span></span><br><span class="line">    print(ast.visit()) <span class="comment">#用visit方法遍历这棵树</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python3/" rel="tag">#Python3</a>
+          
+            <a href="/tags/token/" rel="tag">#token</a>
+          
+            <a href="/tags/tokenize/" rel="tag">#tokenize</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/17/23-logscan-introduction/" rel="next" title="23-日志分析系统（logscan）项目简介">
+                <i class="fa fa-chevron-left"></i> 23-日志分析系统（logscan）项目简介
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/22/25-logscan-watcher/" rel="prev" title="25-logscan-watcher">
+                25-logscan-watcher <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/22/24-logscan-macher/"
+           data-title="24-logscan-matcher" data-url="http://yoursite.com/2016/04/22/24-logscan-macher/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析：tokenize函数（调用Token类）"><span class="nav-number">1.</span> <span class="nav-text">词法分析：tokenize函数（调用Token类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法分析，构建抽象语法树（调用ASTree类）"><span class="nav-number">2.</span> <span class="nav-text">语法分析，构建抽象语法树（调用ASTree类）</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
