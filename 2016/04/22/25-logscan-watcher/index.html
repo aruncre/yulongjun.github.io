@@ -85,9 +85,7 @@
 <meta name="description" content="watch用的第三方模块：watchdogwatchdog模块的详细用法请点击此处。
 我们先熟悉几个用到的模块。
 
-sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数
-
-os.path模块：(下面四个是用到的)path.abspath(path)：返回绝对路径path.getsize(path)：返回文件大小，如果文">
+sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="25-logscan-watcher">
 <meta property="og:url" content="http://yoursite.com/2016/04/22/25-logscan-watcher/index.html">
@@ -95,18 +93,14 @@ os.path模块：(下面四个是用到的)path.abspath(path)：返回绝对路�
 <meta property="og:description" content="watch用的第三方模块：watchdogwatchdog模块的详细用法请点击此处。
 我们先熟悉几个用到的模块。
 
-sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数
-
-os.path模块：(下面四个是用到的)path.abspath(path)：返回绝对路径path.getsize(path)：返回文件大小，如果文">
-<meta property="og:updated_time" content="2016-04-22T10:02:06.000Z">
+sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数">
+<meta property="og:updated_time" content="2016-04-23T05:41:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="25-logscan-watcher">
 <meta name="twitter:description" content="watch用的第三方模块：watchdogwatchdog模块的详细用法请点击此处。
 我们先熟悉几个用到的模块。
 
-sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数
-
-os.path模块：(下面四个是用到的)path.abspath(path)：返回绝对路径path.getsize(path)：返回文件大小，如果文">
+sys模块：sys.argv[]：sys.argv[0]指的是Python运行的脚本名，sys.argv[1]是脚本传入的第一个参数">
 
 
 
@@ -342,8 +336,10 @@ os.path模块：(下面四个是用到的)path.abspath(path)：返回绝对路�
         <p>watch用的第三方模块：<a href="https://pythonhosted.org/watchdog/" target="_blank" rel="external">watchdog</a><br>watchdog模块的详细用法请<a href="https://pythonhosted.org/watchdog/" target="_blank" rel="external">点击此处</a>。</p>
 <p>我们先熟悉几个用到的模块。</p>
 <ol>
-<li><p><code>sys</code>模块：<br><code>sys.argv[]</code>：<br><code>sys.argv[0]</code>指的是Python运行的脚本名，<code>sys.argv[1]</code>是脚本传入的第一个参数</p>
-</li>
+<li><code>sys</code>模块：<br><code>sys.argv[]</code>：<br><code>sys.argv[0]</code>指的是Python运行的脚本名，<code>sys.argv[1]</code>是脚本传入的第一个参数</li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p><code>os.path</code>模块：<br>(下面四个是用到的)<br><code>path.abspath(path)</code>：返回绝对路径<br><code>path.getsize(path)</code>：返回文件大小，如果文件不存在就返回错误<br><code>path.isfile(path)</code>：判断路径是否为文件<br><code>path.dirname(path)</code>：返回文件路径</p>
 <p>（os.path模块所有的）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">os.path.abspath(path) <span class="comment">#返回绝对路径</span></span><br><span class="line">os.path.basename(path) <span class="comment">#返回文件名</span></span><br><span class="line">os.path.commonprefix(list) <span class="comment">#返回list(多个路径)中，所有path共有的最长的路径。</span></span><br><span class="line">os.path.dirname(path) <span class="comment">#返回文件路径</span></span><br><span class="line">os.path.exists(path)  <span class="comment">#路径存在则返回True,路径损坏返回False</span></span><br><span class="line">os.path.lexists  <span class="comment">#路径存在则返回True,路径损坏也返回True</span></span><br><span class="line">os.path.expanduser(path)  <span class="comment">#把path中包含的"~"和"~user"转换成用户目录</span></span><br><span class="line">os.path.expandvars(path)  <span class="comment">#根据环境变量的值替换path中包含的”$name”和”$&#123;name&#125;”</span></span><br><span class="line">os.path.getatime(path)  <span class="comment">#返回最后一次进入此path的时间。</span></span><br><span class="line">os.path.getmtime(path)  <span class="comment">#返回在此path下最后一次修改的时间。</span></span><br><span class="line">os.path.getctime(path)  <span class="comment">#返回path的大小</span></span><br><span class="line">os.path.getsize(path)  <span class="comment">#返回文件大小，如果文件不存在就返回错误</span></span><br><span class="line">os.path.isabs(path)  <span class="comment">#判断是否为绝对路径</span></span><br><span class="line">os.path.isfile(path)  <span class="comment">#判断路径是否为文件</span></span><br><span class="line">os.path.isdir(path)  <span class="comment">#判断路径是否为目录</span></span><br><span class="line">os.path.islink(path)  <span class="comment">#判断路径是否为链接</span></span><br><span class="line">os.path.ismount(path)  <span class="comment">#判断路径是否为挂载点（）</span></span><br><span class="line">os.path.join(path1[, path2[, ...]])  <span class="comment">#把目录和文件名合成一个路径</span></span><br><span class="line">os.path.normcase(path)  <span class="comment">#转换path的大小写和斜杠</span></span><br><span class="line">os.path.normpath(path)  <span class="comment">#规范path字符串形式</span></span><br><span class="line">os.path.realpath(path)  <span class="comment">#返回path的真实路径</span></span><br><span class="line">os.path.relpath(path[, start])  <span class="comment">#从start开始计算相对路径</span></span><br><span class="line">os.path.samefile(path1, path2)  <span class="comment">#判断目录或文件是否相同</span></span><br><span class="line">os.path.sameopenfile(fp1, fp2)  <span class="comment">#判断fp1和fp2是否指向同一文件</span></span><br><span class="line">os.path.samestat(stat1, stat2)  <span class="comment">#判断stat tuple stat1和stat2是否指向同一个文件</span></span><br><span class="line">os.path.split(path)  <span class="comment">#把路径分割成dirname和basename，返回一个元组</span></span><br><span class="line">os.path.splitdrive(path)   <span class="comment">#一般用在windows下，返回驱动器名和路径组成的元组</span></span><br><span class="line">os.path.splitext(path)  <span class="comment">#分割路径，返回路径名和文件扩展名的元组</span></span><br><span class="line">os.path.splitunc(path)  <span class="comment">#把路径分割为加载点与文件</span></span><br><span class="line">os.path.walk(path, visit, arg)  <span class="comment">#遍历path，进入每个目录都调用visit函数，visit函数必须有3个参数(arg, dirname, names)，dirname表示当前目录的目录名，names代表当前目录下的所有文件名，args则为walk的第三个参数</span></span><br><span class="line">os.path.supports_unicode_filenames  <span class="comment">#设置是否支持unicode路径名</span></span><br></pre></td></tr></table></figure>

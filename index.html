@@ -463,73 +463,16 @@
 
       
         
-          
-            <p>watch用的第三方模块：<a href="https://pythonhosted.org/watchdog/" target="_blank" rel="external">watchdog</a><br>watchdog模块的详细用法请<a href="https://pythonhosted.org/watchdog/" target="_blank" rel="external">点击此处</a>。</p>
+          <p>watch用的第三方模块：<a href="https://pythonhosted.org/watchdog/">watchdog</a><br>watchdog模块的详细用法请<a href="https://pythonhosted.org/watchdog/">点击此处</a>。</p>
 <p>我们先熟悉几个用到的模块。</p>
 <ol>
-<li><p><code>sys</code>模块：<br><code>sys.argv[]</code>：<br><code>sys.argv[0]</code>指的是Python运行的脚本名，<code>sys.argv[1]</code>是脚本传入的第一个参数</p>
-</li>
-<li><p><code>os.path</code>模块：<br>(下面四个是用到的)<br><code>path.abspath(path)</code>：返回绝对路径<br><code>path.getsize(path)</code>：返回文件大小，如果文件不存在就返回错误<br><code>path.isfile(path)</code>：判断路径是否为文件<br><code>path.dirname(path)</code>：返回文件路径</p>
-<p>（os.path模块所有的）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">os.path.abspath(path) <span class="comment">#返回绝对路径</span></span><br><span class="line">os.path.basename(path) <span class="comment">#返回文件名</span></span><br><span class="line">os.path.commonprefix(list) <span class="comment">#返回list(多个路径)中，所有path共有的最长的路径。</span></span><br><span class="line">os.path.dirname(path) <span class="comment">#返回文件路径</span></span><br><span class="line">os.path.exists(path)  <span class="comment">#路径存在则返回True,路径损坏返回False</span></span><br><span class="line">os.path.lexists  <span class="comment">#路径存在则返回True,路径损坏也返回True</span></span><br><span class="line">os.path.expanduser(path)  <span class="comment">#把path中包含的"~"和"~user"转换成用户目录</span></span><br><span class="line">os.path.expandvars(path)  <span class="comment">#根据环境变量的值替换path中包含的”$name”和”$&#123;name&#125;”</span></span><br><span class="line">os.path.getatime(path)  <span class="comment">#返回最后一次进入此path的时间。</span></span><br><span class="line">os.path.getmtime(path)  <span class="comment">#返回在此path下最后一次修改的时间。</span></span><br><span class="line">os.path.getctime(path)  <span class="comment">#返回path的大小</span></span><br><span class="line">os.path.getsize(path)  <span class="comment">#返回文件大小，如果文件不存在就返回错误</span></span><br><span class="line">os.path.isabs(path)  <span class="comment">#判断是否为绝对路径</span></span><br><span class="line">os.path.isfile(path)  <span class="comment">#判断路径是否为文件</span></span><br><span class="line">os.path.isdir(path)  <span class="comment">#判断路径是否为目录</span></span><br><span class="line">os.path.islink(path)  <span class="comment">#判断路径是否为链接</span></span><br><span class="line">os.path.ismount(path)  <span class="comment">#判断路径是否为挂载点（）</span></span><br><span class="line">os.path.join(path1[, path2[, ...]])  <span class="comment">#把目录和文件名合成一个路径</span></span><br><span class="line">os.path.normcase(path)  <span class="comment">#转换path的大小写和斜杠</span></span><br><span class="line">os.path.normpath(path)  <span class="comment">#规范path字符串形式</span></span><br><span class="line">os.path.realpath(path)  <span class="comment">#返回path的真实路径</span></span><br><span class="line">os.path.relpath(path[, start])  <span class="comment">#从start开始计算相对路径</span></span><br><span class="line">os.path.samefile(path1, path2)  <span class="comment">#判断目录或文件是否相同</span></span><br><span class="line">os.path.sameopenfile(fp1, fp2)  <span class="comment">#判断fp1和fp2是否指向同一文件</span></span><br><span class="line">os.path.samestat(stat1, stat2)  <span class="comment">#判断stat tuple stat1和stat2是否指向同一个文件</span></span><br><span class="line">os.path.split(path)  <span class="comment">#把路径分割成dirname和basename，返回一个元组</span></span><br><span class="line">os.path.splitdrive(path)   <span class="comment">#一般用在windows下，返回驱动器名和路径组成的元组</span></span><br><span class="line">os.path.splitext(path)  <span class="comment">#分割路径，返回路径名和文件扩展名的元组</span></span><br><span class="line">os.path.splitunc(path)  <span class="comment">#把路径分割为加载点与文件</span></span><br><span class="line">os.path.walk(path, visit, arg)  <span class="comment">#遍历path，进入每个目录都调用visit函数，visit函数必须有3个参数(arg, dirname, names)，dirname表示当前目录的目录名，names代表当前目录下的所有文件名，args则为walk的第三个参数</span></span><br><span class="line">os.path.supports_unicode_filenames  <span class="comment">#设置是否支持unicode路径名</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>watchdog</code>第三方模块<br><strong><code>watchdog.events.FileSystemEventHandler(src_path)</code>：基本文件系统事件处理程序，可以override方法。</strong><br>方法有以下几种：</p>
-<ul>
-<li><p><code>dispatch(event)</code>：分配事务到合适的方法</p>
-</li>
-<li><p><code>on_any_event(event)</code>：所有事务的处理程序</p>
-</li>
-<li><p><code>on_created(event)</code>：当一个文件或者目录被创建的时候调用</p>
-</li>
-<li><p><code>on_deleted(event)</code>：当一个文件或目录被删除的时候调用</p>
-</li>
-<li><p><code>on_modified(event)</code>：当一个文件或目录被修改的时候调用</p>
-</li>
-<li><p><code>on_moved(event)</code>：当一个文件或目录被移动或重命名时候调用</p>
-</li>
-</ul>
-</li>
+<li><code>sys</code>模块：<br><code>sys.argv[]</code>：<br><code>sys.argv[0]</code>指的是Python运行的脚本名，<code>sys.argv[1]</code>是脚本传入的第一个参数</li>
 </ol>
-<p><strong><code>watchdog.observers.Observer()</code>：观察者进程，观察目录和给事件处理程序分配调用。</strong><br>    此为跨平台模式，在linux下，相当于调用了<code>inotify</code>，，在windows下调用了<code>WindowsApiObserver</code>。可以直接使用直接的类，如果不想管平台的话，直接使用<code>Observer</code>类就行了，会自动去适应平台。</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Platforms</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>inotify.InotifyObserver</code></td>
-<td>Linux 2.6.13+</td>
-<td><code>inotify(7)</code> based observer</td>
-</tr>
-<tr>
-<td><code>fsevents.FSEventsObserver</code></td>
-<td>Mac OS X</td>
-<td>FSEvents based observer</td>
-</tr>
-<tr>
-<td><code>kqueue.KqueueObserver</code></td>
-<td>Mac OS X and BSD with kqueue(2)</td>
-<td><code>kqueue(2)</code> based observer</td>
-</tr>
-<tr>
-<td><code>read_directory_changes.WindowsApiObserver</code></td>
-<td>MS Windows</td>
-<td>Windows API-based observer</td>
-</tr>
-<tr>
-<td><code>polling.PollingObserver</code></td>
-<td>Any</td>
-<td>fallback implementation</td>
-</tr>
-</tbody>
-</table>
-<p>watch.py的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> watchdog.events <span class="keyword">import</span> FileSystemEventHandler</span><br><span class="line"><span class="keyword">from</span> watchdog.observers <span class="keyword">import</span> Observer</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span><span class="params">(FileSystemEventHandler)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, matcher)</span>:</span></span><br><span class="line">        self.filename = path.abspath(filename)</span><br><span class="line">        self.matcher = matcher</span><br><span class="line">        self.\</span><br><span class="line">            observer = Observer()</span><br><span class="line">        self.fd = <span class="keyword">None</span></span><br><span class="line">        self.offset = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> path.isfile(self.filename):</span><br><span class="line">            self.fd = open(self.filename)</span><br><span class="line">            self.offset = path.getsize(self.filename)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_deleted</span><span class="params">(self, event)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> path.abspath(event.src_path) == self.filename:</span><br><span class="line">            self.fd.close()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_moved</span><span class="params">(self, event)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> path.abspath(event.src_path) == self.filename:</span><br><span class="line">            self.fd.close()</span><br><span class="line">        <span class="keyword">if</span> path.abspath(event.dest_path) == self.filename <span class="keyword">and</span> path.isfile(self.filename):</span><br><span class="line">            self.fd = open(self.filename)</span><br><span class="line">            self.offset = path.getsize(self.filename)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_modified</span><span class="params">(self, event)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> path.abspath(event.src_path) == self.filename:</span><br><span class="line">            self.fd.seek(self.offset, <span class="number">0</span>)</span><br><span class="line">            match = getattr(self.matcher, <span class="string">'match'</span>, <span class="keyword">lambda</span> x: <span class="keyword">False</span>)</span><br><span class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> self.fd:</span><br><span class="line">                line = line.rstrip(<span class="string">'\n'</span>)</span><br><span class="line">                <span class="keyword">if</span> match(line):</span><br><span class="line">                    print(<span class="string">'matched &#123;0&#125;'</span>.format(line))</span><br><span class="line">            self.offset = self.fd.tell()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_created</span><span class="params">(self, event)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> path.abspath(event.src_path) == self.filename <span class="keyword">and</span> path.isfile(self.filename):</span><br><span class="line">            self.fd = open(self.filename)</span><br><span class="line">            self.offset = path.getsize(self.filename)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.observer.schedule(self, path.dirname(self.filename), recursive=<span class="keyword">False</span>)</span><br><span class="line">        self.observer.start()</span><br><span class="line">        self.observer.join()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.observer.stop()</span><br><span class="line">        <span class="keyword">if</span> self.fd <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">and</span> <span class="keyword">not</span> self.fd.closed:</span><br><span class="line">            self.fd.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> sys</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Matcher</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">match</span><span class="params">(self, line)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    w = Watcher(sys.argv[<span class="number">1</span>], Matcher())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        w.start()</span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        w.stop()</span><br></pre></td></tr></table></figure></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/22/25-logscan-watcher/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -645,8 +588,7 @@
 
       
         
-          
-            <p>表达式解析使用了编译原理的一些东西。</p>
+          <p>表达式解析使用了编译原理的一些东西。</p>
 <p>编译原理的基础：</p>
 <ol>
 <li>词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。</li>
@@ -656,30 +598,11 @@
 <li>优化</li>
 <li>生成目标代码</li>
 </ol>
-<p>重点讲前三步。</p>
-<p>代码之前先学一些小技巧，有助于理解代码。</p>
-<ol>
-<li><strong><code>join</code>内置函数</strong>：</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [4]: help(str.join)</span><br><span class="line"></span><br><span class="line">Help on method_descriptor:</span><br><span class="line"></span><br><span class="line">join(...)</span><br><span class="line">    S.join(iterable) -&gt; str</span><br><span class="line"></span><br><span class="line">    Return a string which is the concatenation of the strings in the</span><br><span class="line">    iterable.  The separator between elements is S.</span><br></pre></td></tr></table></figure>
-<p><code>字符.join(可迭代对象)</code> ——&gt;<code>字符串</code><br>举几个例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">7</span>]: <span class="string">','</span>.join([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>])</span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">'a,b,c,d'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: <span class="string">''</span>.join([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>])</span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'abcd'</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><strong><code>__str__</code>和<code>__repr__</code></strong><br>引用自：<a href="http://blog.csdn.net/he_jian1/article/details/40980049" target="_blank" rel="external">http://blog.csdn.net/he_jian1/article/details/40980049</a><br>内建函数<code>str()</code>、<code>repr()</code>(representation，表达),可以方便地以字符串的方式获取对象的内容、类型、数值属性等信息。</li>
-</ol>
-<ul>
-<li>str()函数得到的字符串可读性好（故被print调用）。</li>
-<li>而repr()函数得到的字符串通常可以用来重新获得该对象，通常情况下 obj==eval(repr(obj)) 这个等式是成立的。这两个函数接受一个对象作为其参数，返回适当的字符串。</li>
-<li>repr()返回一个对象的“官方”字符串表示。其结果绝大多数情况下（不是所有）可以通过求值运算（内建函数eval()）重新得到该对象。</li>
-<li>str()则不同，它生成一个对象的可读性好的字符串表示，结果通常无法用eval()求值，但适合print输出。</li>
-</ul>
-<p>如下例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">D</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"a __str__"</span></span><br><span class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"a __repr__"</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dr = D()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> dr</span><br><span class="line">a __str__</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dr</span><br><span class="line">a __repr__</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"%s"</span> % dr</span><br><span class="line"><span class="string">'a __str__'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"%r"</span> % dr</span><br><span class="line"><span class="string">'a __repr__'</span></span><br></pre></td></tr></table></figure></p>
-<p>按照编译原理前三步来写：</p>
-<h3 id="词法分析：tokenize函数（调用Token类）"><a href="#词法分析：tokenize函数（调用Token类）" class="headerlink" title="词法分析：tokenize函数（调用Token类）"></a>词法分析：tokenize函数（调用Token类）</h3><p>直接上代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span><br><span class="line">match模块为字符串匹配模块，可以把自定义的表达式，</span><br><span class="line">如'#test# &amp; #abc# | (!#123# | #456#)'，转换成</span><br><span class="line">Python方便运算的格式。</span><br><span class="line">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Token</span><span class="params">(object)</span>:</span>...</span><br><span class="line">    <span class="comment"># 左括号、右括号、符号、表达式，SYMBOLS逻辑符号</span></span><br><span class="line">    LEFT_BRACKETS = <span class="string">'LEFT_BRACKETS'</span></span><br><span class="line">    RIGHT_BRACKETS = <span class="string">'RIGHT_BRACKETS'</span></span><br><span class="line">    SYMBOL = <span class="string">'SYMBOL'</span></span><br><span class="line">    EXPRESSION = <span class="string">'EXPRESSION'</span></span><br><span class="line">    SYMBOLS = <span class="string">'&amp;|!'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># token的两个属性，一个值，一个类型。</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, value, type)</span>:</span></span><br><span class="line">        self.value = value</span><br><span class="line">        self.type = type</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span>  <span class="comment"># 人类可视的方法，对人友好，str()可调用这个方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'&#123;0&#125;&lt;&#123;1&#125;&gt;'</span>.format(self.value, self.type)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span> <span class="comment"># 机器可是的方法，对机器友好，print()调用这个方法</span></span><br><span class="line">        <span class="keyword">return</span> self.__str__()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># tokenize 传入一个原始串（origin）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(origin)</span>:</span></span><br><span class="line">    tokens = []</span><br><span class="line">    is_expr = <span class="keyword">False</span>  <span class="comment"># flags标签</span></span><br><span class="line">    expr = []</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> origin:</span><br><span class="line">        <span class="keyword">if</span> c == <span class="string">'#'</span>:</span><br><span class="line">            <span class="comment"># 如果表达式的flags是False，就把flags置为True</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">                is_expr = <span class="keyword">True</span></span><br><span class="line">            <span class="comment"># 如果表达式的flags是True， 就把flags置为False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                is_expr = <span class="keyword">False</span></span><br><span class="line">                token = Token(<span class="string">''</span>.join(expr), Token.EXPRESSION)</span><br><span class="line">                tokens.append(token)</span><br><span class="line">                <span class="comment"># 已经把表达式加入列表了，就把临时列表expr清空，下次使用</span></span><br><span class="line">                expr = []</span><br><span class="line">        <span class="keyword">elif</span> c <span class="keyword">in</span> Token.SYMBOLS <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.SYMBOL)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> c == <span class="string">'('</span> <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.LEFT_BRACKETS)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> c == <span class="string">')'</span> <span class="keyword">and</span> <span class="keyword">not</span> is_expr:</span><br><span class="line">            token = Token(c, Token.RIGHT_BRACKETS)</span><br><span class="line">            tokens.append(token)</span><br><span class="line">        <span class="keyword">elif</span> is_expr:</span><br><span class="line">            expr.append(c)</span><br><span class="line">        <span class="comment"># 空格这里直接不判断，相当于丢弃了</span></span><br><span class="line">    <span class="keyword">return</span> tokens</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    e = <span class="string">'#test# &amp; #abc# | (!#123# | #456#)'</span></span><br><span class="line">    <span class="comment"># print(str(x) for x in tokenize(e))</span></span><br><span class="line">    print(tokenize(e))   <span class="comment">#输出tokenize表达式后的结果,因为用了repr的方法，输出结果等同于上面被注释掉这行。</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="语法分析，构建抽象语法树（调用ASTree类）"><a href="#语法分析，构建抽象语法树（调用ASTree类）" class="headerlink" title="语法分析，构建抽象语法树（调用ASTree类）"></a>语法分析，构建抽象语法树（调用ASTree类）</h3><p>在上面代码的基础上，把tokenize后的的结果创建成AST（抽象语法树）。（关于树的用法，如果忘了，可以回头看看<a href="http://www.yulongjun.com/2016/04/17/21-tree/" target="_blank" rel="external">22-树（tree）</a>，下面代码中的遍历树用的层序遍历，忘了也回头看看<a href="http://www.yulongjun.com/2016/04/17/21-tree/" target="_blank" rel="external">22-树（tree）</a>。）</p>
-<p>构建的抽象语法树示例图：<br><img src="./1461046469920.png" alt="Alt text"></p>
-<p>代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span><br><span class="line">match模块为字符串匹配模块，可以把自定义的表达式，</span><br><span class="line">如'#test# &amp; #abc# | (!#123# | #456#)'，转换成</span><br><span class="line">Python方便运算的格式。</span><br><span class="line">"""</span></span><br><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span>  Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Token</span><span class="params">(object)</span>:</span>  <span class="comment">#此处省略，上面写过了</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ASTree</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, token)</span>:</span></span><br><span class="line">        self.root = token</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">visit</span><span class="params">(self)</span>:</span>  <span class="comment"># 层序遍历的方法</span></span><br><span class="line">        ret = []</span><br><span class="line">        q = Queue()</span><br><span class="line">        q.put(self)</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">            t = q.get()</span><br><span class="line">            ret.append(t.root)</span><br><span class="line">            <span class="keyword">if</span> t.left:</span><br><span class="line">                q.put(t.left)</span><br><span class="line">            <span class="keyword">if</span> t.right:</span><br><span class="line">                q.put(t.right)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(origin)</span>:</span>  <span class="comment">#此处省略，上面写过了</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_sub_ast</span><span class="params">(stack, t)</span>:</span></span><br><span class="line">    current = t</span><br><span class="line">    <span class="keyword">while</span> stack <span class="keyword">and</span> stack[<span class="number">-1</span>].root.type != Token.LEFT_BRACKETS:  <span class="comment"># 栈不为空或者栈顶不为空</span></span><br><span class="line">        node = stack.pop()</span><br><span class="line">        <span class="keyword">if</span> node.root.type != Token.SYMBOL:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; but &#123;1&#125;'</span>.format(Token.SYMBOL, node.root))</span><br><span class="line">        node.right = current</span><br><span class="line">        <span class="keyword">if</span> node.root.value == <span class="string">'&amp;'</span> <span class="keyword">or</span> node.root.value == <span class="string">'|'</span>:</span><br><span class="line">            left = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> left.root.type != Token.SYMBOL <span class="keyword">and</span> left.root.type != Token.EXPRESSION:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; or &#123;1&#125; but &#123;2&#125;'</span>.format(Token.SYMBOL,</span><br><span class="line">                                                                                  Token.EXPRESSION, left.root))</span><br><span class="line">            node.left = left</span><br><span class="line">        current = node</span><br><span class="line">    stack.append(current)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_ast</span><span class="params">(tokens)</span>:</span></span><br><span class="line">    stack = []</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tokens:</span><br><span class="line">        tree = ASTree(t)</span><br><span class="line">        <span class="keyword">if</span> tree.root.type == Token.SYMBOL <span class="keyword">or</span> tree.root.type == Token.LEFT_BRACKETS:</span><br><span class="line">            stack.append(tree)</span><br><span class="line">        <span class="keyword">elif</span> tree.root.type == Token.EXPRESSION:</span><br><span class="line">            make_sub_ast(stack, tree)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sub_tree = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> sub_tree.root.type != Token.SYMBOL <span class="keyword">and</span> sub_tree.root.type != Token.EXPRESSION:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; or &#123;1&#125; but &#123;2&#125;'</span>.format(Token.SYMBOL,</span><br><span class="line">                                                                                  Token.EXPRESSION, sub_tree))</span><br><span class="line">            tmp = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> tmp.root.type != Token.LEFT_BRACKETS:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'parse error, excepted &#123;0&#125; but&#123;1&#125;'</span>.format(Token.LEFT_BRACKETS, tmp))</span><br><span class="line">            make_sub_ast(stack, sub_tree)</span><br><span class="line">    <span class="keyword">return</span> stack.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    e = <span class="string">'#test# &amp; #abc# | (!#123# | #456#)'</span></span><br><span class="line">    <span class="comment"># print(str(x) for x in tokenize(e))</span></span><br><span class="line">    print(tokenize(e))   <span class="comment">#输出tokenize表达式后的结果,因为用了__repr__的方法(__repr__里return了__str__)，输出结果等同于上面被注释掉这行。</span></span><br><span class="line"></span><br><span class="line">    ast = make_ast(tokenize(e))  <span class="comment">#把tokenize后的的结果创建成AST（抽象语法树）</span></span><br><span class="line">    print(ast.visit()) <span class="comment">#用visit方法遍历这棵树</span></span><br></pre></td></tr></table></figure></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/22/24-logscan-macher/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -850,130 +773,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/17/22-heap/" itemprop="url">
-                  22-堆（Heap）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T14:23:34+08:00" content="2016-04-17">
-              2016-04-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/17/22-heap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/22-heap/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>堆是一种特殊的基于树的数据结构，他满足堆的特性：所有的节点要么全大于，要么全等于，要么全小于他的每一孩子节点。</p>
-<ul>
-<li><ruby><strong>满二叉树</strong><rt>Full Binary Tree</rt></ruby>：树上一个每一个节点要么有0个，要么有2个子节点。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/17/22-heap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/04/17/21-tree/" itemprop="url">
                   21-树（tree）
                 </a>
@@ -1048,6 +847,130 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/17/21-tree/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/17/22-heap/" itemprop="url">
+                  22-堆（Heap）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T14:23:34+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3成长之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/17/22-heap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/22-heap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>堆是一种特殊的基于树的数据结构，他满足堆的特性：所有的节点要么全大于，要么全等于，要么全小于他的每一孩子节点。</p>
+<ul>
+<li><ruby><strong>满二叉树</strong><rt>Full Binary Tree</rt></ruby>：树上一个每一个节点要么有0个，要么有2个子节点。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/17/22-heap/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
