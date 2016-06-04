@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python3,pyenv,Python2," />
+  <meta name="keywords" content="pyenv,Python2,Python3," />
 
 
 
@@ -82,19 +82,19 @@
 
 
 
-<meta name="description" content="pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。
-以OS X目前最新版本OS X EI Capitan 10.11.4为例。">
+<meta name="description" content="软件简介：pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv 是pyenv的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02-OSX下的Python多版本管理器pyenv的安装设置">
+<meta property="og:title" content="02-Python多版本管理器pyenv和虚拟环境pyenv-virtualenv的安装设置">
 <meta property="og:url" content="http://yoursite.com/2016/04/05/02-pyenv/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。
-以OS X目前最新版本OS X EI Capitan 10.11.4为例。">
-<meta property="og:updated_time" content="2016-04-06T12:28:31.000Z">
+<meta property="og:description" content="软件简介：pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv 是pyenv的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址">
+<meta property="og:updated_time" content="2016-06-04T13:15:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="02-OSX下的Python多版本管理器pyenv的安装设置">
-<meta name="twitter:description" content="pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。
-以OS X目前最新版本OS X EI Capitan 10.11.4为例。">
+<meta name="twitter:title" content="02-Python多版本管理器pyenv和虚拟环境pyenv-virtualenv的安装设置">
+<meta name="twitter:description" content="软件简介：pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv 是pyenv的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址">
 
 
 
@@ -112,7 +112,7 @@
   };
 </script>
 
-  <title> 02-OSX下的Python多版本管理器pyenv的安装设置 | 于龙君的博客 </title>
+  <title> 02-Python多版本管理器pyenv和虚拟环境pyenv-virtualenv的安装设置 | 于龙君的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +262,7 @@
             
             
               
-                02-OSX下的Python多版本管理器pyenv的安装设置
+                02-Python多版本管理器pyenv和虚拟环境pyenv-virtualenv的安装设置
               
             
           </h1>
@@ -327,31 +327,66 @@
       
 
       
-        <p>pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。</p>
-<p>以OS X目前最新版本OS X EI Capitan 10.11.4为例。<br><a id="more"></a></p>
-<h3 id="1-安装brew"><a href="#1-安装brew" class="headerlink" title="1. 安装brew"></a>1. 安装brew</h3><p>我们可以用<code>brew</code>命令来更新OSX系统，<code>brew</code>命令类似于RHEL的<code>yum</code>和ubuntu的<code>apt-get</code>命令。<br>OSX没有自带<code>brew</code>，登陆<a href="http://brew.sh" target="_blank" rel="external">Homebrew</a>网站，找到<code>ruby</code>代码来安装<code>brew</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+        <h1 id="软件简介："><a href="#软件简介：" class="headerlink" title="软件简介："></a>软件简介：</h1><p>pyenv 是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：<a href="https://github.com/yyuu/pyenv" target="_blank" rel="external">https://github.com/yyuu/pyenv</a></p>
+<p>pyenv-virtualenv 是pyenv的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址：<a href="https://github.com/yyuu/pyenv-virtualenv" target="_blank" rel="external">https://github.com/yyuu/pyenv-virtualenv</a></p>
+<a id="more"></a>
+<hr>
+<h1 id="安装篇"><a href="#安装篇" class="headerlink" title="安装篇"></a>安装篇</h1><h2 id="OS-X-下安装："><a href="#OS-X-下安装：" class="headerlink" title="OS X 下安装："></a>OS X 下安装：</h2><p>以OS X目前最新版本<code>10.11.5</code>为例（其他版本也适用）。</p>
+<h3 id="1-安装brew"><a href="#1-安装brew" class="headerlink" title="1. 安装brew"></a>1. 安装brew</h3><p>我们可以用<code>brew</code>命令来更新OSX系统，<code>brew</code>命令类似于RHEL的<code>yum</code>和ubuntu的<code>apt-get</code>命令，Homebrew的官网是这样说的：</p>
+<blockquote>
+<p>homebrew – The missing package manager for OS X</p>
+</blockquote>
+<p>OSX没有包管理器，所以我们安装<code>brew</code>来管理，登陆<a href="http://brew.sh" target="_blank" rel="external">Homebrew</a>网站，找到<code>ruby</code>代码来安装<code>brew</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>如果想升级新的homebrew，可以用命令<code>brew update</code></li>
 <li>如果想安装软件包，可以用命令<code>brew install XXXXX</code>,XXXX是软件包的名称</li>
-<li>如果想更新软件包，可以用<code>brew upgrade [XXXX]</code>，XXXX是软件包的名字，如果省略不写，就是更新所有可更新的软件包。</li>
+<li>如果想更新软件包，可以用<code>brew upgrade [XXXX]</code>，XXXX是软件包的名字，如 <code>brew upgrade pyenv</code>。如果省略不写，就是更新所有可更新的软件包。</li>
 </ul>
-<h3 id="2-安装pyenv"><a href="#2-安装pyenv" class="headerlink" title="2. 安装pyenv"></a>2. 安装pyenv</h3><p>安装好<code>brew</code>后，就可以用<code>brew</code>来安装<code>pyenv</code>的最新版本了，而且会自动下载依赖包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install pyenv <span class="comment">#brew安装pyenv</span></span><br></pre></td></tr></table></figure></p>
-<p>按照安装完后Caveats的提示要添加两条环境变量到<code>~/.bash_profile</code>文件里（如果没有需要新建）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PYENV_ROOT=/usr/local/var/pyenv</span><br><span class="line">if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi</span><br></pre></td></tr></table></figure></p>
-<p>需要使环境变量生效<br>运行命令<code>. ~/.bash_profile</code>或者<code>source ~/.bash_profile</code></p>
-<h3 id="4-安装zlib依赖"><a href="#4-安装zlib依赖" class="headerlink" title="4.安装zlib依赖"></a>4.安装zlib依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install zlib</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装zlib依赖"><a href="#2-安装zlib依赖" class="headerlink" title="2. 安装zlib依赖"></a>2. 安装zlib依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install zlib</span><br></pre></td></tr></table></figure>
 <p>将zlib的头文件及库文件添加至系统默认的路径：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/Cellar/zlib/1.2.8/include/* /usr/local/include</span><br><span class="line">$ ln -s /usr/local/Cellar/zlib/1.2.8/lib/* /usr/local/lib</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-pyenv使用指南"><a href="#3-pyenv使用指南" class="headerlink" title="3. pyenv使用指南"></a>3. pyenv使用指南</h3><ol>
+<h3 id="3-安装pyenv"><a href="#3-安装pyenv" class="headerlink" title="3. 安装pyenv"></a>3. 安装pyenv</h3><p>安装好<code>brew</code>后，就可以用<code>brew</code>来安装<code>pyenv</code>的最新版本了，而且会自动下载依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install pyenv <span class="comment">#brew安装pyenv</span></span><br></pre></td></tr></table></figure>
+<p>按照安装完后Caveats的提示要添加两条环境变量到<code>~/.bash_profile</code>文件里（如果没有需要新建，OS X默认是没有这个文件的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PYENV_ROOT=/usr/local/var/pyenv</span><br><span class="line">if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi</span><br></pre></td></tr></table></figure>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>。</p>
+<p><strong>升级</strong>：<code>brew upgrade pyenv</code></p>
+<p><strong>卸载</strong>：<code>brew uninstall pyenv</code>，然后删除之前填在<code>~/.bash_profile</code>文件里那两行。</p>
+<h3 id="4-安装pyenv-virtualenv"><a href="#4-安装pyenv-virtualenv" class="headerlink" title="4. 安装pyenv-virtualenv"></a>4. 安装pyenv-virtualenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install pyenv-virtualenv</span><br></pre></td></tr></table></figure>
+<p>按照安装完后Caveats的提示要添加两条环境变量到<code>~/.bash_profile</code>文件里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if which pyenv-virtualenv-init &gt; /dev/null; then eval &quot;$(pyenv virtualenv-init -)&quot;; fi</span><br></pre></td></tr></table></figure>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>，如果还没有效果，就退出终端，重新打开。</p>
+<hr>
+<h2 id="CentOS下安装："><a href="#CentOS下安装：" class="headerlink" title="CentOS下安装："></a>CentOS下安装：</h2><p>以CentOS目前最新版本<code>7.2</code>为例（CentOS的其他版本也适用，Ubuntu也适用，只要把<code>yum</code>命令改成<code>apt-get</code>就可以了，其他都一样）</p>
+<h3 id="1-安装依赖包"><a href="#1-安装依赖包" class="headerlink" title="1. 安装依赖包"></a>1. 安装依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git gcc make patch zlib-devel gdbm-devel openssl-devel sqlite-devel bzip2-devel readline-devel</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装pyenv（pyenv-virtualenv插件会自动安装）"><a href="#2-安装pyenv（pyenv-virtualenv插件会自动安装）" class="headerlink" title="2. 安装pyenv（pyenv-virtualenv插件会自动安装）"></a>2. 安装pyenv（pyenv-virtualenv插件会自动安装）</h3><p>安装（下面一条命令可以把pyenv和pyenv-virtualenv插件都装上）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure></p>
+<p>设置环境变量：</p>
+<p>在<code>~/.bash_profile</code>环境变量配置加入下面三行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;~/.pyenv/bin:$PATH&quot;</span><br><span class="line">eval &quot;$(pyenv init -)&quot;</span><br><span class="line">eval &quot;$(pyenv virtualenv-init -)&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>升级</strong>：可以用命令<code>pyenv update</code>。</p>
+<p><strong>卸载</strong>：直接删除目录<code>rm -rf ~/.pyenv</code>，然后把<code>~/.bash_profile</code>环境变量配置中的三行删掉</p>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>，如果还没有效果，就退出终端，重新打开。</p>
+<hr>
+<h1 id="使用篇"><a href="#使用篇" class="headerlink" title="使用篇"></a>使用篇</h1><hr>
+<h3 id="1-pyenv使用指南（OS-X和Linux命令都通用）"><a href="#1-pyenv使用指南（OS-X和Linux命令都通用）" class="headerlink" title="1. pyenv使用指南（OS X和Linux命令都通用）"></a>1. pyenv使用指南（OS X和Linux命令都通用）</h3><ol>
 <li><p><code>pyenv versions</code>查看系统的上安装的Python版本。 其中前面的<code>*</code>表示当前工作目录正在使用的版本,其中 的 <code>system</code>表示系统自带的 Python 版本：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv versions</span><br><span class="line">*system (set by /Users/yulongjun/.pyenv/version)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>pyenv install &lt;version&gt;</code>安装其他版本的Python。例如安装3.5.1和3.4.4版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv install 3.5.1</span><br><span class="line">$ pyenv install 3.4.4</span><br><span class="line">$ pyenv versions #可以看到3个版本</span><br><span class="line">*system (set by /Users/yulongjun/.pyenv/version)</span><br><span class="line"> 3.4.3</span><br><span class="line">3.5.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv install 3.5.1</span><br><span class="line">$ pyenv install 3.4.4</span><br><span class="line">$ pyenv versions #可以看到3个版本</span><br><span class="line">*system (set by /Users/yulongjun/.pyenv/version)</span><br><span class="line"> 3.4.4</span><br><span class="line">3.5.1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>pyenv local &lt;version&gt;</code>切换python版本。<br>示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#到家目录</span></span><br><span class="line">$ mkdir python3.5      <span class="comment">#创建python3.5的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python3.5</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.5.1    <span class="comment">#使当前工作目录使用python3.5.1版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.1</span></span><br><span class="line">Python3.5.1</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本,是3.5的pip</span></span><br><span class="line">pip 7.1.2 from /usr/<span class="built_in">local</span>/var/pyenv/versions/3.5.1/lib/python3.5/site-packages (python 3.5)</span><br><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#回到家目录</span></span><br><span class="line">$ mkdir python3.4      <span class="comment">#创建python3.4的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python3.4</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.4      <span class="comment">#使当前工作目录使用python3.4.4版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.1</span></span><br><span class="line">Python 3.4.4</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本，是3.4的pip</span></span><br><span class="line">pip 7.1.2 from /usr/<span class="built_in">local</span>/var/pyenv/versions/3.4.4/lib/python3.4/site-packages (python 3.4)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#到家目录</span></span><br><span class="line">$ mkdir python35      <span class="comment">#创建python35的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python35</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.5.1    <span class="comment">#使当前工作目录使用python3.5.1版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.1</span></span><br><span class="line">Python3.5.1</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本,是3.5的pip</span></span><br><span class="line">pip 7.1.2 from /usr/<span class="built_in">local</span>/var/pyenv/versions/3.5.1/lib/python3.5/site-packages (python 3.5)</span><br><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#回到家目录</span></span><br><span class="line">$ mkdir python34     <span class="comment">#创建python3.4的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python34</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.4      <span class="comment">#使当前工作目录使用python3.4.4版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.1</span></span><br><span class="line">Python 3.4.4</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本，是3.4的pip</span></span><br><span class="line">pip 7.1.2 from /usr/<span class="built_in">local</span>/var/pyenv/versions/3.4.4/lib/python3.4/site-packages (python 3.4)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>其他版本的工作目录创建方法类似(如果是用系统自带版本，用<code>pyenv local system</code>即可使当前工作目录使用系统自带的Python2.7.10)</p>
+<p>其他版本的工作目录创建方法类似(如果是用系统自带版本，用<code>pyenv local system</code>即可使当前工作目录使用系统自带的Python2.7.10，不过一般很少用系统自带的Python)</p>
+<h3 id="2-pyenv-virtualenv使用指南"><a href="#2-pyenv-virtualenv使用指南" class="headerlink" title="2. pyenv-virtualenv使用指南"></a>2. pyenv-virtualenv使用指南</h3><p>pyenv-virtualenv是用来创建一个干净的虚拟Python环境的命令，通常在创建干净的新项目时候使用。使用方法如下:</p>
+<p>1.创建虚拟环境–<code>pyenv virtualenv 版本号 虚拟环境名</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv virtualenv 3.5.1 venv-3.5.1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建项目，让项目使用干净的Python3.5.1的虚拟环境：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myproject</span><br><span class="line">$ <span class="built_in">cd</span> myproject</span><br><span class="line">$ pyenv <span class="built_in">local</span> venv-3.5.1</span><br><span class="line"></span><br><span class="line">pyenv-virtualenv: deactivate</span><br><span class="line">pyenv-virtualenv: activate venv-3.5.1</span><br></pre></td></tr></table></figure>
+<p>此后，我们就会发现：只要我们进入myproject目录，就会自动激活virtualenv，退出myproject目录，就会关闭virtualenv。</p>
+<p>如果要关闭自动激活，可以运行命令<code>pyenv deactivate</code>，要重新启用的话，运行<code>pyenv activate 虚拟环境名</code>。</p>
 
       
     </div>
@@ -393,11 +428,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python3/" rel="tag">#Python3</a>
-          
             <a href="/tags/pyenv/" rel="tag">#pyenv</a>
           
             <a href="/tags/Python2/" rel="tag">#Python2</a>
+          
+            <a href="/tags/Python3/" rel="tag">#Python3</a>
           
         </div>
       
@@ -406,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/05/01-readbook/" rel="next" title="01-Python3.X入门和进阶书籍推荐">
-                <i class="fa fa-chevron-left"></i> 01-Python3.X入门和进阶书籍推荐
+              <a href="/2016/04/05/learning/" rel="next" title="01-Python3.X书籍和网站推荐">
+                <i class="fa fa-chevron-left"></i> 01-Python3.X书籍和网站推荐
               </a>
             
           </div>
@@ -466,7 +501,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/04/05/02-pyenv/"
-           data-title="02-OSX下的Python多版本管理器pyenv的安装设置" data-url="http://yoursite.com/2016/04/05/02-pyenv/">
+           data-title="02-Python多版本管理器pyenv和虚拟环境pyenv-virtualenv的安装设置" data-url="http://yoursite.com/2016/04/05/02-pyenv/">
       </div>
     
   </div>
@@ -625,7 +660,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装brew"><span class="nav-number">1.</span> <span class="nav-text">1. 安装brew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装pyenv"><span class="nav-number">2.</span> <span class="nav-text">2. 安装pyenv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安装zlib依赖"><span class="nav-number">3.</span> <span class="nav-text">4.安装zlib依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-pyenv使用指南"><span class="nav-number">4.</span> <span class="nav-text">3. pyenv使用指南</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件简介："><span class="nav-number">1.</span> <span class="nav-text">软件简介：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装篇"><span class="nav-number">2.</span> <span class="nav-text">安装篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OS-X-下安装："><span class="nav-number">2.1.</span> <span class="nav-text">OS X 下安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装brew"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 安装brew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装zlib依赖"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 安装zlib依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装pyenv"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 安装pyenv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-安装pyenv-virtualenv"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 安装pyenv-virtualenv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS下安装："><span class="nav-number">2.2.</span> <span class="nav-text">CentOS下安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装依赖包"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 安装依赖包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装pyenv（pyenv-virtualenv插件会自动安装）"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 安装pyenv（pyenv-virtualenv插件会自动安装）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用篇"><span class="nav-number">3.</span> <span class="nav-text">使用篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-pyenv使用指南（OS-X和Linux命令都通用）"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. pyenv使用指南（OS X和Linux命令都通用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pyenv-virtualenv使用指南"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. pyenv-virtualenv使用指南</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
