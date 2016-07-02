@@ -1,0 +1,946 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pyenv,pyenv-virtualenv,jupyter,PyCharm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="软件简介：pyenv + pyenv-virtualenvpyenv，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv， 是pyenv的一个plugin（插件），可以用来创建基于不同Py">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-01-Python开发环境">
+<meta property="og:url" content="http://yoursite.com/2016/07/02/1-01-environment/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="软件简介：pyenv + pyenv-virtualenvpyenv，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv， 是pyenv的一个plugin（插件），可以用来创建基于不同Py">
+<meta property="og:image" content="http://yoursite.com/images/install-osx-3.png">
+<meta property="og:image" content="http://yoursite.com/images/install-osx-4.png">
+<meta property="og:image" content="http://yoursite.com/images/install-osx-5.png">
+<meta property="og:image" content="http://yoursite.com/images/install-osx-6.png">
+<meta property="og:image" content="http://yoursite.com/images/create-1.png">
+<meta property="og:image" content="http://yoursite.com/images/create-2.png">
+<meta property="og:image" content="http://yoursite.com/images/create-3.png">
+<meta property="og:image" content="http://yoursite.com/images/create-4.png">
+<meta property="og:updated_time" content="2016-07-02T14:37:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1-01-Python开发环境">
+<meta name="twitter:description" content="软件简介：pyenv + pyenv-virtualenvpyenv，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：https://github.com/yyuu/pyenv
+pyenv-virtualenv， 是pyenv的一个plugin（插件），可以用来创建基于不同Py">
+<meta name="twitter:image" content="http://yoursite.com/images/install-osx-3.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 1-01-Python开发环境 | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-python3">
+          <a href="/categories/Learning-Python3" rel="section">
+            
+              <i class="menu-item-icon fa fa-file-code-o fa-fw"></i> <br />
+            
+            新Python3笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-oldpython3">
+          <a href="/categories/Python3成长之路" rel="section">
+            
+              <i class="menu-item-icon fa fa-code fa-fw"></i> <br />
+            
+            旧Python3笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                1-01-Python开发环境
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-02T22:17:12+08:00" content="2016-07-02">
+              2016-07-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/02/1-01-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/1-01-environment/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="软件简介："><a href="#软件简介：" class="headerlink" title="软件简介："></a>软件简介：</h2><h3 id="pyenv-pyenv-virtualenv"><a href="#pyenv-pyenv-virtualenv" class="headerlink" title="pyenv + pyenv-virtualenv"></a>pyenv + pyenv-virtualenv</h3><p><code>pyenv</code>，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：<a href="https://github.com/yyuu/pyenv" target="_blank" rel="external">https://github.com/yyuu/pyenv</a></p>
+<p><code>pyenv-virtualenv</code>， 是<code>pyenv</code>的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址：<a href="https://github.com/yyuu/pyenv-virtualenv" target="_blank" rel="external">https://github.com/yyuu/pyenv-virtualenv</a></p>
+<h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h3><p><code>jupyter notebook</code>，是一个强大的工具，可以一边测试代码，一边用markdown写标题和文字，算的上是一个在线编辑器+交互式IDE，使用pip可以安装 ：<code>pip install jupyter</code></p>
+<h3 id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a>PyCharm</h3><p><code>Pycharm</code> 是 Jetbrains 公司出品的一款商业化的针对Python开发者开发的一款IDE产品，功能十分强大。分为两个版本， Community 和 Professional 版本,下面是两个版本的功能和区别：</p>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>PyCharm Community Edition</th>
+<th>PyCharm Professional Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能 Python 编辑器</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>图形化的调试程序和测试运行程序</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>导航和重构</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>代码检查</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>VCS 支持</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>科学化的工具</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Web 开发</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python web 框架</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python 分析器</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>远程开发功能</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>数据库 &amp; SQL 支持</td>
+<td></td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>你要想用做Web开发（ html，jss，JavaScript 等），或者用到Python的web框架如 Tornado，Django， Flask 等等高级功能，还是选择 Professional 版本吧。如果只是想了解 Python 的基本语法，Community 版足够你用了。（当然，如果只是了解基本语法，可以用 <code>ipython</code> ，还有从<code>ipython</code>中独立出来的 <code>jupyter  notebook</code>）。</p>
+<p>下载地址为：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="external">https://www.jetbrains.com/pycharm/download/</a></p>
+<a id="more"></a>
+<hr>
+<h2 id="pyenv安装详解"><a href="#pyenv安装详解" class="headerlink" title="pyenv安装详解"></a>pyenv安装详解</h2><hr>
+<h3 id="OS-X-下安装pyenv："><a href="#OS-X-下安装pyenv：" class="headerlink" title="OS X 下安装pyenv："></a>OS X 下安装pyenv：</h3><p>以OS X目前最新版本<code>10.11.5</code>为例（其他版本也适用）。</p>
+<h4 id="1-安装brew"><a href="#1-安装brew" class="headerlink" title="1. 安装brew"></a>1. 安装brew</h4><p>我们可以用<code>brew</code>命令来更新OSX系统，<code>brew</code>命令类似于RHEL的<code>yum</code>和ubuntu的<code>apt-get</code>命令，Homebrew的官网是这样说的：</p>
+<blockquote>
+<p>homebrew – The missing package manager for OS X</p>
+</blockquote>
+<p>OSX没有包管理器，所以我们安装<code>brew</code>来管理，登陆<a href="http://brew.sh" target="_blank" rel="external">Homebrew</a>网站，找到<code>ruby</code>代码来安装<code>brew</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果想升级新的homebrew，可以用命令<code>brew update</code></li>
+<li>如果想安装软件包，可以用命令<code>brew install XXXXX</code>,XXXX是软件包的名称</li>
+<li>如果想更新软件包，可以用<code>brew upgrade [XXXX]</code>，XXXX是软件包的名字，如 <code>brew upgrade pyenv</code>。如果省略不写，就是更新所有可更新的软件包。</li>
+</ul>
+<h4 id="2-安装zlib依赖"><a href="#2-安装zlib依赖" class="headerlink" title="2. 安装zlib依赖"></a>2. 安装zlib依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install zlib</span><br></pre></td></tr></table></figure>
+<p>将zlib的头文件及库文件添加至系统默认的路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/Cellar/zlib/1.2.8/include/* /usr/local/include</span><br><span class="line">$ ln -s /usr/local/Cellar/zlib/1.2.8/lib/* /usr/local/lib</span><br></pre></td></tr></table></figure>
+<h4 id="3-安装pyenv"><a href="#3-安装pyenv" class="headerlink" title="3. 安装pyenv"></a>3. 安装pyenv</h4><p>安装好<code>brew</code>后，就可以用<code>brew</code>来安装<code>pyenv</code>的最新版本了，而且会自动下载依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install pyenv <span class="comment">#brew安装pyenv</span></span><br></pre></td></tr></table></figure>
+<p>按照安装完后Caveats的提示要添加两条环境变量到<code>~/.bash_profile</code>文件里（如果没有需要新建，OS X默认是没有这个文件的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PYENV_ROOT=/usr/local/var/pyenv</span><br><span class="line">if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi</span><br></pre></td></tr></table></figure>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>。</p>
+<p><strong>升级</strong>：<code>brew upgrade pyenv</code></p>
+<p><strong>卸载</strong>：<code>brew uninstall pyenv</code>，然后删除之前填在<code>~/.bash_profile</code>文件里那两行。</p>
+<h4 id="4-安装pyenv-virtualenv"><a href="#4-安装pyenv-virtualenv" class="headerlink" title="4. 安装pyenv-virtualenv"></a>4. 安装pyenv-virtualenv</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install pyenv-virtualenv</span><br></pre></td></tr></table></figure>
+<p>按照安装完后Caveats的提示要添加两条环境变量到<code>~/.bash_profile</code>文件里：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">which</span> pyenv-virtualenv-init &gt; /dev/null; <span class="keyword">then</span> <span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv virtualenv-init -)</span>"</span>; <span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>，如果还没有效果，就退出终端，重新打开。</p>
+<hr>
+<h3 id="CentOS下安装："><a href="#CentOS下安装：" class="headerlink" title="CentOS下安装："></a>CentOS下安装：</h3><p>以CentOS目前最新版本<code>7.2</code>为例（CentOS的其他版本也适用，Ubuntu也适用，只要把<code>yum</code>命令改成<code>apt-get</code>就可以了，其他都一样）</p>
+<h4 id="1-安装依赖包"><a href="#1-安装依赖包" class="headerlink" title="1. 安装依赖包"></a>1. 安装依赖包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git gcc make patch zlib-devel gdbm-devel openssl-devel sqlite-devel bzip2-devel readline-devel</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装pyenv（pyenv-virtualenv插件会自动安装）"><a href="#2-安装pyenv（pyenv-virtualenv插件会自动安装）" class="headerlink" title="2. 安装pyenv（pyenv-virtualenv插件会自动安装）"></a>2. 安装pyenv（pyenv-virtualenv插件会自动安装）</h3><p>安装（下面一条命令可以把pyenv和pyenv-virtualenv插件都装上）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure></p>
+<p>设置环境变量：</p>
+<p>在<code>~/.bash_profile</code>环境变量配置加入下面三行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;~/.pyenv/bin:$PATH&quot;</span><br><span class="line">eval &quot;$(pyenv init -)&quot;</span><br><span class="line">eval &quot;$(pyenv virtualenv-init -)&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>升级</strong>：可以用命令<code>pyenv update</code>。</p>
+<p><strong>卸载</strong>：直接删除目录<code>rm -rf ~/.pyenv</code>，然后把<code>~/.bash_profile</code>环境变量配置中的三行删掉</p>
+<p>需要使环境变量生效，<br>运行命令<code>exec &quot;$SHELL&quot;</code>，如果还没有效果，就退出终端，重新打开。</p>
+<hr>
+<h2 id="软件使用指南"><a href="#软件使用指南" class="headerlink" title="软件使用指南"></a>软件使用指南</h2><hr>
+<h3 id="pyenv使用指南（OS-X和Linux命令都通用）"><a href="#pyenv使用指南（OS-X和Linux命令都通用）" class="headerlink" title="pyenv使用指南（OS X和Linux命令都通用）"></a>pyenv使用指南（OS X和Linux命令都通用）</h3><ol>
+<li><code>pyenv install --list</code></li>
+</ol>
+<p>查看可以安装的版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv install --list</span><br><span class="line"><span class="comment"># `...`表示省略</span></span><br><span class="line">...</span><br><span class="line">2.7.12</span><br><span class="line">...</span><br><span class="line">3.4.5</span><br><span class="line">...</span><br><span class="line">3.5.2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>pyenv versions</code>查看系统的上安装的Python版本。 其中前面的<code>*</code>表示当前工作目录正在使用的版本,其中 的 <code>system</code>表示系统自带的 Python 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv versions</span><br><span class="line">*system (<span class="built_in">set</span> by /Users/yulongjun/.pyenv/version)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>pyenv install &lt;version&gt;</code>安装其他版本的Python。我们以安装<code>2.7.12</code>、<code>3.4.5</code>和<code>3.5.2</code>版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv install 3.5.2</span><br><span class="line">$ pyenv install 3.4.5</span><br><span class="line">$ pyenv versions #可以看到3个版本</span><br><span class="line">*system (set by /Users/yulongjun/.pyenv/version)</span><br><span class="line">2.7.12</span><br><span class="line">3.4.4</span><br><span class="line">3.5.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>pyenv local &lt;version&gt;</code>切换python版本。<br>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#到家目录</span></span><br><span class="line">$ mkdir python35      <span class="comment">#创建python35的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python35</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.5.2    <span class="comment">#使当前工作目录使用python3.5.2版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.2</span></span><br><span class="line">Python3.5.2</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本,是3.5的pip</span></span><br><span class="line">pip 8.1.1 from /root/.pyenv/versions/3.5.2/lib/python3.5/site-packages (python 3.5)</span><br><span class="line">$ <span class="built_in">cd</span>                   <span class="comment">#回到家目录</span></span><br><span class="line">$ mkdir python34     <span class="comment">#创建python3.4的工作目录</span></span><br><span class="line">$ <span class="built_in">cd</span> python34</span><br><span class="line">$ pyenv <span class="built_in">local</span> 3.4.5      <span class="comment">#使当前工作目录使用python3.4.5版本</span></span><br><span class="line">$ python -V            <span class="comment">#查看一下当前目录用python的版本，确实是3.5.1</span></span><br><span class="line">Python 3.4.5</span><br><span class="line">$ pip -V               <span class="comment">#查看一下pip版本，是3.4的pip</span></span><br><span class="line">pip 8.1.1 from /root/.pyenv/versions/3.4.5/lib/python3.4/site-packages (python 3.4)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其他版本的工作目录创建方法类似(如果是用系统自带版本，用<code>pyenv local system</code>即可使当前工作目录使用系统自带的Python版本，不过一般很少用系统自带的Python)</p>
+<h3 id="pyenv-virtualenv使用指南"><a href="#pyenv-virtualenv使用指南" class="headerlink" title="pyenv-virtualenv使用指南"></a>pyenv-virtualenv使用指南</h3><p>pyenv-virtualenv是用来创建一个干净的虚拟Python环境的命令，通常在创建干净的新项目时候使用。使用方法如下:</p>
+<p>1.创建虚拟环境–<code>pyenv virtualenv 版本号 虚拟环境名</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pyenv virtualenv 3.5.2 venv-3.5.2</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建项目，让项目使用干净的Python3.5.2的虚拟环境：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[yulongjun@yulongjun ~]$ mkdir Learning-Python3</span><br><span class="line">[yulongjun@yulongjun ~]$ <span class="built_in">cd</span> Learning-Python3/</span><br><span class="line">[yulongjun@yulongjun Learning-Python3]$ pyenv <span class="built_in">local</span> venv-3.5.2</span><br><span class="line">(venv-3.5.2) [yulongjun@yulongjun Learning-Python3]$ <span class="built_in">cd</span> ..</span><br><span class="line">[yulongjun@yulongjun ~]$ <span class="built_in">cd</span> Learning-Python3/</span><br><span class="line">(venv-3.5.2) [yulongjun@yulongjun Learning-Python3]$</span><br></pre></td></tr></table></figure>
+<p>我们会发现：只要我们进入<code>Learning-Python3</code>目录，就会自动激活virtualenv，退出<code>Learning-Python3</code>目录，就会关闭virtualenv。</p>
+<p>如果要关闭自动激活，可以运行命令<code>pyenv deactivate</code>，要重新启用的话，运行<code>pyenv activate 虚拟环境名</code>。</p>
+<h3 id="jupyter-notebook使用指南"><a href="#jupyter-notebook使用指南" class="headerlink" title="jupyter notebook使用指南"></a>jupyter notebook使用指南</h3><ul>
+<li><p>如果仅在所在的那台主机上使用 ：<br><code>jupyter notebook</code><br>这样会在所在的那台主机开启一个服务并打开主机的默认浏览器。<br>我们在服务器里输入<a href="http://localhost:8888或者http://127.0.0.1:8888就可以登录" target="_blank" rel="external">http://localhost:8888或者http://127.0.0.1:8888就可以登录</a></p>
+</li>
+<li><p>如果用其他机器的浏览器访问的话：<br><code>jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser</code><br>0.0.0.0表示全网可以访问；port后面跟的是端口，可以自定义；no-browser是指不打开本机的浏览器。</p>
+</li>
+</ul>
+<p><strong>jupyter notebook经常用到的快捷方式：</strong><br>可参考<a href="http://blog.csdn.net/lawme/article/details/51034543" target="_blank" rel="external">http://blog.csdn.net/lawme/article/details/51034543</a></p>
+<h3 id="PyCharm使用指南"><a href="#PyCharm使用指南" class="headerlink" title="PyCharm使用指南"></a>PyCharm使用指南</h3><h4 id="安装后初始化"><a href="#安装后初始化" class="headerlink" title="安装后初始化"></a>安装后初始化</h4><ul>
+<li><p>双击打开。第一次安装，点ok就可以了；如果之前装过PyCharm，或者有自定义的配置，可以选择上面一条。</p>
+<p><img src="/images/install-osx-3.png" alt="install-osx-3"></p>
+</li>
+<li><p>这里我们点试用30天（Evaluate for free 30 days）</p>
+<p><img src="/images/install-osx-4.png" alt="install-osx-4"></p>
+</li>
+<li><p>长期用可以选择付费，支持支付宝的哦，购买地址：<a href="https://www.jetbrains.com/pycharm/buy/" target="_blank" rel="external">https://www.jetbrains.com/pycharm/buy/</a> 。</p>
+</li>
+<li><p>IDE主题和编辑器的代码风格：</p>
+<p><img src="/images/install-osx-5.png" alt="install-osx-5"></p>
+</li>
+<li><p>这里我一般都选Darcula，暗色风格。这个后续都是可以改的，可以看后面的章节。</p>
+<p><img src="/images/install-osx-6.png" alt="install-osx-6"></p>
+</li>
+<li><p>重启，让主题生效。</p>
+</li>
+</ul>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><ul>
+<li><p>双击打开，界面如图：<img src="/images/create-1.png" alt="create-1"></p>
+<ul>
+<li><code>Create New Project</code>：创建新项目。</li>
+<li><code>Open</code>： 打开项目或文件。</li>
+<li><code>Check out from Version Control</code>：从版本控制如GitHub，Git等， checkout 项目。</li>
+<li><code>Register</code>：是注册用，关于注册这里不涉及。</li>
+<li><code>Configure</code>：是配置PyCharm，这里面有Pycharm所有的配置项。</li>
+<li><code>Get Help</code>：获取帮助。</li>
+</ul>
+</li>
+<li><p>我们点击<code>Create New Project</code>，能看到很多项目模板</p>
+<p><img src="/images/create-2.png" alt="create-2"></p>
+<p>有纯粹的Python模板，Django，Flaskweb框架的模板等等，我们先选择<code>Pure Python</code>进行初步了解，纯粹的Python模板。右边栏位，<code>Location</code>是项目存放的位置，<code>Interpreter</code>是解释器版本选择，我们可以选择项目要使用的Python版本（新的 Pycharm 2016 已经支持<code>pyenv</code>了，笔者这里用的pyenv来控制Python版本)然后点击create创建。</p>
+</li>
+<li><p>第一次启动项目时候回进行索引，这时候可能你电脑的cpu和内存占用会很高，甚至风扇狂装，都是正常现象，一会儿就结束，如果使用macbook的话，由于是ssd的，速度会很快，半分钟差不多，索引期间最好不要操作Pycharm，等索引完了再说：</p>
+<p><img src="images/create-3.png" alt="create-4"></p>
+</li>
+<li><p>在左下角会提示你接入<code>Tools Windows</code>，包括Mac自带的终端，Python自带的解释器，还有一个TODO，这样，你可以完全沉浸在一个界面就可以了，基本上不用切换桌面或切换程序了，编程变得更专注：</p>
+<p><img src="images/create-4.png" alt="create-4"></p>
+</li>
+</ul>
+<blockquote>
+<p>注意事项：目前版本的Pycharm，在你不关闭Pycharm的情况下，创建两个不同Python版本的项目的时候，里面的依赖库会以第一个项目索引的依赖库为主，目前存在这个bug，所以，如果创建两个不同的项目时候，要把Pycharm完全退出，再创建。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pyenv/" rel="tag">#pyenv</a>
+          
+            <a href="/tags/pyenv-virtualenv/" rel="tag">#pyenv-virtualenv</a>
+          
+            <a href="/tags/jupyter/" rel="tag">#jupyter</a>
+          
+            <a href="/tags/PyCharm/" rel="tag">#PyCharm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/29/00-contents/" rel="next" title="00-Python3成长之路【目录置顶】">
+                <i class="fa fa-chevron-left"></i> 00-Python3成长之路【目录置顶】
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/11/00-1-contents/" rel="prev" title="00-Learning-Python3【目录置顶】">
+                00-Learning-Python3【目录置顶】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/02/1-01-environment/"
+           data-title="1-01-Python开发环境" data-url="http://yoursite.com/2016/07/02/1-01-environment/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#软件简介："><span class="nav-number">1.</span> <span class="nav-text">软件简介：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pyenv-pyenv-virtualenv"><span class="nav-number">1.1.</span> <span class="nav-text">pyenv + pyenv-virtualenv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jupyter-notebook"><span class="nav-number">1.2.</span> <span class="nav-text">jupyter notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyCharm"><span class="nav-number">1.3.</span> <span class="nav-text">PyCharm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyenv安装详解"><span class="nav-number">2.</span> <span class="nav-text">pyenv安装详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OS-X-下安装pyenv："><span class="nav-number">2.1.</span> <span class="nav-text">OS X 下安装pyenv：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装brew"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 安装brew</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装zlib依赖"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 安装zlib依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安装pyenv"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 安装pyenv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-安装pyenv-virtualenv"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 安装pyenv-virtualenv</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS下安装："><span class="nav-number">2.2.</span> <span class="nav-text">CentOS下安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装依赖包"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 安装依赖包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装pyenv（pyenv-virtualenv插件会自动安装）"><span class="nav-number">2.3.</span> <span class="nav-text">2. 安装pyenv（pyenv-virtualenv插件会自动安装）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件使用指南"><span class="nav-number">3.</span> <span class="nav-text">软件使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pyenv使用指南（OS-X和Linux命令都通用）"><span class="nav-number">3.1.</span> <span class="nav-text">pyenv使用指南（OS X和Linux命令都通用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pyenv-virtualenv使用指南"><span class="nav-number">3.2.</span> <span class="nav-text">pyenv-virtualenv使用指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jupyter-notebook使用指南"><span class="nav-number">3.3.</span> <span class="nav-text">jupyter notebook使用指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyCharm使用指南"><span class="nav-number">3.4.</span> <span class="nav-text">PyCharm使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装后初始化"><span class="nav-number">3.4.1.</span> <span class="nav-text">安装后初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建项目"><span class="nav-number">3.4.2.</span> <span class="nav-text">创建项目</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

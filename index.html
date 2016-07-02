@@ -183,32 +183,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-python3">
+          <a href="/categories/Learning-Python3" rel="section">
             
-              <i class="menu-item-icon fa fa-th-large fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-file-code-o fa-fw"></i> <br />
             
-            分类
+            新Python3笔记
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+        <li class="menu-item menu-item-oldpython3">
+          <a href="/categories/Python3成长之路" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-code fa-fw"></i> <br />
             
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
+            旧Python3笔记
           </a>
         </li>
       
@@ -218,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
-            关于
+            关于博主
           </a>
         </li>
       
@@ -261,8 +251,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/11/00-contents/" itemprop="url">
-                  00-Python3成长之路【目录置顶】
+                <a class="post-title-link" href="/2016/11/11/00-1-contents/" itemprop="url">
+                  00-Learning-Python3【目录置顶】
                 </a>
               
             
@@ -277,6 +267,396 @@
             <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2016-11-11T11:11:11+08:00" content="2016-11-11">
               2016-11-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/11/00-1-contents/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/00-1-contents/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>此文章集合更像是一个笔记，记录了我在学习Python3中学到的东西。目录结构参考<a href="http://www.magedu.com/course/" target="_blank" rel="external">马哥教育</a> 的课程目录。（安利一下，本人正在马哥教育学习Python，Python的课程老师是Comyn老师， 乃python大神级人物，原大众点评运维平台架构师，原腾讯广告部核心运维专家，现任饿了么Python运维开发高级总监，如果有想学习的同学，请联系 <a href="http://www.magedu.com/" target="_blank" rel="external">马哥教育</a>。）</strong></p>
+<hr>
+<h2 id="2016下半年Python3课程体系"><a href="#2016下半年Python3课程体系" class="headerlink" title="2016下半年Python3课程体系"></a>2016下半年Python3课程体系</h2><ul>
+<li><strong>Python基础</strong>（12周）<ul>
+<li>基础语法</li>
+<li>内置数据结构</li>
+<li>函数</li>
+<li>IO与文件操作</li>
+<li>面向对象</li>
+<li>异常处理</li>
+<li>模块化</li>
+</ul>
+</li>
+<li><strong>Web开发</strong>（7周）<ul>
+<li>Python后端<ul>
+<li>WSGI</li>
+<li>自制web框架</li>
+<li>ORM</li>
+</ul>
+</li>
+<li>Web端<ul>
+<li>ES6</li>
+<li>React</li>
+</ul>
+</li>
+<li>移动端<ul>
+<li>React Native</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>运维自动化</strong>（5周）<ul>
+<li>CMDB</li>
+<li>msched</li>
+<li>dsched</li>
+<li>堡垒机</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="目录导航"><a href="#目录导航" class="headerlink" title="目录导航"></a>目录导航</h2><p>本文代码如无特殊说明，Python 版本均用 <strong><code>3.5.2</code></strong>。</p>
+<p>代码均在<code>OSX 10.11.5</code>和<code>CentOS 7.2</code> 下运行验证过。</p>
+<ul>
+<li><p><code>✔</code>：表示已更新完毕</p>
+</li>
+<li><p><code>▬</code>：内容简单，暂时不写</p>
+</li>
+<li><p><code>✐</code>：已学习，正在整理笔记</p>
+</li>
+<li><p><code>✘</code>：还未学习或者未写好</p>
+</li>
+</ul>
+<h3 id="第一部分-Python基础（12周）"><a href="#第一部分-Python基础（12周）" class="headerlink" title="第一部分 Python基础（12周）"></a>第一部分 Python基础（12周）</h3><ul>
+<li><a href="www.yulongjun.com/2016/07/02/1-01-environment/"><code>✔</code>1-01-Python开发环境</a></li>
+<li>1-02-Python基础</li>
+<li>1-03-内置数据结构1</li>
+<li>1-04-内置数据结构2</li>
+<li>1-05-函数1</li>
+<li>1-06-函数2</li>
+<li>1-07-IO与文件操作</li>
+<li>1-08-实战：简单的日志分析</li>
+<li>1-09-面向对象1</li>
+<li>1-10-面向对象2</li>
+<li>1-11-异常处理</li>
+<li>1-12-模块化编程</li>
+</ul>
+<h3 id="第二部分-Web开发（7周）"><a href="#第二部分-Web开发（7周）" class="headerlink" title="第二部分 Web开发（7周）"></a>第二部分 Web开发（7周）</h3><ul>
+<li>2-01 WSGI与Web开发</li>
+<li>2-02 sqlalchemy与ORM</li>
+<li>2-03 前端开发-ES6入门</li>
+<li>2-04 前段开发-React入门</li>
+<li>2-05 移动化-React Native</li>
+<li>2-06 项目实例-类简书的多人博客</li>
+</ul>
+<h3 id="第三部分-运维自动化（5周）"><a href="#第三部分-运维自动化（5周）" class="headerlink" title="第三部分 运维自动化（5周）"></a>第三部分 运维自动化（5周）</h3><ul>
+<li>3-01实战项目 CMDB</li>
+<li>3-02实战项目 msched</li>
+<li>3-03实战项目 dsched</li>
+<li>3-04实战项目 堡垒机</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/02/1-01-environment/" itemprop="url">
+                  1-01-Python开发环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-02T22:17:12+08:00" content="2016-07-02">
+              2016-07-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/02/1-01-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/1-01-environment/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="软件简介："><a href="#软件简介：" class="headerlink" title="软件简介："></a>软件简介：</h2><h3 id="pyenv-pyenv-virtualenv"><a href="#pyenv-pyenv-virtualenv" class="headerlink" title="pyenv + pyenv-virtualenv"></a>pyenv + pyenv-virtualenv</h3><p><code>pyenv</code>，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：<a href="https://github.com/yyuu/pyenv">https://github.com/yyuu/pyenv</a></p>
+<p><code>pyenv-virtualenv</code>， 是<code>pyenv</code>的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址：<a href="https://github.com/yyuu/pyenv-virtualenv">https://github.com/yyuu/pyenv-virtualenv</a></p>
+<h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h3><p><code>jupyter notebook</code>，是一个强大的工具，可以一边测试代码，一边用markdown写标题和文字，算的上是一个在线编辑器+交互式IDE，使用pip可以安装 ：<code>pip install jupyter</code></p>
+<h3 id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a>PyCharm</h3><p><code>Pycharm</code> 是 Jetbrains 公司出品的一款商业化的针对Python开发者开发的一款IDE产品，功能十分强大。分为两个版本， Community 和 Professional 版本,下面是两个版本的功能和区别：</p>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>PyCharm Community Edition</th>
+<th>PyCharm Professional Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能 Python 编辑器</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>图形化的调试程序和测试运行程序</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>导航和重构</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>代码检查</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>VCS 支持</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>科学化的工具</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Web 开发</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python web 框架</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python 分析器</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>远程开发功能</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>数据库 &amp; SQL 支持</td>
+<td></td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>你要想用做Web开发（ html，jss，JavaScript 等），或者用到Python的web框架如 Tornado，Django， Flask 等等高级功能，还是选择 Professional 版本吧。如果只是想了解 Python 的基本语法，Community 版足够你用了。（当然，如果只是了解基本语法，可以用 <code>ipython</code> ，还有从<code>ipython</code>中独立出来的 <code>jupyter  notebook</code>）。</p>
+<p>下载地址为：<a href="https://www.jetbrains.com/pycharm/download/">https://www.jetbrains.com/pycharm/download/</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/02/1-01-environment/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/29/00-contents/" itemprop="url">
+                  00-Python3成长之路【目录置顶】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-29T23:59:59+08:00" content="2016-06-29">
+              2016-06-29
             </time>
           </span>
 
@@ -305,8 +685,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/11/00-contents/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/11/00-contents/" itemprop="commentsCount"></span>
+                <a href="/2016/06/29/00-contents/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/29/00-contents/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -344,7 +724,7 @@
 </ul>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/11/00-contents/#more" rel="contents">
+            <a class="btn" href="/2016/06/29/00-contents/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1244,255 +1624,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/18-rule-parser/" itemprop="url">
-                  18-stack应用-规则解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T19:58:56+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/14/18-rule-parser/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/18-rule-parser/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>写一个简单的规则解析，只涉及表达式的True和False的解析。</p>
-<p>定义的匹配 规则是：</p>
-<ul>
-<li>表达式用两个<code>#</code>括起来，类似于<code>#expr#</code>，只计算表达式的布尔值：True或False。</li>
-<li>非用<code>!</code>， 与用<code>&amp;</code>， 或用<code>|</code> 。</li>
-<li>可以用<code>()</code>来改变优先级。
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/14/18-rule-parser/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/17-expr/" itemprop="url">
-                  17-stack应用--表达式解析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T19:58:44+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/14/17-expr/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/17-expr/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>先写一个简单的算术表达式计算器，有数字，有括号，有运算符（暂时不考虑运算符优先级）。</p>
-<p>假如是这样的算数表达式：<code>(3+4)*5/((2+3)*3)</code></p>
-<p>先分析解析思路，纸上谈兵（有点长，慢慢看）：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/14/17-expr/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1537,27 +1668,27 @@
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">28</span>
+            <a href="/">
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">3</span>
+              
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
-              </a>
+              
             </div>
           
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">33</span>
+              
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
-              </a>
+              
             </div>
           
 
