@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="vim,jupyter notebook,PyCharm," />
 
 
 
@@ -82,16 +82,34 @@
 
 
 
-<meta name="description" content="人生苦短，Python当歌">
+<meta name="description" content="vimvim是一款非常好用的编辑器，学习曲线比较陡峭，但是当你学会并熟练应用的时候，绝对非常好用。这里不详细介绍vim的用法，感兴趣的可以看这本书《vim实用技巧》：
+京东：http://item.jd.com/11445638.html
+网盘下载：https://yunpan.cn/cBrJBuvNmjTwf （提取码：e10a）（高清、非扫描版）
+推荐大家还是买实体书，也不贵，实体书拿在手里，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1-02-ide">
 <meta property="og:url" content="http://yoursite.com/2016/07/08/1-02-ide/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="人生苦短，Python当歌">
-<meta property="og:updated_time" content="2016-07-08T01:07:02.000Z">
+<meta property="og:description" content="vimvim是一款非常好用的编辑器，学习曲线比较陡峭，但是当你学会并熟练应用的时候，绝对非常好用。这里不详细介绍vim的用法，感兴趣的可以看这本书《vim实用技巧》：
+京东：http://item.jd.com/11445638.html
+网盘下载：https://yunpan.cn/cBrJBuvNmjTwf （提取码：e10a）（高清、非扫描版）
+推荐大家还是买实体书，也不贵，实体书拿在手里，">
+<meta property="og:image" content="http://yoursite.com/images/ide/install-osx-3.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/install-osx-4.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/install-osx-5.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/install-osx-6.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/create-1.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/create-2.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/create-3.png">
+<meta property="og:image" content="http://yoursite.com/images/ide/create-4.png">
+<meta property="og:updated_time" content="2016-07-08T09:13:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1-02-ide">
-<meta name="twitter:description" content="人生苦短，Python当歌">
+<meta name="twitter:description" content="vimvim是一款非常好用的编辑器，学习曲线比较陡峭，但是当你学会并熟练应用的时候，绝对非常好用。这里不详细介绍vim的用法，感兴趣的可以看这本书《vim实用技巧》：
+京东：http://item.jd.com/11445638.html
+网盘下载：https://yunpan.cn/cBrJBuvNmjTwf （提取码：e10a）（高清、非扫描版）
+推荐大家还是买实体书，也不贵，实体书拿在手里，">
+<meta name="twitter:image" content="http://yoursite.com/images/ide/install-osx-3.png">
 
 
 
@@ -295,7 +313,137 @@
       
 
       
-        
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>vim是一款非常好用的编辑器，学习曲线比较陡峭，但是当你学会并熟练应用的时候，绝对非常好用。这里不详细介绍vim的用法，感兴趣的可以看这本书《vim实用技巧》：</p>
+<p>京东：<a href="http://item.jd.com/11445638.html" target="_blank" rel="external">http://item.jd.com/11445638.html</a></p>
+<p>网盘下载：<a href="https://yunpan.cn/cBrJBuvNmjTwf" target="_blank" rel="external">https://yunpan.cn/cBrJBuvNmjTwf</a> （提取码：e10a）（高清、非扫描版）</p>
+<p>推荐大家还是买实体书，也不贵，实体书拿在手里，手感特别好。</p>
+<h2 id="jupyter-notebook"><a href="#jupyter-notebook" class="headerlink" title="jupyter notebook"></a>jupyter notebook</h2><p><code>jupyter notebook</code>，是一个强大的工具，可以一边测试代码，一边用markdown写标题和文字，算的上是一个在线编辑器+交互式IDE，使用pip可以安装 ：<code>pip install jupyter</code><br>如果访问pypi安装不是特别快可以更改pip的设置<br>linux下是修改<code>~/.pip/pip.conf</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">trusted-host = mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+<p>MacOS下如果是用brew来安装的话，需要手动创建~/.pip目录，然后创建pip.conf文件，加入下面内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">trusted-host = mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+<p><strong>jupyter notebook使用指南</strong></p>
+<ul>
+<li><p>如果仅在所在的那台主机上使用 ：<br><code>jupyter notebook</code><br>这样会在所在的那台主机开启一个服务并打开主机的默认浏览器。<br>我们在服务器里输入<a href="http://localhost:8888" target="_blank" rel="external">http://localhost:888</a>或者<a href="http://127.0.0.1:8888" target="_blank" rel="external">http://127.0.0.1:8888</a>就可以登录</p>
+</li>
+<li><p>如果用其他机器的浏览器访问的话：<br><code>jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser</code><br>0.0.0.0表示全网可以访问；port后面跟的是端口，可以自定义；no-browser是指不打开本机的浏览器。</p>
+</li>
+</ul>
+<p><strong>jupyter notebook经常用到的快捷方式</strong></p>
+<p>可参考<a href="http://blog.csdn.net/lawme/article/details/51034543" target="_blank" rel="external">http://blog.csdn.net/lawme/article/details/51034543</a></p>
+<hr>
+<h2 id="PyCharm"><a href="#PyCharm" class="headerlink" title="PyCharm"></a>PyCharm</h2><h3 id="PyCharm简介"><a href="#PyCharm简介" class="headerlink" title="PyCharm简介"></a>PyCharm简介</h3><p><code>Pycharm</code> 是 Jetbrains 公司出品的一款商业化的针对Python开发者开发的一款IDE产品，功能十分强大。分为两个版本， Community 和 Professional 版本,下面是两个版本的功能和区别：</p>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>PyCharm Community Edition</th>
+<th>PyCharm Professional Edition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能 Python 编辑器</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>图形化的调试程序和测试运行程序</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>导航和重构</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>代码检查</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>VCS 支持</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>科学化的工具</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Web 开发</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python web 框架</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Python 分析器</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>远程开发功能</td>
+<td></td>
+<td>✔</td>
+</tr>
+<tr>
+<td>数据库 &amp; SQL 支持</td>
+<td></td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<p>你要想用做Web开发（ html，jss，JavaScript 等），或者用到Python的web框架如 Tornado，Django， Flask 等等高级功能，还是选择 Professional 版本吧。如果只是想了解 Python 的基本语法，Community 版足够你用了。（当然，如果只是了解基本语法，可以用 <code>ipython</code> ，还有从<code>ipython</code>中独立出来的 <code>jupyter  notebook</code>）。</p>
+<p>下载地址为：<a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="external">https://www.jetbrains.com/pycharm/download/</a></p>
+<h3 id="安装后初始化"><a href="#安装后初始化" class="headerlink" title="安装后初始化"></a>安装后初始化</h3><ul>
+<li><p>双击打开。第一次安装，点ok就可以了；如果之前装过PyCharm，或者有自定义的配置，可以选择上面一条。</p>
+<p><img src="/images/ide/install-osx-3.png" alt="install-osx-3"></p>
+</li>
+<li><p>这里我们点试用30天（Evaluate for free 30 days）</p>
+<p><img src="/images/ide/install-osx-4.png" alt="install-osx-4"></p>
+</li>
+<li><p>长期用可以选择付费，支持支付宝的哦，购买地址：<a href="https://www.jetbrains.com/pycharm/buy/" target="_blank" rel="external">https://www.jetbrains.com/pycharm/buy/</a> 。</p>
+</li>
+<li><p>IDE主题和编辑器的代码风格：</p>
+<p><img src="/images/ide/install-osx-5.png" alt="install-osx-5"></p>
+</li>
+<li><p>这里我一般都选Darcula，暗色风格。这个后续都是可以改的，可以看后面的章节。</p>
+<p><img src="/images/ide/install-osx-6.png" alt="install-osx-6"></p>
+</li>
+<li><p>重启，让主题生效。</p>
+</li>
+</ul>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
+<li><p>双击打开，界面如图：<img src="/images/ide/create-1.png" alt="create-1"></p>
+<ul>
+<li><code>Create New Project</code>：创建新项目。</li>
+<li><code>Open</code>： 打开项目或文件。</li>
+<li><code>Check out from Version Control</code>：从版本控制如GitHub，Git等， checkout 项目。</li>
+<li><code>Register</code>：是注册用，关于注册这里不涉及。</li>
+<li><code>Configure</code>：是配置PyCharm，这里面有Pycharm所有的配置项。</li>
+<li><code>Get Help</code>：获取帮助。</li>
+</ul>
+</li>
+<li><p>我们点击<code>Create New Project</code>，能看到很多项目模板</p>
+<p><img src="/images/ide/create-2.png" alt="create-2"></p>
+<p>有纯粹的Python模板，Django，Flaskweb框架的模板等等，我们先选择<code>Pure Python</code>进行初步了解，纯粹的Python模板。右边栏位，<code>Location</code>是项目存放的位置，<code>Interpreter</code>是解释器版本选择，我们可以选择项目要使用的Python版本（新的 Pycharm 2016 已经支持<code>pyenv</code>了，笔者这里用的pyenv来控制Python版本)然后点击create创建。</p>
+</li>
+<li><p>第一次启动项目时候回进行索引，这时候可能你电脑的cpu和内存占用会很高，甚至风扇狂装，都是正常现象，一会儿就结束，如果使用macbook的话，由于是ssd的，速度会很快，半分钟差不多，索引期间最好不要操作Pycharm，等索引完了再说：</p>
+<p><img src="/images/ide/create-3.png" alt="create-3"></p>
+</li>
+<li><p>在左下角会提示你接入<code>Tools Windows</code>，包括Mac自带的终端，Python自带的解释器，还有一个TODO，这样，你可以完全沉浸在一个界面就可以了，基本上不用切换桌面或切换程序了，编程变得更专注：</p>
+<p><img src="/images/ide/create-4.png" alt="create-4"></p>
+</li>
+</ul>
+<blockquote>
+<p>注意事项：目前版本的Pycharm，在你不关闭Pycharm的情况下，创建两个不同Python版本的项目的时候，里面的依赖库会以第一个项目索引的依赖库为主，目前存在这个bug，所以，如果创建两个不同的项目时候，要把Pycharm完全退出，再创建。</p>
+</blockquote>
+
       
     </div>
     
@@ -333,6 +481,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag">#vim</a>
+          
+            <a href="/tags/jupyter-notebook/" rel="tag">#jupyter notebook</a>
+          
+            <a href="/tags/PyCharm/" rel="tag">#PyCharm</a>
+          
+        </div>
       
 
       
@@ -461,7 +619,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -558,7 +716,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-number">1.</span> <span class="nav-text">vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jupyter-notebook"><span class="nav-number">2.</span> <span class="nav-text">jupyter notebook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyCharm"><span class="nav-number">3.</span> <span class="nav-text">PyCharm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PyCharm简介"><span class="nav-number">3.1.</span> <span class="nav-text">PyCharm简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装后初始化"><span class="nav-number">3.2.</span> <span class="nav-text">安装后初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">3.3.</span> <span class="nav-text">创建项目</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
