@@ -383,6 +383,156 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/13/3-02-tuple/" itemprop="url">
+                  3.2 元组
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-13T11:26:33+08:00" content="2016-07-13">
+              2016-07-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/13/3-02-tuple/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-02-tuple/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>元组和列表很像，包括索引查询、查找统计元素操作都很类似。但是元组是不可变的，无法改改元素，所以没有增删改操作。</p>
+<hr>
+<h2 id="初始化元组"><a href="#初始化元组" class="headerlink" title="初始化元组"></a>初始化元组</h2><p>元组是不可变的，所以初始化后元组内的元素不可改变。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t = tuple() <span class="comment"># 初始化一个空元组</span></span><br><span class="line">t = () 也是初始化一个空元组</span><br><span class="line">t = (<span class="number">1</span>,) 初始化一个元素的元组</span><br><span class="line">t = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment"># 初始化三个元素的元组</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="下标-索引查询"><a href="#下标-索引查询" class="headerlink" title="下标/索引查询"></a>下标/索引查询</h2><ul>
+<li><p>元组中的索引，也是从前往后，索引也是从0开始，从后往前，索引是从-1开始。</p>
+</li>
+<li><p>如果索引超出范围，将引发<code>IndexError</code>异常。</p>
+</li>
+<li><p>元组中，是无法更改元素的值的，更改会抛出TypeError的异常。</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [1]: t = (1, 2, 3)</span><br><span class="line"></span><br><span class="line">In [2]: t[0]    # 索引0的值</span><br><span class="line">Out[2]: 1</span><br><span class="line"></span><br><span class="line">In [3]: t[1]    # 索引1的值</span><br><span class="line">Out[3]: 2</span><br><span class="line"></span><br><span class="line">In [4]: t[-1]   # 索引-1，即最后一个的值</span><br><span class="line">Out[4]: 3</span><br><span class="line"></span><br><span class="line">In [5]: t[-2]   # 索引-2，即倒数第二个值</span><br><span class="line">Out[5]: 2</span><br><span class="line"></span><br><span class="line">In [6]: t[3]    # 索引3，超出范围，报错</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">IndexError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-6-7d5cf04057c5&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 t[3]</span><br><span class="line"></span><br><span class="line">IndexError: tuple index out of range</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [7]: t[3] = 5     # 元组无法更改索引的元素，抛出TypeError</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-8-241a76bcd075&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 t[3] = 5</span><br><span class="line"></span><br><span class="line">TypeError: 'tuple' object does not support item assignment</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="查找-统计元素"><a href="#查找-统计元素" class="headerlink" title="查找/统计元素"></a>查找/统计元素</h2><h4 id="index"><a href="#index" class="headerlink" title="index"></a><code>index</code></h4><p>查找某值的第一个索引，可以指定索引的开始和结束位置。（包含start，不包含stop）</p>
+<p>如果值没有找到，则抛出ValueError。</p>
+<blockquote>
+<p><strong>index(…)</strong><br>T.index(value, [start, [stop]]) -&gt; integer – return first index of value.<br>Raises ValueError if the value is not present.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">In [9]: t = tuple('abcdb')</span><br><span class="line"></span><br><span class="line">In [10]: t</span><br><span class="line">Out[10]: ('a', 'b', 'c', 'd', 'b')</span><br><span class="line"></span><br><span class="line">In [11]: t.index('b') # 查找'b'第一次出现的索引位置</span><br><span class="line">Out[11]: 1</span><br><span class="line"></span><br><span class="line">In [12]: t.index('b', 2)  # 从索引2开始查找，找到第一次出现'b'的位置</span><br><span class="line">Out[12]: 4</span><br><span class="line"></span><br><span class="line">In [13]: t.index('x') # 没找到'x'</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-13-616584d1b884&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 tuple.index('x')</span><br><span class="line"></span><br><span class="line">ValueError: 'x' is not in tuple</span><br><span class="line"></span><br><span class="line">In [14]: t.index('b', 2, 4)   # 'b'没在2-4索引范围内出现</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-14-fa3eb33afd79&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 tuple.index('b', 2, 4)</span><br><span class="line"></span><br><span class="line">ValueError: 'b' is not in tuple</span><br></pre></td></tr></table></figure>
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a><code>count</code></h4><p>计数，返回值出现的次数。</p>
+<blockquote>
+<p><code>count(...)</code><br>T.count(value) -&gt; integer – return number of occurrences of value</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">21</span>]: t</span><br><span class="line">Out[<span class="number">21</span>]: (<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: t.count(<span class="string">'b'</span>)</span><br><span class="line">Out[<span class="number">22</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="len函数"><a href="#len函数" class="headerlink" title="len函数"></a><code>len</code>函数</h4><p><strong>len函数可以用在列表、元组、字符串、字典、集合等上面，输出容器中元素的个数。</strong></p>
+<blockquote>
+<p><strong>len(obj, /)</strong><br>Return the number of items in a container.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">24</span>]: t</span><br><span class="line">Out[<span class="number">24</span>]: (<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'b'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">25</span>]: len(t)</span><br><span class="line">Out[<span class="number">25</span>]: <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/11/3-01-list/" itemprop="url">
                   3.1 列表
                 </a>
@@ -1367,136 +1517,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/22/24-logscan-macher/" itemprop="url">
-                  24-logscan-matcher
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-22T17:58:42+08:00" content="2016-04-22">
-              2016-04-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/22/24-logscan-macher/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/22/24-logscan-macher/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>表达式解析使用了编译原理的一些东西。</p>
-<p>编译原理的基础：</p>
-<ol>
-<li>词法分析：tokenize——把我们的字符串切成一个个token。还做到词性标注——比如切完的token，是括号就标注为括号，是表达式标注为表达式，是运算符就标注为运算符，等等。</li>
-<li>语法分析：构建语法树 （Abstract Syntax Tree(AST)抽象语法树）</li>
-<li>语义分析：检查语法是否正确</li>
-<li>生成中间代码</li>
-<li>优化</li>
-<li>生成目标代码</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/22/24-logscan-macher/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1542,7 +1562,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
