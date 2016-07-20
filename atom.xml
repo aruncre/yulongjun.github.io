@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-13T15:19:51.000Z</updated>
+  <updated>2016-07-20T04:58:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/11/00-1-contents/"/>
     <id>http://yoursite.com/2016/11/11/00-1-contents/</id>
     <published>2016-11-11T03:11:11.000Z</published>
-    <updated>2016-07-13T15:19:51.000Z</updated>
+    <updated>2016-07-20T04:58:26.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;此文章集合更像是一个笔记，记录了我在学习Python3中学到的东西。目录结构参考&lt;a href=&quot;http://www.magedu.com/course/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;马哥教育&lt;/a&gt; 的课程目录。（安利一下，本人正在马哥教育学习Python，Python的课程老师是Comyn老师， 乃python大神级人物，原大众点评运维平台架构师，原腾讯广告部核心运维专家，现任饿了么Python运维开发高级总监，如果有想学习的同学，请联系 &lt;a href=&quot;http://www.magedu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;马哥教育&lt;/a&gt;。）&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -51,25 +51,29 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;第3章-内置数据结构&quot;&gt;&lt;a href=&quot;#第3章-内置数据结构&quot; class=&quot;headerlink&quot; title=&quot;第3章  内置数据结构&quot;&gt;&lt;/a&gt;第3章  内置数据结构&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/11/3-01-list/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.1 列表&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/10/3-01-numbers/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.1 数字（Numbers）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/13/3-02-tuple/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.2 元组&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/11/3-02-lists/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.2 列表（Lists）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/13/3-03-slice/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.3 切片&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/13/3-03-tuples/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.3 元组（Tuples）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/13/3-04-unpacking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.4 解包&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/14/3-04-strings/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.4 字符串（Strings）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✐&lt;/code&gt;3.5 字符串&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/14/3-05-slice/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.5 切片（Slice）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✐&lt;/code&gt;3.6 格式化输出&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/14/3-06-unpacking/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt;3.6 解包（Unpacking）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.7 字典&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/15/3-07-formatting/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✐&lt;/code&gt;3.7 格式化（Formatting）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.8 集合&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/07/16/3-08-sets/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✐&lt;/code&gt;3.8 集合（Sets）&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.9 解析式]()&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.9 字典（Dictionarys）&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.10 迭代器]()&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt;3.10 bytes和bytearray&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;✘&lt;/code&gt; 3.11 解析式（Comprehensions)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;·✘· 3.12 迭代器（Interators)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;第4章-函数&quot;&gt;&lt;a href=&quot;#第4章-函数&quot; class=&quot;headerlink&quot; title=&quot;第4章  函数&quot;&gt;&lt;/a&gt;第4章  函数&lt;/h4&gt;&lt;ul&gt;
@@ -284,11 +288,11 @@
   </entry>
   
   <entry>
-    <title>3.7 格式化（Format）</title>
+    <title>3.7 格式化（Formatting）</title>
     <link href="http://yoursite.com/2016/07/15/3-07-formatting/"/>
     <id>http://yoursite.com/2016/07/15/3-07-formatting/</id>
     <published>2016-07-15T03:30:34.000Z</published>
-    <updated>2016-07-20T04:21:19.000Z</updated>
+    <updated>2016-07-20T04:36:49.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;printf-style&quot;&gt;&lt;a href=&quot;#printf-style&quot; class=&quot;headerlink&quot; title=&quot;printf style&quot;&gt;&lt;/a&gt;printf style&lt;/h2&gt;&lt;p&gt;老式的类似c语言的printf风格的格式化输出。&lt;/p&gt;
 &lt;p&gt;用百分号&lt;code&gt;%&lt;/code&gt;来作为占位符。&lt;/p&gt;
@@ -539,8 +543,8 @@
   
   <entry>
     <title>3.3 元组（Tuples）</title>
-    <link href="http://yoursite.com/2016/07/13/3-03-tuple/"/>
-    <id>http://yoursite.com/2016/07/13/3-03-tuple/</id>
+    <link href="http://yoursite.com/2016/07/13/3-03-tuples/"/>
+    <id>http://yoursite.com/2016/07/13/3-03-tuples/</id>
     <published>2016-07-13T03:26:33.000Z</published>
     <updated>2016-07-17T13:03:30.000Z</updated>
     
@@ -590,11 +594,11 @@
   </entry>
   
   <entry>
-    <title>3.3 列表（Lists）</title>
-    <link href="http://yoursite.com/2016/07/11/3-02-list/"/>
-    <id>http://yoursite.com/2016/07/11/3-02-list/</id>
+    <title>3.2 列表（Lists）</title>
+    <link href="http://yoursite.com/2016/07/11/3-02-lists/"/>
+    <id>http://yoursite.com/2016/07/11/3-02-lists/</id>
     <published>2016-07-11T14:25:00.000Z</published>
-    <updated>2016-07-19T13:40:24.000Z</updated>
+    <updated>2016-07-20T04:42:53.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;初始化列表：&quot;&gt;&lt;a href=&quot;#初始化列表：&quot; class=&quot;headerlink&quot; title=&quot;初始化列表：&quot;&gt;&lt;/a&gt;初始化列表：&lt;/h2&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;lst = list()    &lt;span class=&quot;comment&quot;&gt;# 初始化一个空列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;lst = []        &lt;span class=&quot;comment&quot;&gt;# 也是初始化一个空列表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;lst = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;] &lt;span class=&quot;comment&quot;&gt;# 初始化三个元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
