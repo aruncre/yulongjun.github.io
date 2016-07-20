@@ -383,8 +383,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/13/3-04-unpacking/" itemprop="url">
-                  3.4 解包
+                <a class="post-title-link" href="/2016/07/16/3-08-sets/" itemprop="url">
+                  3.8 集合（Sets）
                 </a>
               
             
@@ -397,8 +397,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-13T23:19:25+08:00" content="2016-07-13">
-              2016-07-13
+            <time itemprop="dateCreated" datetime="2016-07-16T20:19:25+08:00" content="2016-07-16">
+              2016-07-16
             </time>
           </span>
 
@@ -427,8 +427,434 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/13/3-04-unpacking/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-04-unpacking/" itemprop="commentsCount"></span>
+                <a href="/2016/07/16/3-08-sets/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/3-08-sets/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Python中的集合是一组可哈希的值的集合。特点：</p>
+<ul>
+<li>元素是唯一的。</li>
+<li>元素是无序的。</li>
+</ul>
+<h2 id="3-8-1-定义一个集合"><a href="#3-8-1-定义一个集合" class="headerlink" title="3.8.1 定义一个集合"></a>3.8.1 定义一个集合</h2><p>定义一个set很简单，如果有重复元素，会自动去重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: s = set() <span class="comment"># 用set函数定义空集合</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: s = &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: s  <span class="comment"># 不能这么定义，这样定义就定义成了一个字典</span></span><br><span class="line">Out[<span class="number">4</span>]: &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: type(s)</span><br><span class="line">Out[<span class="number">5</span>]: dict</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125; <span class="comment"># 直接赋值</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: type(s)</span><br><span class="line">Out[<span class="number">7</span>]: set</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: set([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span> , <span class="number">2</span>]) <span class="comment">#set函数可以把列表转化为集合（去重）</span></span><br><span class="line">Out[<span class="number">15</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: set((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)) <span class="comment"># set函数也可以转化元组（去重）</span></span><br><span class="line">Out[<span class="number">16</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: set(<span class="string">'yulongjun'</span>) <span class="comment"># 字符串也可以（去重）</span></span><br><span class="line">Out[<span class="number">17</span>]: &#123;<span class="string">'g'</span>, <span class="string">'j'</span>, <span class="string">'l'</span>, <span class="string">'n'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>, <span class="string">'y'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-8-2-增"><a href="#3-8-2-增" class="headerlink" title="3.8.2 增"></a>3.8.2 增</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a><code>add</code></h3><p>增加一个元素到集合，如果元素已经存在，则没有任何操作。</p>
+<blockquote>
+<p><strong>add(…)</strong><br>Add an element to a set.<br>This has no effect if the element is already present.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: s</span><br><span class="line">Out[<span class="number">8</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: s.add(<span class="number">4</span>) <span class="comment"># 增加一个元素</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: s</span><br><span class="line">Out[<span class="number">10</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: s.add(<span class="number">4</span>) <span class="comment"># 如果元素已存在，则没有任何操作</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: s</span><br><span class="line">Out[<span class="number">12</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a><code>update</code></h3><p>增加一组元素，重复的元素会去重</p>
+<blockquote>
+<p><strong>update(…)</strong><br>Update a set with the union of itself and others.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">12</span>]: s</span><br><span class="line">Out[<span class="number">12</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: s.update([<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])可以增加一组集合、列表、元组、字符串</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: s</span><br><span class="line">Out[<span class="number">14</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-3-删"><a href="#3-8-3-删" class="headerlink" title="3.8.3 删"></a>3.8.3 删</h2><h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a><code>remove</code></h3><p>从集合里删除一个元素，元素必须存在，删除不存在的会抛出异常。</p>
+<blockquote>
+<p><strong>remove(…)</strong><br>Remove an element from a set; it must be a member.<br> If the element is not a member, raise a KeyError.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [19]: s</span><br><span class="line">Out[19]: &#123;1, 2, 3, 4, 5, 6&#125;</span><br><span class="line"></span><br><span class="line">In [20]: s.remove(6)</span><br><span class="line"></span><br><span class="line">In [21]: s</span><br><span class="line">Out[21]: &#123;1, 2, 3, 4, 5&#125;</span><br><span class="line"></span><br><span class="line">In [22]: s.remove(10)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">KeyError                                  Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-22-aa24ca6c02a7&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 s.remove(10)</span><br><span class="line"></span><br><span class="line">KeyError: 10</span><br></pre></td></tr></table></figure>
+<h3 id="discard"><a href="#discard" class="headerlink" title="discard"></a><code>discard</code></h3><p>从集合中删除一个元素，删除不存在的不会抛出异常。</p>
+<blockquote>
+<p><strong>discard(…)</strong><br>Remove an element from a set if it is a member.<br>If the element is not a member, do nothing.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">27</span>]: s</span><br><span class="line">Out[<span class="number">27</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">28</span>]: s.discard(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">29</span>]: s</span><br><span class="line">Out[<span class="number">29</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: s.discard(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: s</span><br><span class="line">Out[<span class="number">31</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a><code>pop</code></h3><p>删除并返回一个任意元素。</p>
+<blockquote>
+<p><strong>pop(…)</strong><br>Remove and return an arbitrary set element.<br>Raises KeyError if the set is empty.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [35]: s</span><br><span class="line">Out[35]: &#123;1, 2&#125;</span><br><span class="line"></span><br><span class="line">In [36]: s.pop()</span><br><span class="line">Out[36]: 1</span><br><span class="line"></span><br><span class="line">In [37]: s.pop()</span><br><span class="line">Out[37]: 2</span><br><span class="line"></span><br><span class="line">In [38]: s.pop()</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">KeyError                                  Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-38-e76f41daca5e&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 s.pop()</span><br><span class="line"></span><br><span class="line">KeyError: 'pop from an empty set'</span><br></pre></td></tr></table></figure>
+<h4 id="clear"><a href="#clear" class="headerlink" title="clear"></a><code>clear</code></h4><p>删除所有元素</p>
+<blockquote>
+<p>clear(…)<br>Remove all elements from this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">40</span>]: s</span><br><span class="line">Out[<span class="number">40</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">41</span>]: s.clear()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-4-改、查"><a href="#3-8-4-改、查" class="headerlink" title="3.8.4 改、查"></a>3.8.4 改、查</h2><p>没有一个方法可以直接的修改集合中的某个具体元素，因为没有一个方法，可以查找定位其中的某个具体元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 集合是可迭代对象，可用for循环来遍历</span></span><br><span class="line">In [<span class="number">44</span>]: <span class="keyword">for</span> x <span class="keyword">in</span> set(<span class="string">'yulongjun'</span>):</span><br><span class="line">   ....:     print(x)</span><br><span class="line">   ....:     </span><br><span class="line">o</span><br><span class="line">l</span><br><span class="line">n</span><br><span class="line">u</span><br><span class="line">g</span><br><span class="line">j</span><br><span class="line">y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合可以用成员运算符</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: <span class="string">'u'</span> <span class="keyword">in</span> set(<span class="string">'yulongjun'</span>)</span><br><span class="line">Out[<span class="number">45</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-4-集合的集合运算"><a href="#3-8-4-集合的集合运算" class="headerlink" title="3.8.4 集合的集合运算"></a>3.8.4 集合的集合运算</h2><h3 id="并集（union-）"><a href="#并集（union-）" class="headerlink" title="并集（union==|）"></a>并集（<code>union</code>==<code>|</code>）</h3><p>求两个集合的并集</p>
+<blockquote>
+<p>union(…)<br> Return the union of sets as a new set.<br>(i.e. all elements that are in either set.)</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">46</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">47</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">48</span>]: a.union(b)</span><br><span class="line">Out[<span class="number">48</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">52</span>]: a.union(b) == b.union(a) == a | b == b | a</span><br><span class="line">Out[<span class="number">52</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="交集（intersection-amp-、intersection-update）"><a href="#交集（intersection-amp-、intersection-update）" class="headerlink" title="交集（intersection==&amp;、intersection_update）"></a>交集（<code>intersection</code>==<code>&amp;</code>、<code>intersection_update</code>）</h3><p>求两个集合的交集。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>intersection(…)</strong><br>Return the intersection of two sets as a new set.<br>(i.e. all elements that are in both sets.)</p>
+<p><strong>intersection_update(…)</strong><br>Update a set with the intersection of itself and another.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">46</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">47</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">49</span>]: a.intersection(b)</span><br><span class="line">Out[<span class="number">49</span>]: &#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">53</span>]: a.intersection(b) == b.intersection(a) == a &amp; b == b &amp; a</span><br><span class="line">Out[<span class="number">53</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">54</span>]: a.intersection_update(b)</span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: a</span><br><span class="line">Out[<span class="number">55</span>]: &#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="差集（difference-、difference-update）"><a href="#差集（difference-、difference-update）" class="headerlink" title="差集（difference==-、difference_update）"></a>差集（<code>difference</code>==<code>-</code>、<code>difference_update</code>）</h3><p>求两个集合的差集。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>difference(…)</strong><br>Return the difference of two or more sets as a new set.<br> (i.e. all elements that are in this set but not the others.)</p>
+<p><strong>difference_update(…)</strong><br>Remove all elements of another set from this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">56</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">57</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">58</span>]: a.difference(b)</span><br><span class="line">Out[<span class="number">58</span>]: &#123;<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">59</span>]: b.difference(a)</span><br><span class="line">Out[<span class="number">59</span>]: &#123;<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">95</span>]: a - b</span><br><span class="line">Out[<span class="number">95</span>]: &#123;<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">96</span>]: b - a</span><br><span class="line">Out[<span class="number">96</span>]: &#123;<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">63</span>]: a.difference_update(b) <span class="comment"># 带update会改变a中的元素</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: a</span><br><span class="line">Out[<span class="number">64</span>]: &#123;<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对称差集（symmetric-difference-、symmetric-difference-update）"><a href="#对称差集（symmetric-difference-、symmetric-difference-update）" class="headerlink" title="对称差集（symmetric_difference==^、symmetric_difference_update）"></a>对称差集（<code>symmetric_difference</code>==<code>^</code>、<code>symmetric_difference_update</code>）</h3><p>求两个集合的对称差集（对称差集，把a.difference(b)和b.difference(a)的值union起来）。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>symmetric_difference(…)</strong><br>Return the symmetric difference of two sets as a new set.<br>(i.e. all elements that are in exactly one of the sets.)</p>
+<p><strong>symmetric_difference_update(…)</strong><br>Update a set with the symmetric difference of itself and another.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">65</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">66</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">67</span>]: a.symmetric_difference(b)</span><br><span class="line">Out[<span class="number">67</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">68</span>]: b.symmetric_difference(a)</span><br><span class="line">Out[<span class="number">68</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">70</span>]: b.symmetric_difference(a) == a.symmetric_difference(b) == a^b == b^a</span><br><span class="line">Out[<span class="number">70</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">71</span>]: a.symmetric_difference_update(b) <span class="comment">#带update后，a的元素被修改</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">72</span>]: a</span><br><span class="line">Out[<span class="number">72</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="是否超集（isuperset）"><a href="#是否超集（isuperset）" class="headerlink" title="是否超集（isuperset）"></a>是否超集（<code>isuperset</code>）</h3><p>用来判断前面是否是后面的超集。</p>
+<blockquote>
+<p><strong>issuperset(…)</strong><br>Report whether this set contains another set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">76</span>]: a.issuperset(b)</span><br><span class="line">Out[<span class="number">76</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">77</span>]: b.issuperset(a)</span><br><span class="line">Out[<span class="number">77</span>]: <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="是否子集-issubset"><a href="#是否子集-issubset" class="headerlink" title="是否子集(issubset)"></a>是否子集(<code>issubset</code>)</h3><p>用来判断前面是否是后面的子集。</p>
+<blockquote>
+<p><strong>issubset(…)</strong><br>Report whether another set contains this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: a.issubset(b)</span><br><span class="line">Out[<span class="number">78</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: b.issubset(a)</span><br><span class="line">Out[<span class="number">79</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="是否不相交（isdisjoint）"><a href="#是否不相交（isdisjoint）" class="headerlink" title="是否不相交（isdisjoint）"></a>是否不相交（<code>isdisjoint</code>）</h3><p>用来判断两个集合是否是不相交</p>
+<blockquote>
+<p><strong>isdisjoint(…)</strong><br>Return True if two sets have a null intersection.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: a.isdisjoint(b)</span><br><span class="line">Out[<span class="number">80</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">81</span>]: b.isdisjoint(a)</span><br><span class="line">Out[<span class="number">81</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">85</span>]: a.isdisjoint(b) == b.isdisjoint(a) == <span class="keyword">True</span></span><br><span class="line">Out[<span class="number">85</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="复制（copy）"><a href="#复制（copy）" class="headerlink" title="复制（copy）"></a>复制（<code>copy</code>）</h3><p>复制集合，本质上是再复制出一段内存。</p>
+<blockquote>
+<p><strong>copy(…)</strong><br> Return a shallow copy of a set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">86</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">87</span>]: b = a.copy()</span><br><span class="line"></span><br><span class="line">In [<span class="number">88</span>]: b</span><br><span class="line">Out[<span class="number">88</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">89</span>]: id(a)</span><br><span class="line">Out[<span class="number">89</span>]: <span class="number">4524734280</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">90</span>]: id(b)</span><br><span class="line">Out[<span class="number">90</span>]: <span class="number">4524734504</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-5-集合的应用"><a href="#3-8-5-集合的应用" class="headerlink" title="3.8.5 集合的应用"></a>3.8.5 集合的应用</h2><ul>
+<li>元素需要唯一而对顺序没有要求</li>
+</ul>
+<p>添加主机，要求不重复</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts = set(user_input.splitlines())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们需要集合运算时</li>
+</ul>
+<p>求未完成添加的主机（主机-已完成添加的主机）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts - complete_hosts</span><br></pre></td></tr></table></figure>
+<ul>
+<li>求多个地方输入,合起来的一个并集</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts = input_a | input_b | input_c</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/15/3-07-formatting/" itemprop="url">
+                  3.7 格式化（Format）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-15T11:30:34+08:00" content="2016-07-15">
+              2016-07-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/15/3-07-formatting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/15/3-07-formatting/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="printf-style"><a href="#printf-style" class="headerlink" title="printf style"></a>printf style</h2><p>老式的类似c语言的printf风格的格式化输出。</p>
+<p>用百分号<code>%</code>来作为占位符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">16</span>]: <span class="string">'I am %s'</span>%(<span class="string">'yulongjun'</span>,) <span class="comment"># 可以采用元组的方式</span></span><br><span class="line">Out[<span class="number">16</span>]: <span class="string">'I am yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: <span class="string">'I am %(name)s'</span>%&#123;<span class="string">'name'</span>:<span class="string">'yulongjun'</span>&#125;  <span class="comment"># 可以采用字典的方式</span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="string">'I am yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: <span class="string">'I am %(name)s, my name is %(name)s'</span>%&#123;<span class="string">'name'</span>:<span class="string">'yulongjun'</span>&#125;  <span class="comment"># 多次出现，可以采用字典的方式</span></span><br><span class="line">Out[<span class="number">19</span>]: <span class="string">'I am yulongjun, my name is yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: name = <span class="string">"yulongjun"</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: <span class="string">'I am %s'</span>%name   <span class="comment">#只有一个元素可以直接跟在百分号后面，这里解释器自动做了一个封包，把name封包为元组（语法糖）</span></span><br><span class="line">Out[<span class="number">22</span>]: <span class="string">'I am yulongjun'</span></span><br></pre></td></tr></table></figure>
+<p>前面字符串中占位符后面的type，以下为常用的几个：</p>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d</code>、<code>i</code>、<code>u</code></td>
+<td>十进制整数</td>
+</tr>
+<tr>
+<td><code>o</code>、</td>
+<td>八进制整数</td>
+</tr>
+<tr>
+<td><code>x</code>、<code>X</code></td>
+<td>十六进制整数（x的话数字里的字母为小写，X的话为大写）</td>
+</tr>
+<tr>
+<td><code>e</code>、<code>E</code></td>
+<td>科学计数法（e的话科学计数的e为小写，E的话为大写）</td>
+</tr>
+<tr>
+<td><code>f</code>、<code>F</code></td>
+<td>浮点数（默认保留6位小数)</td>
+</tr>
+<tr>
+<td><code>g</code>、<code>G</code></td>
+<td>自动选择最优表示法（整数、浮点数或科学计数法）</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>单个字符或整数转化为字符</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>用str()转化为字符串</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>用repr()转化为字符串</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>用ascii()转化为字符串</td>
+</tr>
+</tbody>
+</table>
+<p>其中的<code>str()</code>和<code>repr()</code>调用的是<code>__str__</code>和<code>__repr__</code>的魔术方法，有个了解就可以，后续会讲到。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">48</span>]: <span class="string">'The number is %d'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">48</span>]: <span class="string">'The number is 56789'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">49</span>]: <span class="string">'The number is %i'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">49</span>]: <span class="string">'The number is 56789'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">50</span>]: <span class="string">'The number is %u'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">50</span>]: <span class="string">'The number is 56789'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">51</span>]: <span class="string">'The number is %o'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">51</span>]: <span class="string">'The number is 156725'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">52</span>]: <span class="string">'The number is %x'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">52</span>]: <span class="string">'The number is ddd5'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">53</span>]: <span class="string">'The number is %X'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">53</span>]: <span class="string">'The number is DDD5'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">54</span>]: <span class="string">'The number is %e'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">54</span>]: <span class="string">'The number is 5.678900e+04'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: <span class="string">'The number is %E'</span>%<span class="number">56789</span></span><br><span class="line">Out[<span class="number">55</span>]: <span class="string">'The number is 5.678900E+04'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">56</span>]: <span class="string">'The number is %f'</span>%<span class="number">0.123456789</span></span><br><span class="line">Out[<span class="number">56</span>]: <span class="string">'The number is 0.123457'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">57</span>]: <span class="string">'The number is %F'</span>%<span class="number">0.123456789</span></span><br><span class="line">Out[<span class="number">57</span>]: <span class="string">'The number is 0.123457'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">58</span>]: <span class="string">'The number is %g'</span>%<span class="number">0.123456789</span></span><br><span class="line">Out[<span class="number">58</span>]: <span class="string">'The number is 0.123457'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">60</span>]: <span class="string">'The number is %g'</span>%<span class="number">0.0000000123456789</span></span><br><span class="line">Out[<span class="number">60</span>]: <span class="string">'The number is 1.23457e-08'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">61</span>]: <span class="string">'The number is %G'</span>%<span class="number">123456789</span></span><br><span class="line">Out[<span class="number">61</span>]: <span class="string">'The number is 1.23457E+08'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: <span class="string">'The string is %s'</span>%<span class="string">'yulongjun'</span></span><br><span class="line">Out[<span class="number">78</span>]: <span class="string">'The string is yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: <span class="string">'The string is %r'</span>%<span class="string">'yulongjun'</span></span><br><span class="line">Out[<span class="number">79</span>]: <span class="string">"The string is 'yulongjun'"</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: <span class="string">'The string is %a'</span>%<span class="string">'于龙君'</span></span><br><span class="line">Out[<span class="number">80</span>]: <span class="string">"The string is '\\u4e8e\\u9f99\\u541b'"</span></span><br></pre></td></tr></table></figure>
+<p>数字的位数和对齐的操作</p>
+<ul>
+<li><code>-</code>左对齐</li>
+<li><code>+</code>正负号</li>
+<li><code>0</code>补零</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">86</span>]: <span class="string">'%0.3f'</span>%<span class="number">1.23456789</span> <span class="comment"># 小数位为3位</span></span><br><span class="line">Out[<span class="number">86</span>]: <span class="string">'1.235'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">87</span>]: <span class="string">'%10.3f'</span>%<span class="number">1.23456789</span>  <span class="comment"># 小数位为3位，总位数为10位，不够的左边补空格</span></span><br><span class="line"></span><br><span class="line">Out[<span class="number">87</span>]: <span class="string">'     1.235'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">88</span>]: <span class="string">'%-10.3f'</span>%<span class="number">1.23456789</span> <span class="comment"># 加上-号，左对齐，右边补空格</span></span><br><span class="line">Out[<span class="number">88</span>]: <span class="string">'1.235     '</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">89</span>]: <span class="string">'%+10.3f'</span>%<span class="number">1.23456789</span> <span class="comment"># 加上正负号</span></span><br><span class="line">Out[<span class="number">89</span>]: <span class="string">'    +1.235'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">90</span>]: <span class="string">'%+10.3f'</span>%<span class="number">-1.23456789</span></span><br><span class="line">Out[<span class="number">90</span>]: <span class="string">'    -1.235'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">91</span>]: <span class="string">'%010.3f'</span>%<span class="number">1.23456789</span> <span class="comment"># 前面加0，算补零</span></span><br><span class="line">Out[<span class="number">91</span>]: <span class="string">'000001.235'</span></span><br></pre></td></tr></table></figure>
+<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><p>Python3推荐format格式的格式化输出，功能更强大。</p>
+<blockquote>
+<p>str.format(<em>args,*</em>kwargs)</p>
+</blockquote>
+<p>字符串中的占位符用<code>{}</code>或者带索引的<code>{INDEX}</code>，或者更详细的格式（索引后面加冒号），如<code>{0:10.3f}</code>等。</p>
+<p>format括号里可以跟位置参数，也可以跟关键字参数。</p>
+<figure class="highlight plain"><figcaption><span>[97]: 'I am &#123;&#125;'.format('yulongjun')</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Out[97]: &apos;I am yulongjun&apos;</span><br><span class="line"></span><br><span class="line">In [98]: &apos;I am &#123;&#125;, my age is &#123;&#125;&apos;.format(&apos;yulongjun&apos;,18)</span><br><span class="line">Out[98]: &apos;I am yulongjun, my age is 18&apos;</span><br><span class="line"></span><br><span class="line">In [99]: &apos;I am &#123;1&#125;, my age is &#123;0&#125;&apos;.format(18,&apos;yulongjun&apos;)</span><br><span class="line">Out[99]: &apos;I am yulongjun, my age is 18&apos;</span><br><span class="line"></span><br><span class="line">In [100]: &apos;I am &#123;name&#125;, my age is &#123;age&#125;&apos;.format(name=&apos;yulongjun&apos;, age=18)</span><br><span class="line">Out[100]: &apos;I am yulongjun, my age is 18&apos;</span><br><span class="line"></span><br><span class="line">In [101]: &apos;I am &#123;name&#125;, my name is &#123;name&#125;&apos;.format(name=&apos;yulongjun&apos;)</span><br><span class="line">Out[101]: &apos;I am yulongjun, my name is yulongjun&apos;</span><br><span class="line"></span><br><span class="line">In [102]: &apos;I am &#123;0&#125;, my name is &#123;0&#125;&apos;.format(&apos;yulongjun&apos;)</span><br><span class="line">Out[102]: &apos;I am yulongjun, my name is yulongjun&apos;</span><br></pre></td></tr></table></figure>
+<p>可以在{}占位符中用字典和列表的下标操作，还可以用模块的子模块或子属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">105</span>]: <span class="string">'My &#123;config[spam]&#125; runs &#123;sys.platform&#125;'</span>.format(sys=sys, config = &#123;<span class="string">'spam'</span>: <span class="string">'laptop'</span>&#125;)</span><br><span class="line">Out[<span class="number">105</span>]: <span class="string">'My laptop runs darwin'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">106</span>]: lst = list(<span class="string">'yulongjun'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">107</span>]: <span class="string">'first=&#123;0[0]&#125;, third=&#123;0[3]&#125;'</span>.format(lst)</span><br><span class="line">Out[<span class="number">107</span>]: <span class="string">'first=y, third=o'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">108</span>]: lst = list(<span class="string">'yulongjun'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">109</span>]: <span class="string">'first=&#123;0[0]&#125;, third=&#123;0[2]&#125;'</span>.format(lst)</span><br><span class="line">Out[<span class="number">109</span>]: <span class="string">'first=y, third=l'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">110</span>]: <span class="string">'first=&#123;0&#125;, last=&#123;1&#125;'</span>.format(lst[<span class="number">0</span>],lst[<span class="number">-1</span>])</span><br><span class="line">Out[<span class="number">110</span>]: <span class="string">'first=y, last=n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">113</span>]: parts = lst[<span class="number">0</span>], lst[<span class="number">-1</span>], lst[<span class="number">1</span>:<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">115</span>]: <span class="string">'first=&#123;0&#125;, last=&#123;1&#125;, middle=&#123;2&#125;'</span>.format(*parts)</span><br><span class="line">Out[<span class="number">115</span>]: <span class="string">"first=y, last=n, middle=['u', 'l', 'o', 'n', 'g', 'j', 'u']"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>sys.platform</code>调用的sys的platform</li>
+<li><code>config[spam]</code>是用的字典的下标操作</li>
+<li><code>{0[1]</code>使用的是列表的下标操作</li>
+<li><code>*part</code>调用的是位置参数</li>
+</ul>
+<p>字符串也有具体的格式化，如字段宽度、对齐方式、补零、小数点精度，填充字符等。</p>
+<ul>
+<li>字段宽度：整数部分大小</li>
+<li>对齐方式：<code>&gt;</code>右对齐，<code>&lt;</code>左对齐，<code>^</code>居中对齐（和printf style有所不同）</li>
+<li>补零：资源宽度的数字前面加0，默认为右对齐</li>
+<li>小数点精度：宽度后面加<code>.数字f</code>，<code>f</code>处也可以用<code>g</code>，<code>e</code></li>
+<li>填充字符需要和对齐方式一起使用。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: <span class="string">'the Number is &#123;:10f&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">2</span>]: <span class="string">'the Number is 123.456700'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: <span class="string">'the Number is &#123;:10&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">3</span>]: <span class="string">'the Number is   123.4567'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: <span class="string">'the Number is &#123;:&lt;10&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">'the Number is 123.4567  '</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: <span class="string">'the Number is &#123;:^10&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">5</span>]: <span class="string">'the Number is  123.4567 '</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: <span class="string">'the Number is &#123;:010&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">'the Number is 00123.4567'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: <span class="string">'the Number is &#123;:.2f&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">Out[<span class="number">13</span>]: <span class="string">'the Number is 123.46'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: <span class="string">'the Number is &#123;:#^20.2f&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">   ....:     </span><br><span class="line">Out[<span class="number">15</span>]: <span class="string">'the Number is #######123.46#######'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: <span class="string">'the Number is &#123;:#&gt;20.2f&#125;'</span>.format(<span class="number">123.4567</span>)</span><br><span class="line">   ....:     </span><br><span class="line">Out[<span class="number">16</span>]: <span class="string">'the Number is ##############123.46'</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/14/3-06-unpacking/" itemprop="url">
+                  3.6 解包（Unpacking）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-14T23:19:25+08:00" content="2016-07-14">
+              2016-07-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/14/3-06-unpacking/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/3-06-unpacking/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -457,7 +883,7 @@
 <hr>
 <p>任何序列（或者可迭代对象（iterable））都可以通过一个简单的赋值操作来分解为单独的变量。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/13/3-04-unpacking/#more" rel="contents">
+            <a class="btn" href="/2016/07/14/3-06-unpacking/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -508,8 +934,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/13/3-03-slice/" itemprop="url">
-                  3.3 切片
+                <a class="post-title-link" href="/2016/07/14/3-05-slice/" itemprop="url">
+                  3.5 切片（Slice）
                 </a>
               
             
@@ -522,8 +948,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-13T16:30:26+08:00" content="2016-07-13">
-              2016-07-13
+            <time itemprop="dateCreated" datetime="2016-07-14T19:30:26+08:00" content="2016-07-14">
+              2016-07-14
             </time>
           </span>
 
@@ -552,8 +978,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/13/3-03-slice/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-03-slice/" itemprop="commentsCount"></span>
+                <a href="/2016/07/14/3-05-slice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/3-05-slice/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -578,7 +1004,7 @@
         
           <h2 id="切片基本操作"><a href="#切片基本操作" class="headerlink" title="切片基本操作"></a>切片基本操作</h2><p>取一个list或tuple的部分元素我们经常遇到的操作，我们经常用一种切片（slice）的方法。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/13/3-03-slice/#more" rel="contents">
+            <a class="btn" href="/2016/07/14/3-05-slice/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -629,8 +1055,156 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/13/3-02-tuple/" itemprop="url">
-                  3.2 元组
+                <a class="post-title-link" href="/2016/07/14/3-04-strings/" itemprop="url">
+                  3.4 字符串（Strings）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-14T18:33:56+08:00" content="2016-07-14">
+              2016-07-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/14/3-04-strings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/3-04-strings/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Python3中，字符串是一个unicode的序列，在Python2中一个byte的序列。字符串的很多特性和元组类似，字符串也是不可变的。</p>
+<h3 id="定义字符串"><a href="#定义字符串" class="headerlink" title="定义字符串"></a>定义字符串</h3><ul>
+<li><code>&#39;</code></li>
+<li><code>&quot;</code></li>
+<li><code>&#39;&#39;&#39;</code></li>
+<li><code>&quot;&quot;&quot;</code></li>
+</ul>
+<p>Python中单引号和双引号的效果是一样的。</p>
+<p>三个单引号或双引号表通常用在字符串为多行的情况下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: s = <span class="string">'yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: s = <span class="string">"yulongjun"</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: s = <span class="string">''' My name is YuLongjun.</span><br><span class="line">   ...: My age is 18.'''</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: s = <span class="string">""" My name is YuLongjun.</span><br><span class="line">   ...: My age is 18."""</span></span><br></pre></td></tr></table></figure>
+<h3 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: list1=[<span class="string">'I'</span>,<span class="string">'love'</span>,<span class="string">'Python'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: <span class="string">' '</span>.join(list1)     <span class="comment">#用空格连接</span></span><br><span class="line">Out[<span class="number">2</span>]: <span class="string">'I love Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: <span class="string">','</span>.join(list1)     <span class="comment">#用逗号连接</span></span><br><span class="line">Out[<span class="number">3</span>]: <span class="string">'I,love,Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: <span class="string">'Yu'</span> + <span class="string">'Longjun'</span></span><br><span class="line">Out[<span class="number">5</span>]: <span class="string">'YuLongjun'</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串分割"><a href="#字符串分割" class="headerlink" title="字符串分割"></a>字符串分割</h3><p><code>split()</code>函数，从左边开始分割</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">9</span>]: s=<span class="string">'I love Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: s.split()   <span class="comment">#默认是以空格为分隔符分割</span></span><br><span class="line">Out[<span class="number">10</span>]: [<span class="string">'I'</span>, <span class="string">'love'</span>, <span class="string">'Python'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: s.split(<span class="string">'o'</span>) <span class="comment"># 指定分隔符为o</span></span><br><span class="line">Out[<span class="number">11</span>]: [<span class="string">'I l'</span>, <span class="string">'ve Pyth'</span>, <span class="string">'n'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: s.split(<span class="string">' '</span>,<span class="number">1</span>) <span class="comment"># 以空格为分隔符，最大分割次数为1</span></span><br><span class="line">Out[<span class="number">12</span>]: [<span class="string">'I'</span>, <span class="string">'love Python'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: s=<span class="string">'root:x:0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: s.split(<span class="string">':'</span>,<span class="number">1</span>) <span class="comment"># 以冒号为分隔符，最大分割次数为1</span></span><br><span class="line">Out[<span class="number">14</span>]: [<span class="string">'root'</span>, <span class="string">'x:0:0:root:/root:/bin/bash'</span>]</span><br><span class="line">In [<span class="number">16</span>]: username,_=s.split(<span class="string">':'</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: username</span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">'root'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: line =<span class="string">'url:http://www.google.com'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: key,value=line.split(<span class="string">':'</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: key</span><br><span class="line">Out[<span class="number">20</span>]: <span class="string">'url'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: value</span><br><span class="line">Out[<span class="number">21</span>]: <span class="string">'http://www.google.com'</span></span><br></pre></td></tr></table></figure>
+<p><code>rsplit()</code>：和<code>split()</code>相反，是从右往左分割的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">18</span>]: line=<span class="string">'url:http://www.google.com'</span></span><br><span class="line">In [<span class="number">22</span>]: line.rsplit(<span class="string">':'</span>,<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">22</span>]: [<span class="string">'url:http'</span>, <span class="string">'//www.google.com'</span>]</span><br></pre></td></tr></table></figure>
+<p><code>splitlines</code>：分割段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">24</span>]: s =<span class="string">'''</span><br><span class="line">   ....: I love Python</span><br><span class="line">   ....: I also love Linux</span><br><span class="line">   ....: '''</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">25</span>]: s.splitlines()</span><br><span class="line">Out[<span class="number">25</span>]: [<span class="string">''</span>, <span class="string">'I love Python'</span>, <span class="string">'I also love Linux'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">26</span>]: s.splitlines(<span class="keyword">True</span>) <span class="comment">#默认是False，即去掉换行符\n,True的话即保留换行符</span></span><br><span class="line">Out[<span class="number">26</span>]: [<span class="string">'\n'</span>, <span class="string">'I love Python\n'</span>, <span class="string">'I also love Linux\n'</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">27</span>]: s.splitlines(<span class="keyword">False</span>)</span><br><span class="line">Out[<span class="number">27</span>]: [<span class="string">''</span>, <span class="string">'I love Python'</span>, <span class="string">'I also love Linux'</span>]</span><br></pre></td></tr></table></figure>
+<p><code>partition</code>分割</p>
+<p>有点像split之后接了一个参数1，但是还会保留分隔符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">29</span>]: help(s.partition)</span><br><span class="line"><span class="comment"># Help on built-in function partition:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#partition(...) method of builtins.str instance</span></span><br><span class="line">    <span class="comment">#S.partition(sep) -&gt; (head, sep, tail)</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># Search for the separator sep in S, and return the part before it,the separator itself, and the part after it.  If the separator is not found, return S and two empty strings.</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: s=<span class="string">'root:x:0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: s.partition(<span class="string">':'</span>)</span><br><span class="line">Out[<span class="number">31</span>]: (<span class="string">'root'</span>, <span class="string">':'</span>, <span class="string">'x:0:0:root:/root:/bin/bash'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">32</span>]: h,_,t=s.partition(<span class="string">':'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">33</span>]: t</span><br><span class="line">Out[<span class="number">33</span>]: <span class="string">'x:0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">34</span>]: h,_,t=t.partition(<span class="string">':'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">35</span>]: t</span><br><span class="line">Out[<span class="number">35</span>]: <span class="string">'0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">36</span>]: h,_,t=t.partition(<span class="string">':'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">37</span>]: t</span><br><span class="line">Out[<span class="number">37</span>]: <span class="string">'0:root:/root:/bin/bash'</span></span><br></pre></td></tr></table></figure>
+<p><code>rpartition</code>：和<code>partition</code>相反，是从右向左分割</p>
+<h3 id="字符串修改-大小写"><a href="#字符串修改-大小写" class="headerlink" title="字符串修改-大小写"></a>字符串修改-大小写</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">40</span>]: s=<span class="string">'I love Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">41</span>]: s.capitalize()       <span class="comment">#首字母大写</span></span><br><span class="line">Out[<span class="number">41</span>]: <span class="string">'I love python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">42</span>]: s.title()            <span class="comment">#所有单词首字母大写</span></span><br><span class="line">Out[<span class="number">42</span>]: <span class="string">'I Love Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: s.lower()            <span class="comment">#所有字母小写</span></span><br><span class="line">Out[<span class="number">43</span>]: <span class="string">'i love python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">44</span>]: s.upper()            <span class="comment">#所有字母大写</span></span><br><span class="line">Out[<span class="number">44</span>]: <span class="string">'I LOVE PYTHON'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: s.swapcase()         <span class="comment">#所有字母大小写反转</span></span><br><span class="line">Out[<span class="number">46</span>]: <span class="string">'i LOVE pYTHON'</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串修改-填充（对齐）、清除（修剪）"><a href="#字符串修改-填充（对齐）、清除（修剪）" class="headerlink" title="字符串修改-填充（对齐）、清除（修剪）"></a>字符串修改-填充（对齐）、清除（修剪）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: s = <span class="string">'Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: s.center(<span class="number">30</span>)       <span class="comment">#中间填充</span></span><br><span class="line">Out[<span class="number">3</span>]: <span class="string">'            Python            '</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: s.center(<span class="number">30</span>,<span class="string">'*'</span>)   <span class="comment">#中间填充，用*填充</span></span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">'************Python************'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: s.ljust(<span class="number">30</span>)        <span class="comment">#字符串在左边，右边填充</span></span><br><span class="line">Out[<span class="number">5</span>]: <span class="string">'Python                        '</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: s.ljust(<span class="number">30</span>,<span class="string">'*'</span>)    <span class="comment">#字符串在左边，右边用*填充</span></span><br><span class="line">Out[<span class="number">6</span>]: <span class="string">'Python************************'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: s.rjust(<span class="number">30</span>,<span class="string">'*'</span>)    <span class="comment">#字符串在左边，左边用*填充</span></span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">'************************Python'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: s=<span class="string">'root:x::0:0:root:/root:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: s.strip()        <span class="comment">#去掉两边的空白符（space、制表符tab、换行符\n)</span></span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">'root:x::0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: s.lstrip()       <span class="comment">#去掉左边的空白符</span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="string">'root:x::0:0:root:/root:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: s.rstrip()       <span class="comment">#去掉右边的空白符    </span></span><br><span class="line">Out[<span class="number">19</span>]: <span class="string">'root:x::0:0:root:/root:/bin/bash'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: s = <span class="string">'##test##'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: s.strip(<span class="string">'#'</span>)</span><br><span class="line">Out[<span class="number">22</span>]: <span class="string">'test'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: s.lstrip(<span class="string">'#'</span>)</span><br><span class="line">Out[<span class="number">22</span>]: <span class="string">'test##'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">23</span>]: s.rstrip(<span class="string">'#'</span>)</span><br><span class="line">Out[<span class="number">23</span>]: <span class="string">'##test'</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串判断"><a href="#字符串判断" class="headerlink" title="字符串判断"></a>字符串判断</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: poem=<span class="string">'''There was a Young Lady of Norway,</span><br><span class="line">who casually sat in a doorway;</span><br><span class="line">when the door squeezed her flat,</span><br><span class="line">She exclaimed, "What of that?"</span><br><span class="line">this courageous Young Lady of Norway.'''</span></span><br><span class="line">In [<span class="number">76</span>]: poem[:<span class="number">13</span>]</span><br><span class="line">Out[<span class="number">76</span>]: <span class="string">'There was a Y'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">77</span>]: len(poem)                   <span class="comment">#字符串长度</span></span><br><span class="line">Out[<span class="number">77</span>]: <span class="number">166</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: poem.startswith(<span class="string">'There'</span>)    <span class="comment">#以'There'开头</span></span><br><span class="line">Out[<span class="number">78</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: poem.endswith(<span class="string">'Norway.'</span>)    <span class="comment">#以'Norway.'结尾</span></span><br><span class="line">Out[<span class="number">79</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: poem.isalnum()              <span class="comment">#所有字符都是字母或数字吗？is*还有很多用法，可以自己查看</span></span><br><span class="line">Out[<span class="number">80</span>]: <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串查找"><a href="#字符串查找" class="headerlink" title="字符串查找"></a>字符串查找</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">81</span>]: poem.count(<span class="string">'a'</span>)            <span class="comment">#字符串'a'出现了多少次</span></span><br><span class="line">Out[<span class="number">81</span>]: <span class="number">16</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: poem.index(<span class="string">'a'</span>)            <span class="comment">#字符串'a'出现的第一次的位置</span></span><br><span class="line">Out[<span class="number">82</span>]: <span class="number">7</span></span><br><span class="line">In [<span class="number">82</span>]: poem.rindex(<span class="string">'a'</span>)            <span class="comment">#字符串'a'从右边开始出现的第一次的位置</span></span><br><span class="line">Out[<span class="number">82</span>]: <span class="number">7</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: poem.find(<span class="string">'a'</span>)              <span class="comment">#查找第一次出现'a'的位置</span></span><br><span class="line">Out[<span class="number">83</span>]: <span class="number">7</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: poem.find(<span class="string">'a'</span>，<span class="number">50</span>,<span class="number">100</span>)       <span class="comment">#查找从50到100，第一次出现'a'的位置</span></span><br><span class="line">Out[<span class="number">83</span>]: <span class="number">54</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">84</span>]: poem.rfind(<span class="string">'a'</span>,<span class="number">50</span>,<span class="number">100</span>)       <span class="comment">#查找从50到100，从右开始找，第一次出现'a'的位置</span></span><br><span class="line">Out[<span class="number">84</span>]: <span class="number">94</span></span><br></pre></td></tr></table></figure>
+<h3 id="replace-替换"><a href="#replace-替换" class="headerlink" title="replace()替换"></a><code>replace()</code>替换</h3><p>s.replace(old,new[,count])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">27</span>]: s=<span class="string">'root:x::0:0:root:/root:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">28</span>]: s.replace(<span class="string">'root'</span>,<span class="string">'yulongjun'</span>)        <span class="comment">#默认替换所有</span></span><br><span class="line">Out[<span class="number">28</span>]: <span class="string">'yulongjun:x::0:0:yulongjun:/yulongjun:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">29</span>]: s.replace(<span class="string">'root'</span>,<span class="string">'yulongjun'</span>,<span class="number">1</span>)      <span class="comment">#只替换第一个</span></span><br><span class="line">Out[<span class="number">29</span>]: <span class="string">'yulongjun:x::0:0:root:/root:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: s.replace(<span class="string">'root'</span>,<span class="string">'yulongjun'</span>,<span class="number">-1</span>)     <span class="comment">#负数还是替换所有</span></span><br><span class="line">Out[<span class="number">30</span>]: <span class="string">'yulongjun:x::0:0:yulongjun:/yulongjun:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: s.replace(<span class="string">'root'</span>,<span class="string">'yulongjun'</span>,<span class="number">-2</span>)     <span class="comment">#负数还是替换所有</span></span><br><span class="line">Out[<span class="number">31</span>]: <span class="string">'yulongjun:x::0:0:yulongjun:/yulongjun:/bin/bash\n'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">32</span>]: s.replace(<span class="string">'root'</span>,<span class="string">'yulongjun'</span>,<span class="number">1000</span>)   <span class="comment">#超过最大个数也是替换所有</span></span><br><span class="line">Out[<span class="number">32</span>]: <span class="string">'yulongjun:x::0:0:yulongjun:/yulongjun:/bin/bash\n'</span></span><br></pre></td></tr></table></figure>
+<h3 id="Python3使用str类型，底层实现是用unicode编码"><a href="#Python3使用str类型，底层实现是用unicode编码" class="headerlink" title="Python3使用str类型，底层实现是用unicode编码"></a>Python3使用str类型，底层实现是用unicode编码</h3><p>str –&gt; encode –&gt; bytes<br>bytes –&gt; decode –&gt; str</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">12</span>]: s=<span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: s</span><br><span class="line">Out[<span class="number">13</span>]: <span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: s.encode()  <span class="comment">#编码（不填参数默认utf-8）</span></span><br><span class="line">Out[<span class="number">14</span>]: <span class="string">b'\xe4\xba\x8e\xe9\xbe\x99\xe5\x90\x9b'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: d=s.encode()</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: d.decode() <span class="comment">#解码（不填参数默认utf-8）</span></span><br><span class="line">Out[<span class="number">16</span>]: <span class="string">'于龙君'</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/13/3-03-tuple/" itemprop="url">
+                  3.3 元组（Tuples）
                 </a>
               
             
@@ -673,8 +1247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/13/3-02-tuple/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-02-tuple/" itemprop="commentsCount"></span>
+                <a href="/2016/07/13/3-03-tuple/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-03-tuple/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -699,7 +1273,7 @@
         
           <p>元组和列表很像，包括索引查询、查找统计元素操作都很类似。但是元组是不可变的，无法改改元素，所以没有增删改操作。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/13/3-02-tuple/#more" rel="contents">
+            <a class="btn" href="/2016/07/13/3-03-tuple/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -750,8 +1324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/11/3-01-list/" itemprop="url">
-                  3.1 列表
+                <a class="post-title-link" href="/2016/07/11/3-02-list/" itemprop="url">
+                  3.3 列表（Lists）
                 </a>
               
             
@@ -794,8 +1368,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/11/3-01-list/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/3-01-list/" itemprop="commentsCount"></span>
+                <a href="/2016/07/11/3-02-list/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/3-02-list/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -820,7 +1394,138 @@
         
           <h2 id="初始化列表："><a href="#初始化列表：" class="headerlink" title="初始化列表："></a>初始化列表：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lst = list()    <span class="comment"># 初始化一个空列表</span></span><br><span class="line">lst = []        <span class="comment"># 也是初始化一个空列表</span></span><br><span class="line">lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment"># 初始化三个元素</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/11/3-01-list/#more" rel="contents">
+            <a class="btn" href="/2016/07/11/3-02-list/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/10/3-01-numbers/" itemprop="url">
+                  3.1 数字（Numbers）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-10T14:22:33+08:00" content="2016-07-10">
+              2016-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/10/3-01-numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/3-01-numbers/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>整理出Python3的数字类型，数字分为多种：</p>
+<ol>
+<li>整数（int）</li>
+<li>浮点数（float）</li>
+<li>二进制数（binary）</li>
+<li>八进制数（octal）</li>
+<li>十六进制数（hex）</li>
+<li>复数（complex number）</li>
+<li>小数（decimal）</li>
+<li>分数（fraction）</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/10/3-01-numbers/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -972,514 +1677,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/2-02-operator/" itemprop="url">
-                  2.2  运算符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T17:47:49+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning-Python3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/08/2-02-operator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/2-02-operator/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>运算符分为以下几种类型</strong>：</p>
-<ul>
-<li>算术运算符</li>
-<li>逻辑运算符</li>
-<li>比较运算符</li>
-<li>位运算符</li>
-<li>其他运算符<ul>
-<li>赋值运算符</li>
-<li>成员运算符</li>
-<li>身份运算符</li>
-</ul>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/2-02-operator/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/08/2-01-variable/" itemprop="url">
-                  2.1 变量与命名规则
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T14:47:49+08:00" content="2016-07-08">
-              2016-07-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning-Python3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/08/2-01-variable/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/2-01-variable/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h2 id="2-1-1-写一个Hello-world"><a href="#2-1-1-写一个Hello-world" class="headerlink" title="2.1.1 写一个Hello world"></a>2.1.1 写一个Hello world</h2><hr>
-<p>一个语言刚开始一般写一个hello world：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Hello, world!"</span>)</span><br></pre></td></tr></table></figure></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/08/2-01-variable/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/05/1-02-ide/" itemprop="url">
-                  1.2 开发环境配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T09:07:02+08:00" content="2016-07-05">
-              2016-07-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning-Python3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/05/1-02-ide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/05/1-02-ide/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="1-2-1-vim"><a href="#1-2-1-vim" class="headerlink" title="1.2.1 vim"></a>1.2.1 vim</h2><p>vim是一款非常好用的编辑器，学习曲线比较陡峭，但是当你学会并熟练应用的时候，绝对非常好用。这里不详细介绍vim的用法，感兴趣的可以看这本书《vim实用技巧》：</p>
-<p>京东：<a href="http://item.jd.com/11445638.html">http://item.jd.com/11445638.html</a></p>
-<p>网盘下载：<a href="https://yunpan.cn/cBrJBuvNmjTwf">https://yunpan.cn/cBrJBuvNmjTwf</a> （提取码：e10a）（高清、非扫描版）</p>
-<p>推荐大家还是买实体书，也不贵，实体书拿在手里，手感特别好。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/05/1-02-ide/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/02/1-01-environment/" itemprop="url">
-                  1.1 Python安装与版本控制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-02T23:28:12+08:00" content="2016-07-02">
-              2016-07-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning-Python3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/02/1-01-environment/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/1-01-environment/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>软件简介</strong>：</p>
-<p><code>pyenv</code>，是一款特别好用的Python版本管理器，程序员可以建立不同的目录，在不同的目录里分别运行不同版本的Python， 并且互不影响，安装的包也互不影响。github项目地址：<a href="https://github.com/yyuu/pyenv">https://github.com/yyuu/pyenv</a></p>
-<p><code>pyenv-virtualenv</code>， 是<code>pyenv</code>的一个plugin（插件），可以用来创建基于不同Python版本的干净的虚拟环境。github项目地址：<a href="https://github.com/yyuu/pyenv-virtualenv">https://github.com/yyuu/pyenv-virtualenv</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/02/1-01-environment/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1520,7 +1722,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1537,7 +1739,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

@@ -1,0 +1,861 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="set," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="于龙君的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Python中的集合是一组可哈希的值的集合。特点：
+
+元素是唯一的。
+元素是无序的。
+
+3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
+1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.8 集合（Sets）">
+<meta property="og:url" content="http://yoursite.com/2016/07/16/3-08-sets/index.html">
+<meta property="og:site_name" content="于龙君的博客">
+<meta property="og:description" content="Python中的集合是一组可哈希的值的集合。特点：
+
+元素是唯一的。
+元素是无序的。
+
+3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
+1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
+<meta property="og:updated_time" content="2016-07-20T04:22:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.8 集合（Sets）">
+<meta name="twitter:description" content="Python中的集合是一组可哈希的值的集合。特点：
+
+元素是唯一的。
+元素是无序的。
+
+3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
+1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6265924844550882000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 3.8 集合（Sets） | 于龙君的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?e7d6cfa254b42afe3c433690cfa6b887";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">于龙君的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-python3">
+          <a href="/categories/Learning-Python3" rel="section">
+            
+              <i class="menu-item-icon fa fa-file-code-o fa-fw"></i> <br />
+            
+            新Python3笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-oldpython3">
+          <a href="/categories/Python3成长之路" rel="section">
+            
+              <i class="menu-item-icon fa fa-code fa-fw"></i> <br />
+            
+            旧Python3笔记
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于博主
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                3.8 集合（Sets）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T20:19:25+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/16/3-08-sets/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/3-08-sets/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Python中的集合是一组可哈希的值的集合。特点：</p>
+<ul>
+<li>元素是唯一的。</li>
+<li>元素是无序的。</li>
+</ul>
+<h2 id="3-8-1-定义一个集合"><a href="#3-8-1-定义一个集合" class="headerlink" title="3.8.1 定义一个集合"></a>3.8.1 定义一个集合</h2><p>定义一个set很简单，如果有重复元素，会自动去重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: s = set() <span class="comment"># 用set函数定义空集合</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: s = &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: s  <span class="comment"># 不能这么定义，这样定义就定义成了一个字典</span></span><br><span class="line">Out[<span class="number">4</span>]: &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: type(s)</span><br><span class="line">Out[<span class="number">5</span>]: dict</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125; <span class="comment"># 直接赋值</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: type(s)</span><br><span class="line">Out[<span class="number">7</span>]: set</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: set([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span> , <span class="number">2</span>]) <span class="comment">#set函数可以把列表转化为集合（去重）</span></span><br><span class="line">Out[<span class="number">15</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: set((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)) <span class="comment"># set函数也可以转化元组（去重）</span></span><br><span class="line">Out[<span class="number">16</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: set(<span class="string">'yulongjun'</span>) <span class="comment"># 字符串也可以（去重）</span></span><br><span class="line">Out[<span class="number">17</span>]: &#123;<span class="string">'g'</span>, <span class="string">'j'</span>, <span class="string">'l'</span>, <span class="string">'n'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>, <span class="string">'y'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-8-2-增"><a href="#3-8-2-增" class="headerlink" title="3.8.2 增"></a>3.8.2 增</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a><code>add</code></h3><p>增加一个元素到集合，如果元素已经存在，则没有任何操作。</p>
+<blockquote>
+<p><strong>add(…)</strong><br>Add an element to a set.<br>This has no effect if the element is already present.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: s</span><br><span class="line">Out[<span class="number">8</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: s.add(<span class="number">4</span>) <span class="comment"># 增加一个元素</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: s</span><br><span class="line">Out[<span class="number">10</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: s.add(<span class="number">4</span>) <span class="comment"># 如果元素已存在，则没有任何操作</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: s</span><br><span class="line">Out[<span class="number">12</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a><code>update</code></h3><p>增加一组元素，重复的元素会去重</p>
+<blockquote>
+<p><strong>update(…)</strong><br>Update a set with the union of itself and others.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">12</span>]: s</span><br><span class="line">Out[<span class="number">12</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: s.update([<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])可以增加一组集合、列表、元组、字符串</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: s</span><br><span class="line">Out[<span class="number">14</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-3-删"><a href="#3-8-3-删" class="headerlink" title="3.8.3 删"></a>3.8.3 删</h2><h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a><code>remove</code></h3><p>从集合里删除一个元素，元素必须存在，删除不存在的会抛出异常。</p>
+<blockquote>
+<p><strong>remove(…)</strong><br>Remove an element from a set; it must be a member.<br> If the element is not a member, raise a KeyError.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [19]: s</span><br><span class="line">Out[19]: &#123;1, 2, 3, 4, 5, 6&#125;</span><br><span class="line"></span><br><span class="line">In [20]: s.remove(6)</span><br><span class="line"></span><br><span class="line">In [21]: s</span><br><span class="line">Out[21]: &#123;1, 2, 3, 4, 5&#125;</span><br><span class="line"></span><br><span class="line">In [22]: s.remove(10)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">KeyError                                  Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-22-aa24ca6c02a7&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 s.remove(10)</span><br><span class="line"></span><br><span class="line">KeyError: 10</span><br></pre></td></tr></table></figure>
+<h3 id="discard"><a href="#discard" class="headerlink" title="discard"></a><code>discard</code></h3><p>从集合中删除一个元素，删除不存在的不会抛出异常。</p>
+<blockquote>
+<p><strong>discard(…)</strong><br>Remove an element from a set if it is a member.<br>If the element is not a member, do nothing.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">27</span>]: s</span><br><span class="line">Out[<span class="number">27</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">28</span>]: s.discard(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">29</span>]: s</span><br><span class="line">Out[<span class="number">29</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: s.discard(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: s</span><br><span class="line">Out[<span class="number">31</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a><code>pop</code></h3><p>删除并返回一个任意元素。</p>
+<blockquote>
+<p><strong>pop(…)</strong><br>Remove and return an arbitrary set element.<br>Raises KeyError if the set is empty.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [35]: s</span><br><span class="line">Out[35]: &#123;1, 2&#125;</span><br><span class="line"></span><br><span class="line">In [36]: s.pop()</span><br><span class="line">Out[36]: 1</span><br><span class="line"></span><br><span class="line">In [37]: s.pop()</span><br><span class="line">Out[37]: 2</span><br><span class="line"></span><br><span class="line">In [38]: s.pop()</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">KeyError                                  Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-38-e76f41daca5e&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 s.pop()</span><br><span class="line"></span><br><span class="line">KeyError: 'pop from an empty set'</span><br></pre></td></tr></table></figure>
+<h4 id="clear"><a href="#clear" class="headerlink" title="clear"></a><code>clear</code></h4><p>删除所有元素</p>
+<blockquote>
+<p>clear(…)<br>Remove all elements from this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">40</span>]: s</span><br><span class="line">Out[<span class="number">40</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">41</span>]: s.clear()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-4-改、查"><a href="#3-8-4-改、查" class="headerlink" title="3.8.4 改、查"></a>3.8.4 改、查</h2><p>没有一个方法可以直接的修改集合中的某个具体元素，因为没有一个方法，可以查找定位其中的某个具体元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 集合是可迭代对象，可用for循环来遍历</span></span><br><span class="line">In [<span class="number">44</span>]: <span class="keyword">for</span> x <span class="keyword">in</span> set(<span class="string">'yulongjun'</span>):</span><br><span class="line">   ....:     print(x)</span><br><span class="line">   ....:     </span><br><span class="line">o</span><br><span class="line">l</span><br><span class="line">n</span><br><span class="line">u</span><br><span class="line">g</span><br><span class="line">j</span><br><span class="line">y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 集合可以用成员运算符</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: <span class="string">'u'</span> <span class="keyword">in</span> set(<span class="string">'yulongjun'</span>)</span><br><span class="line">Out[<span class="number">45</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-4-集合的集合运算"><a href="#3-8-4-集合的集合运算" class="headerlink" title="3.8.4 集合的集合运算"></a>3.8.4 集合的集合运算</h2><h3 id="并集（union-）"><a href="#并集（union-）" class="headerlink" title="并集（union==|）"></a>并集（<code>union</code>==<code>|</code>）</h3><p>求两个集合的并集</p>
+<blockquote>
+<p>union(…)<br> Return the union of sets as a new set.<br>(i.e. all elements that are in either set.)</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">46</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">47</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">48</span>]: a.union(b)</span><br><span class="line">Out[<span class="number">48</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">52</span>]: a.union(b) == b.union(a) == a | b == b | a</span><br><span class="line">Out[<span class="number">52</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="交集（intersection-amp-、intersection-update）"><a href="#交集（intersection-amp-、intersection-update）" class="headerlink" title="交集（intersection==&amp;、intersection_update）"></a>交集（<code>intersection</code>==<code>&amp;</code>、<code>intersection_update</code>）</h3><p>求两个集合的交集。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>intersection(…)</strong><br>Return the intersection of two sets as a new set.<br>(i.e. all elements that are in both sets.)</p>
+<p><strong>intersection_update(…)</strong><br>Update a set with the intersection of itself and another.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">46</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">47</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">49</span>]: a.intersection(b)</span><br><span class="line">Out[<span class="number">49</span>]: &#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">53</span>]: a.intersection(b) == b.intersection(a) == a &amp; b == b &amp; a</span><br><span class="line">Out[<span class="number">53</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">54</span>]: a.intersection_update(b)</span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: a</span><br><span class="line">Out[<span class="number">55</span>]: &#123;<span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="差集（difference-、difference-update）"><a href="#差集（difference-、difference-update）" class="headerlink" title="差集（difference==-、difference_update）"></a>差集（<code>difference</code>==<code>-</code>、<code>difference_update</code>）</h3><p>求两个集合的差集。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>difference(…)</strong><br>Return the difference of two or more sets as a new set.<br> (i.e. all elements that are in this set but not the others.)</p>
+<p><strong>difference_update(…)</strong><br>Remove all elements of another set from this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">56</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">57</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">58</span>]: a.difference(b)</span><br><span class="line">Out[<span class="number">58</span>]: &#123;<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">59</span>]: b.difference(a)</span><br><span class="line">Out[<span class="number">59</span>]: &#123;<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">95</span>]: a - b</span><br><span class="line">Out[<span class="number">95</span>]: &#123;<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">96</span>]: b - a</span><br><span class="line">Out[<span class="number">96</span>]: &#123;<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">63</span>]: a.difference_update(b) <span class="comment"># 带update会改变a中的元素</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: a</span><br><span class="line">Out[<span class="number">64</span>]: &#123;<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对称差集（symmetric-difference-、symmetric-difference-update）"><a href="#对称差集（symmetric-difference-、symmetric-difference-update）" class="headerlink" title="对称差集（symmetric_difference==^、symmetric_difference_update）"></a>对称差集（<code>symmetric_difference</code>==<code>^</code>、<code>symmetric_difference_update</code>）</h3><p>求两个集合的对称差集（对称差集，把a.difference(b)和b.difference(a)的值union起来）。</p>
+<p>一种不改变前面的集合，一种带update改变前面的集合。</p>
+<blockquote>
+<p><strong>symmetric_difference(…)</strong><br>Return the symmetric difference of two sets as a new set.<br>(i.e. all elements that are in exactly one of the sets.)</p>
+<p><strong>symmetric_difference_update(…)</strong><br>Update a set with the symmetric difference of itself and another.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">65</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">66</span>]: b = &#123;<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">67</span>]: a.symmetric_difference(b)</span><br><span class="line">Out[<span class="number">67</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">68</span>]: b.symmetric_difference(a)</span><br><span class="line">Out[<span class="number">68</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下四个的结果是等价的</span></span><br><span class="line">In [<span class="number">70</span>]: b.symmetric_difference(a) == a.symmetric_difference(b) == a^b == b^a</span><br><span class="line">Out[<span class="number">70</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">71</span>]: a.symmetric_difference_update(b) <span class="comment">#带update后，a的元素被修改</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">72</span>]: a</span><br><span class="line">Out[<span class="number">72</span>]: &#123;<span class="number">1</span>, <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="是否超集（isuperset）"><a href="#是否超集（isuperset）" class="headerlink" title="是否超集（isuperset）"></a>是否超集（<code>isuperset</code>）</h3><p>用来判断前面是否是后面的超集。</p>
+<blockquote>
+<p><strong>issuperset(…)</strong><br>Report whether this set contains another set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">76</span>]: a.issuperset(b)</span><br><span class="line">Out[<span class="number">76</span>]: <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">77</span>]: b.issuperset(a)</span><br><span class="line">Out[<span class="number">77</span>]: <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="是否子集-issubset"><a href="#是否子集-issubset" class="headerlink" title="是否子集(issubset)"></a>是否子集(<code>issubset</code>)</h3><p>用来判断前面是否是后面的子集。</p>
+<blockquote>
+<p><strong>issubset(…)</strong><br>Report whether another set contains this set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: a.issubset(b)</span><br><span class="line">Out[<span class="number">78</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: b.issubset(a)</span><br><span class="line">Out[<span class="number">79</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="是否不相交（isdisjoint）"><a href="#是否不相交（isdisjoint）" class="headerlink" title="是否不相交（isdisjoint）"></a>是否不相交（<code>isdisjoint</code>）</h3><p>用来判断两个集合是否是不相交</p>
+<blockquote>
+<p><strong>isdisjoint(…)</strong><br>Return True if two sets have a null intersection.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">74</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: a.isdisjoint(b)</span><br><span class="line">Out[<span class="number">80</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">81</span>]: b.isdisjoint(a)</span><br><span class="line">Out[<span class="number">81</span>]: <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: b = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">85</span>]: a.isdisjoint(b) == b.isdisjoint(a) == <span class="keyword">True</span></span><br><span class="line">Out[<span class="number">85</span>]: <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="复制（copy）"><a href="#复制（copy）" class="headerlink" title="复制（copy）"></a>复制（<code>copy</code>）</h3><p>复制集合，本质上是再复制出一段内存。</p>
+<blockquote>
+<p><strong>copy(…)</strong><br> Return a shallow copy of a set.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">86</span>]: a = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">87</span>]: b = a.copy()</span><br><span class="line"></span><br><span class="line">In [<span class="number">88</span>]: b</span><br><span class="line">Out[<span class="number">88</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">89</span>]: id(a)</span><br><span class="line">Out[<span class="number">89</span>]: <span class="number">4524734280</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">90</span>]: id(b)</span><br><span class="line">Out[<span class="number">90</span>]: <span class="number">4524734504</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-8-5-集合的应用"><a href="#3-8-5-集合的应用" class="headerlink" title="3.8.5 集合的应用"></a>3.8.5 集合的应用</h2><ul>
+<li>元素需要唯一而对顺序没有要求</li>
+</ul>
+<p>添加主机，要求不重复</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts = set(user_input.splitlines())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们需要集合运算时</li>
+</ul>
+<p>求未完成添加的主机（主机-已完成添加的主机）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts - complete_hosts</span><br></pre></td></tr></table></figure>
+<ul>
+<li>求多个地方输入,合起来的一个并集</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hosts = input_a | input_b | input_c</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>如果文章对您有用，不如鼓励博主一下！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="于龙君 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="于龙君 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/set/" rel="tag">#set</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/15/3-07-formatting/" rel="next" title="3.7 格式化（Format）">
+                <i class="fa fa-chevron-left"></i> 3.7 格式化（Format）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/11/00-1-contents/" rel="prev" title="【置顶】Python3课程目录">
+                【置顶】Python3课程目录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/16/3-08-sets/"
+           data-title="3.8 集合（Sets）" data-url="http://yoursite.com/2016/07/16/3-08-sets/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="于龙君" />
+          <p class="site-author-name" itemprop="name">于龙君</p>
+          <p class="site-description motion-element" itemprop="description">人生苦短，Python当歌</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/%E9%BE%99%E5%90%9B-%E4%BA%8E-908657108" target="_blank">
+                  
+                    <i class="fa fa-linkedin"></i>
+                  
+                  领英
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yulongjun" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/bc24268ee41f/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-jianshu"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/yu-long-jun" target="_blank">
+                  
+                    <i class="fa fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+            <div class="links-of-blogroll-title">友情链接：</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://liaoxuefeng.com" target="_blank">廖雪峰(Python入门启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yidao620c.github.io" target="_blank">熊能(Python翻译启蒙老师)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://magedu.com" target="_blank">马哥教育(系统学Python的地方)</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yhqh.com.cn" target="_blank">银河期货(我工作的地方)</a>
+                </li>
+              
+            </ul>
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-1-定义一个集合"><span class="nav-number">1.</span> <span class="nav-text">3.8.1 定义一个集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-2-增"><span class="nav-number">2.</span> <span class="nav-text">3.8.2 增</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-number">2.1.</span> <span class="nav-text">add</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">2.2.</span> <span class="nav-text">update</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-3-删"><span class="nav-number">3.</span> <span class="nav-text">3.8.3 删</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#remove"><span class="nav-number">3.1.</span> <span class="nav-text">remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discard"><span class="nav-number">3.2.</span> <span class="nav-text">discard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop"><span class="nav-number">3.3.</span> <span class="nav-text">pop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#clear"><span class="nav-number">3.3.1.</span> <span class="nav-text">clear</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-4-改、查"><span class="nav-number">4.</span> <span class="nav-text">3.8.4 改、查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-4-集合的集合运算"><span class="nav-number">5.</span> <span class="nav-text">3.8.4 集合的集合运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并集（union-）"><span class="nav-number">5.1.</span> <span class="nav-text">并集（union==|）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交集（intersection-amp-、intersection-update）"><span class="nav-number">5.2.</span> <span class="nav-text">交集（intersection==&、intersection_update）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#差集（difference-、difference-update）"><span class="nav-number">5.3.</span> <span class="nav-text">差集（difference==-、difference_update）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称差集（symmetric-difference-、symmetric-difference-update）"><span class="nav-number">5.4.</span> <span class="nav-text">对称差集（symmetric_difference==^、symmetric_difference_update）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否超集（isuperset）"><span class="nav-number">5.5.</span> <span class="nav-text">是否超集（isuperset）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否子集-issubset"><span class="nav-number">5.6.</span> <span class="nav-text">是否子集(issubset)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否不相交（isdisjoint）"><span class="nav-number">5.7.</span> <span class="nav-text">是否不相交（isdisjoint）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制（copy）"><span class="nav-number">5.8.</span> <span class="nav-text">复制（copy）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-5-集合的应用"><span class="nav-number">6.</span> <span class="nav-text">3.8.5 集合的应用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于龙君</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yulongjun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

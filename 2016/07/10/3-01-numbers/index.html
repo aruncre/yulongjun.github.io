@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="unpacking,解包," />
+  <meta name="keywords" content="number," />
 
 
 
@@ -82,25 +82,43 @@
 
 
 
-<meta name="description" content="以下内容部分内容摘选自《Python Cookbook》第一章 第一节，部分内容为自己书写和总结。
+<meta name="description" content="整理出Python3的数字类型，数字分为多种：
 
-
-任何序列（或者可迭代对象（iterable））都可以通过一个简单的赋值操作来分解为单独的变量。">
+整数（int）
+浮点数（float）
+二进制数（binary）
+八进制数（octal）
+十六进制数（hex）
+复数（complex number）
+小数（decimal）
+分数（fraction）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.4 解包">
-<meta property="og:url" content="http://yoursite.com/2016/07/13/3-04-unpacking/index.html">
+<meta property="og:title" content="3.1 数字（Numbers）">
+<meta property="og:url" content="http://yoursite.com/2016/07/10/3-01-numbers/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="以下内容部分内容摘选自《Python Cookbook》第一章 第一节，部分内容为自己书写和总结。
+<meta property="og:description" content="整理出Python3的数字类型，数字分为多种：
 
-
-任何序列（或者可迭代对象（iterable））都可以通过一个简单的赋值操作来分解为单独的变量。">
-<meta property="og:updated_time" content="2016-07-13T15:19:30.000Z">
+整数（int）
+浮点数（float）
+二进制数（binary）
+八进制数（octal）
+十六进制数（hex）
+复数（complex number）
+小数（decimal）
+分数（fraction）">
+<meta property="og:updated_time" content="2016-07-17T12:38:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3.4 解包">
-<meta name="twitter:description" content="以下内容部分内容摘选自《Python Cookbook》第一章 第一节，部分内容为自己书写和总结。
+<meta name="twitter:title" content="3.1 数字（Numbers）">
+<meta name="twitter:description" content="整理出Python3的数字类型，数字分为多种：
 
-
-任何序列（或者可迭代对象（iterable））都可以通过一个简单的赋值操作来分解为单独的变量。">
+整数（int）
+浮点数（float）
+二进制数（binary）
+八进制数（octal）
+十六进制数（hex）
+复数（complex number）
+小数（decimal）
+分数（fraction）">
 
 
 
@@ -118,7 +136,7 @@
   };
 </script>
 
-  <title> 3.4 解包 | 于龙君的博客 </title>
+  <title> 3.1 数字（Numbers） | 于龙君的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +276,7 @@
             
             
               
-                3.4 解包
+                3.1 数字（Numbers）
               
             
           </h1>
@@ -270,8 +288,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-13T23:19:25+08:00" content="2016-07-13">
-              2016-07-13
+            <time itemprop="dateCreated" datetime="2016-07-10T14:22:33+08:00" content="2016-07-10">
+              2016-07-10
             </time>
           </span>
 
@@ -300,8 +318,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/13/3-04-unpacking/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/13/3-04-unpacking/" itemprop="commentsCount"></span>
+                <a href="/2016/07/10/3-01-numbers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/10/3-01-numbers/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -323,23 +341,41 @@
       
 
       
-        <blockquote>
-<p>以下内容部分内容摘选自《Python Cookbook》第一章 第一节，部分内容为自己书写和总结。</p>
-</blockquote>
-<hr>
-<p>任何序列（或者可迭代对象（iterable））都可以通过一个简单的赋值操作来分解为单独的变量。</p>
+        <p>整理出Python3的数字类型，数字分为多种：</p>
+<ol>
+<li>整数（int）</li>
+<li>浮点数（float）</li>
+<li>二进制数（binary）</li>
+<li>八进制数（octal）</li>
+<li>十六进制数（hex）</li>
+<li>复数（complex number）</li>
+<li>小数（decimal）</li>
+<li>分数（fraction）</li>
+</ol>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: x,y = (<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: x</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: y</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: data = [<span class="string">'ACME'</span>, <span class="number">50</span>, <span class="number">90.1</span>, (<span class="number">2012</span>,<span class="number">12</span>,<span class="number">21</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: name, share, price, date = data</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: name</span><br><span class="line">Out[<span class="number">6</span>]: <span class="string">'ACME'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: date</span><br><span class="line">Out[<span class="number">7</span>]: (<span class="number">2012</span>, <span class="number">12</span>, <span class="number">21</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: name, shares, price, (year, month, day) = data</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: name</span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'ACME'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: year</span><br><span class="line">Out[<span class="number">10</span>]: <span class="number">2012</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: month</span><br><span class="line">Out[<span class="number">11</span>]: <span class="number">12</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: day</span><br><span class="line">Out[<span class="number">12</span>]: <span class="number">21</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>如果元素个数不匹配，将会抛出一个ValueError：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [13]: x, y, z = (4,5) #变量多于要解包的元素个数</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-13-6ff7f0410c3e&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 x, y, z = (4,5)</span><br><span class="line"></span><br><span class="line">ValueError: not enough values to unpack (expected 3, got 2)</span><br><span class="line"></span><br><span class="line">In [14]: x, y = (4, 5, 6) # 变量少于要解包的元素个数</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">ValueError                                Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-14-096cd5364eca&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 x, y = (4, 5, 6)</span><br><span class="line"></span><br><span class="line">ValueError: too many values to unpack (expected 2)</span><br></pre></td></tr></table></figure>
-<p>解包操作可以作用在各种内置结构上，只要对枪恰好是可迭代的：<br>列表、元组、字符串、文件、迭代器、生成器。</p>
-<hr>
-<p>有时候我们分解操作时候，有可能想丢弃某些值，我们可以选用一个用不到的变量名，比如<code>_</code>，来作为要丢弃的值的名称。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">5</span>]: data = [<span class="string">'ACME'</span>, <span class="number">50</span>, <span class="number">90.1</span>, (<span class="number">2012</span>,<span class="number">12</span>,<span class="number">21</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: _, shares, price, _ = data</span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: shares</span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">50</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: price</span><br><span class="line">Out[<span class="number">8</span>]: <span class="number">90.1</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p><code>*expressions</code>来分解包，可以对任意长度的可迭代对象（iterable）中分解元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">9</span>]: head,*tail = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: head</span><br><span class="line">Out[<span class="number">10</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: tail</span><br><span class="line">Out[<span class="number">11</span>]: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: first, *middle, last = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: first</span><br><span class="line">Out[<span class="number">13</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: middle</span><br><span class="line">Out[<span class="number">14</span>]: [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: last</span><br><span class="line">Out[<span class="number">15</span>]: <span class="number">7</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: lst = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>], <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: a, (b, *_, c), d = lst</span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: a</span><br><span class="line">Out[<span class="number">18</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: b</span><br><span class="line">Out[<span class="number">19</span>]: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: c</span><br><span class="line">Out[<span class="number">20</span>]: <span class="number">10</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: d</span><br><span class="line">Out[<span class="number">21</span>]: <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><h4 id="整数（integer"><a href="#整数（integer" class="headerlink" title="整数（integer)"></a><code>整数（integer)</code></h4><p>1234， −24， +42， 0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="number">9.1</span>)           <span class="comment">#取整数</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'1111'</span>,<span class="number">2</span>)      <span class="comment">#二进制转化十进制</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'0b1111'</span>,<span class="number">2</span>)    <span class="comment">#二进制转化十进制</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'177'</span>,<span class="number">8</span>)       <span class="comment">#八进制转化十进制</span></span><br><span class="line"><span class="number">127</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'0o177'</span>,<span class="number">8</span>)     <span class="comment">#八进制转化十进制</span></span><br><span class="line"><span class="number">127</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'9ff'</span>,<span class="number">16</span>)      <span class="comment">#十六进制转化十进制</span></span><br><span class="line"><span class="number">2559</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'0x9ff'</span>,<span class="number">16</span>)    <span class="comment">#十六进制转化十进制</span></span><br><span class="line"><span class="number">2559</span></span><br></pre></td></tr></table></figure>
+<h4 id="浮点数（float）"><a href="#浮点数（float）" class="headerlink" title="浮点数（float）"></a><code>浮点数（float）</code></h4><p>1.23，-1.23，  1.， .1， -1.， -.1，</p>
+<p>3.14e-10， 4E210， 4.0e+210</p>
+<p>float(9)， float(43210)，float(‘4e210’)</p>
+<h4 id="二进制整数（binary）"><a href="#二进制整数（binary）" class="headerlink" title="二进制整数（binary）"></a><code>二进制整数（binary）</code></h4><p>0b1111</p>
+<p>bin(15)</p>
+<h4 id="八进制整数（octal）"><a href="#八进制整数（octal）" class="headerlink" title="八进制整数（octal）"></a><code>八进制整数（octal）</code></h4><p>0o177</p>
+<p>oct(127)</p>
+<h4 id="十六进制（hex）"><a href="#十六进制（hex）" class="headerlink" title="十六进制（hex）"></a><code>十六进制（hex）</code></h4><p>0x9ff</p>
+<p>hex(2559)</p>
+<h4 id="复数（complex-number）"><a href="#复数（complex-number）" class="headerlink" title="复数（complex number）"></a><code>复数（complex number）</code></h4><p>3+4j， 3.0+4.0j， 3j</p>
+<p>complex(3,4)</p>
+<h4 id="小数（decimal）"><a href="#小数（decimal）" class="headerlink" title="小数（decimal）"></a><code>小数（decimal）</code></h4><p>精度高，比float更准确。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Decimal(<span class="string">'1.1'</span>)-Decimal(<span class="string">'.1'</span>)</span><br><span class="line">Decimal(<span class="string">'1.0'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="分数（fraction）"><a href="#分数（fraction）" class="headerlink" title="分数（fraction）"></a><code>分数（fraction）</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> fractions <span class="keyword">import</span> Fraction</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Fraction(<span class="number">1</span>,<span class="number">3</span>)+Fraction(<span class="number">7</span>,<span class="number">6</span>)</span><br><span class="line">Fraction(<span class="number">3</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p><code>+</code>：加法：5+8=13</p>
+<p><code>-</code>：减法：90-10=80</p>
+<p><code>*</code>：乘法：4*7=28</p>
+<p><code>/</code>：浮点数除法：7/2=3.5</p>
+<p><code>//</code>：整数除法（地板除）：7//2=3</p>
+<p><code>%</code>：模（求余数）7%3=1</p>
+<p><code>**</code>：幂：3**4=81</p>
 
       
     </div>
@@ -381,9 +417,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/unpacking/" rel="tag">#unpacking</a>
-          
-            <a href="/tags/解包/" rel="tag">#解包</a>
+            <a href="/tags/number/" rel="tag">#number</a>
           
         </div>
       
@@ -392,16 +426,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/13/3-03-slice/" rel="next" title="3.3 切片">
-                <i class="fa fa-chevron-left"></i> 3.3 切片
+              <a href="/2016/07/08/2-03-control/" rel="next" title="2.3  程序控制结构">
+                <i class="fa fa-chevron-left"></i> 2.3  程序控制结构
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/11/00-1-contents/" rel="prev" title="【置顶】Python3课程目录">
-                【置顶】Python3课程目录 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/11/3-02-list/" rel="prev" title="3.3 列表（Lists）">
+                3.3 列表（Lists） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -451,8 +485,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/13/3-04-unpacking/"
-           data-title="3.4 解包" data-url="http://yoursite.com/2016/07/13/3-04-unpacking/">
+      <div class="ds-thread" data-thread-key="2016/07/10/3-01-numbers/"
+           data-title="3.1 数字（Numbers）" data-url="http://yoursite.com/2016/07/10/3-01-numbers/">
       </div>
     
   </div>
@@ -497,7 +531,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +548,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -611,7 +645,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型"><span class="nav-number">1.</span> <span class="nav-text">数字类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整数（integer"><span class="nav-number">1.0.1.</span> <span class="nav-text">整数（integer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点数（float）"><span class="nav-number">1.0.2.</span> <span class="nav-text">浮点数（float）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制整数（binary）"><span class="nav-number">1.0.3.</span> <span class="nav-text">二进制整数（binary）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八进制整数（octal）"><span class="nav-number">1.0.4.</span> <span class="nav-text">八进制整数（octal）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十六进制（hex）"><span class="nav-number">1.0.5.</span> <span class="nav-text">十六进制（hex）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复数（complex-number）"><span class="nav-number">1.0.6.</span> <span class="nav-text">复数（complex number）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小数（decimal）"><span class="nav-number">1.0.7.</span> <span class="nav-text">小数（decimal）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分数（fraction）"><span class="nav-number">1.0.8.</span> <span class="nav-text">分数（fraction）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">2.</span> <span class="nav-text">运算符</span></a></li></ol></div>
             
           </div>
         </section>
