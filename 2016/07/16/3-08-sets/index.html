@@ -85,10 +85,7 @@
 <meta name="description" content="Python中的集合是一组可哈希的值的集合。特点：
 
 元素是唯一的。
-元素是无序的。
-
-3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
-1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
+元素是无序的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.8 集合（Sets）">
 <meta property="og:url" content="http://yoursite.com/2016/07/16/3-08-sets/index.html">
@@ -96,20 +93,14 @@
 <meta property="og:description" content="Python中的集合是一组可哈希的值的集合。特点：
 
 元素是唯一的。
-元素是无序的。
-
-3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
-1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
-<meta property="og:updated_time" content="2016-07-20T04:22:51.000Z">
+元素是无序的。">
+<meta property="og:updated_time" content="2016-07-21T05:25:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.8 集合（Sets）">
 <meta name="twitter:description" content="Python中的集合是一组可哈希的值的集合。特点：
 
 元素是唯一的。
-元素是无序的。
-
-3.8.1 定义一个集合定义一个set很简单，如果有重复元素，会自动去重：
-1234567891011121314151617181920212223In [1]: s = set() # 用set函数定义空集合In [3]: s = &amp;#123;&amp;#125;In [4]: s  # 不能这么定义，这样定义就定">
+元素是无序的。">
 
 
 
@@ -337,6 +328,7 @@
 <li>元素是唯一的。</li>
 <li>元素是无序的。</li>
 </ul>
+<a id="more"></a>
 <h2 id="3-8-1-定义一个集合"><a href="#3-8-1-定义一个集合" class="headerlink" title="3.8.1 定义一个集合"></a>3.8.1 定义一个集合</h2><p>定义一个set很简单，如果有重复元素，会自动去重：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: s = set() <span class="comment"># 用set函数定义空集合</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: s = &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: s  <span class="comment"># 不能这么定义，这样定义就定义成了一个字典</span></span><br><span class="line">Out[<span class="number">4</span>]: &#123;&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: type(s)</span><br><span class="line">Out[<span class="number">5</span>]: dict</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: s = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125; <span class="comment"># 直接赋值</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: type(s)</span><br><span class="line">Out[<span class="number">7</span>]: set</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: set([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span> , <span class="number">2</span>]) <span class="comment">#set函数可以把列表转化为集合（去重）</span></span><br><span class="line">Out[<span class="number">15</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: set((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)) <span class="comment"># set函数也可以转化元组（去重）</span></span><br><span class="line">Out[<span class="number">16</span>]: &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: set(<span class="string">'yulongjun'</span>) <span class="comment"># 字符串也可以（去重）</span></span><br><span class="line">Out[<span class="number">17</span>]: &#123;<span class="string">'g'</span>, <span class="string">'j'</span>, <span class="string">'l'</span>, <span class="string">'n'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>, <span class="string">'y'</span>&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="3-8-2-增"><a href="#3-8-2-增" class="headerlink" title="3.8.2 增"></a>3.8.2 增</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a><code>add</code></h3><p>增加一个元素到集合，如果元素已经存在，则没有任何操作。</p>

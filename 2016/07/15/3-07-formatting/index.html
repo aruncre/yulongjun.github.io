@@ -83,21 +83,18 @@
 
 
 <meta name="description" content="printf style老式的类似c语言的printf风格的格式化输出。
-用百分号%来作为占位符。
-12345678910111213In [16]: &apos;I am %s&apos;%(&apos;yulongjun&apos;,) # 可以采用元组的方式Out[16]: &apos;I am yulongjun&apos;In [18]: &apos;I am %(name)s&apos;%&amp;#123;&apos;name&apos;:&apos;yulongjun&apos;&amp;#125;  # 可以采用">
+用百分号%来作为占位符。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3.7 格式化（Formatting）">
 <meta property="og:url" content="http://yoursite.com/2016/07/15/3-07-formatting/index.html">
 <meta property="og:site_name" content="于龙君的博客">
 <meta property="og:description" content="printf style老式的类似c语言的printf风格的格式化输出。
-用百分号%来作为占位符。
-12345678910111213In [16]: &apos;I am %s&apos;%(&apos;yulongjun&apos;,) # 可以采用元组的方式Out[16]: &apos;I am yulongjun&apos;In [18]: &apos;I am %(name)s&apos;%&amp;#123;&apos;name&apos;:&apos;yulongjun&apos;&amp;#125;  # 可以采用">
-<meta property="og:updated_time" content="2016-07-20T05:01:14.000Z">
+用百分号%来作为占位符。">
+<meta property="og:updated_time" content="2016-07-21T05:24:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3.7 格式化（Formatting）">
 <meta name="twitter:description" content="printf style老式的类似c语言的printf风格的格式化输出。
-用百分号%来作为占位符。
-12345678910111213In [16]: &apos;I am %s&apos;%(&apos;yulongjun&apos;,) # 可以采用元组的方式Out[16]: &apos;I am yulongjun&apos;In [18]: &apos;I am %(name)s&apos;%&amp;#123;&apos;name&apos;:&apos;yulongjun&apos;&amp;#125;  # 可以采用">
+用百分号%来作为占位符。">
 
 
 
@@ -322,6 +319,7 @@
       
         <h2 id="printf-style"><a href="#printf-style" class="headerlink" title="printf style"></a>printf style</h2><p>老式的类似c语言的printf风格的格式化输出。</p>
 <p>用百分号<code>%</code>来作为占位符。</p>
+<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">16</span>]: <span class="string">'I am %s'</span>%(<span class="string">'yulongjun'</span>,) <span class="comment"># 可以采用元组的方式</span></span><br><span class="line">Out[<span class="number">16</span>]: <span class="string">'I am yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: <span class="string">'I am %(name)s'</span>%&#123;<span class="string">'name'</span>:<span class="string">'yulongjun'</span>&#125;  <span class="comment"># 可以采用字典的方式</span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="string">'I am yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: <span class="string">'I am %(name)s, my name is %(name)s'</span>%&#123;<span class="string">'name'</span>:<span class="string">'yulongjun'</span>&#125;  <span class="comment"># 多次出现，可以采用字典的方式</span></span><br><span class="line">Out[<span class="number">19</span>]: <span class="string">'I am yulongjun, my name is yulongjun'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: name = <span class="string">"yulongjun"</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: <span class="string">'I am %s'</span>%name   <span class="comment">#只有一个元素可以直接跟在百分号后面，这里解释器自动做了一个封包，把name封包为元组（语法糖）</span></span><br><span class="line">Out[<span class="number">22</span>]: <span class="string">'I am yulongjun'</span></span><br></pre></td></tr></table></figure>
 <p>前面字符串中占位符后面的type，以下为常用的几个：</p>
 <table>
