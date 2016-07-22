@@ -251,8 +251,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/17/22-heap/" itemprop="url">
-                  22-堆（Heap）
+                <a class="post-title-link" href="/2016/04/17/23-logscan-introduction/" itemprop="url">
+                  23-日志分析系统（logscan）项目简介
                 </a>
               
             
@@ -265,7 +265,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T14:23:34+08:00" content="2016-04-17">
+            <time itemprop="dateCreated" datetime="2016-04-17T15:26:33+08:00" content="2016-04-17">
               2016-04-17
             </time>
           </span>
@@ -295,8 +295,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/17/22-heap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/22-heap/" itemprop="commentsCount"></span>
+                <a href="/2016/04/17/23-logscan-introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/23-logscan-introduction/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,12 +319,11 @@
 
       
         
-          <p>堆是一种特殊的基于树的数据结构，他满足堆的特性：所有的节点要么全大于，要么全等于，要么全小于他的每一孩子节点。</p>
-<ul>
-<li><ruby><strong>满二叉树</strong><rt>Full Binary Tree</rt></ruby>：树上一个每一个节点要么有0个，要么有2个子节点。</li>
-</ul>
+          <p>通常系统出现问题了，我们才去<strong>grep log</strong>，这个都是事后的，比较被动。为什么不实时的去<strong>grep</strong>呢？我们可以在用户报告之前发现问题，所以实施的<strong>log scan</strong>就很有用处，这个对快速发现问题有很好的帮助，在客户找到你之前解决了问题，或者提前预知了问题。</p>
+<p>comyn李学明老师在大众点评写过最早一版的logscan，用来日志扫描。（感谢comyn老师的课程）。</p>
+<p>logscan的前身叫logcheck，增强了很多logcheck实现不了的功能。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/17/22-heap/#more" rel="contents">
+            <a class="btn" href="/2016/04/17/23-logscan-introduction/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -449,6 +448,130 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/17/21-tree/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/17/22-heap/" itemprop="url">
+                  22-堆（Heap）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T14:23:34+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Python3成长之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/17/22-heap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/22-heap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>堆是一种特殊的基于树的数据结构，他满足堆的特性：所有的节点要么全大于，要么全等于，要么全小于他的每一孩子节点。</p>
+<ul>
+<li><ruby><strong>满二叉树</strong><rt>Full Binary Tree</rt></ruby>：树上一个每一个节点要么有0个，要么有2个子节点。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/17/22-heap/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1343,132 +1466,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/06/13-exceptions/" itemprop="url">
-                  13-异常（Exceptions）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-06T21:41:48+08:00" content="2016-04-06">
-              2016-04-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/06/13-exceptions/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/13-exceptions/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="异常处理的一般语法"><a href="#异常处理的一般语法" class="headerlink" title="异常处理的一般语法"></a>异常处理的一般语法</h2><p>处理异常的基本语法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    block</span><br><span class="line"><span class="keyword">except</span> ExceptionClass <span class="keyword">as</span> e:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>异常处理是以<code>try</code>开始。</li>
-<li>当异常发生时按照一定规则执行except块，可以存在多个except块。</li>
-<li>可选的finally块，无论如何都会执行，通常用于清理工作。</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/06/13-exceptions/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1514,7 +1511,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
