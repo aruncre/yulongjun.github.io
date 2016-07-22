@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python3,tuple," />
+  <meta name="keywords" content="interator," />
 
 
 
@@ -82,16 +82,28 @@
 
 
 
-<meta name="description" content="简单内容，暂时略过，后续再写。">
+<meta name="description" content="要理解迭代器，就要理解一下几个的概念：
+
+可迭代对象（iterable）
+迭代器（iterator）
+生成器（generator）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="06-元组（Tuples)">
-<meta property="og:url" content="http://yoursite.com/2016/04/05/06-tuples/index.html">
+<meta property="og:title" content="3.12 迭代器（Interators）">
+<meta property="og:url" content="http://yoursite.com/2016/07/20/3-12-interators/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="简单内容，暂时略过，后续再写。">
-<meta property="og:updated_time" content="2016-04-06T12:28:44.000Z">
+<meta property="og:description" content="要理解迭代器，就要理解一下几个的概念：
+
+可迭代对象（iterable）
+迭代器（iterator）
+生成器（generator）">
+<meta property="og:updated_time" content="2016-07-22T15:09:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="06-元组（Tuples)">
-<meta name="twitter:description" content="简单内容，暂时略过，后续再写。">
+<meta name="twitter:title" content="3.12 迭代器（Interators）">
+<meta name="twitter:description" content="要理解迭代器，就要理解一下几个的概念：
+
+可迭代对象（iterable）
+迭代器（iterator）
+生成器（generator）">
 
 
 
@@ -109,7 +121,7 @@
   };
 </script>
 
-  <title> 06-元组（Tuples) | 于龙君的博客 </title>
+  <title> 3.12 迭代器（Interators） | 于龙君的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +261,7 @@
             
             
               
-                06-元组（Tuples)
+                3.12 迭代器（Interators）
               
             
           </h1>
@@ -261,8 +273,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-05T15:55:53+08:00" content="2016-04-05">
-              2016-04-05
+            <time itemprop="dateCreated" datetime="2016-07-20T22:32:23+08:00" content="2016-07-20">
+              2016-07-20
             </time>
           </span>
 
@@ -275,8 +287,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
                   </a>
                 </span>
 
@@ -291,8 +303,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/05/06-tuples/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/06-tuples/" itemprop="commentsCount"></span>
+                <a href="/2016/07/20/3-12-interators/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/3-12-interators/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,7 +326,42 @@
       
 
       
-        <h1 id="简单内容，暂时略过，后续再写。"><a href="#简单内容，暂时略过，后续再写。" class="headerlink" title="简单内容，暂时略过，后续再写。"></a>简单内容，暂时略过，后续再写。</h1>
+        <p>要理解迭代器，就要理解一下几个的概念：</p>
+<ul>
+<li>可迭代对象（iterable）</li>
+<li>迭代器（iterator）</li>
+<li>生成器（generator）</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p>##可迭代对象（iterable）</p>
+<p>列表、元组、集合、字典、字符串、bytes、bytearray、生成器（generator）、range等，都是可迭代对象（iterable）。</p>
+<p>简单的可以这样理解：能用<code>for...in</code>循环来迭代、能用<code>in</code>成员运算符的，都是可迭代对象。</p>
+<hr>
+<h2 id="迭代器（iterator）"><a href="#迭代器（iterator）" class="headerlink" title="迭代器（iterator）"></a>迭代器（iterator）</h2><p>通过iter函数，可以把可迭代对象（iterable）封装成为迭代器（iterator）。</p>
+<p>iter(iterable) -&gt; iterator</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">11</span>]: r = range(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: it = iter(r)</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: type(r)</span><br><span class="line">Out[<span class="number">13</span>]: range</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: type(it)</span><br><span class="line">Out[<span class="number">14</span>]: range_iterator</span><br></pre></td></tr></table></figure>
+<p>迭代器的本质是一种封装。<br>很多地方都隐式的调用了迭代器。for…in循环和成员运算符隐式的调用了iter函数。</p>
+<p><code>next</code>函数可以迭代迭代器。</p>
+<p>当迭代器没有下一个元素的时候，next函数会抛出StopIteration异常。</p>
+<p>没有下一个元素的时候，如果设置了默认返回值，迭代结束就不会抛出异常，而是返回默认返回值。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [15]: next(it)</span><br><span class="line">Out[15]: 0</span><br><span class="line"></span><br><span class="line">In [16]: next(it)</span><br><span class="line">Out[16]: 1</span><br><span class="line"></span><br><span class="line">In [17]: next(it)</span><br><span class="line">Out[17]: 2</span><br><span class="line"></span><br><span class="line">In [18]: next(it)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">StopIteration                             Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-18-2cdb14c0d4d6&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 next(it)</span><br><span class="line"></span><br><span class="line">StopIteration: </span><br><span class="line"></span><br><span class="line">In [19]: next(it,3)</span><br><span class="line">Out[19]: 3</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="生成器（generator）"><a href="#生成器（generator）" class="headerlink" title="生成器（generator）"></a>生成器（generator）</h2><p>生成器（generator）是迭代器的子集（iterator），迭代器中包含了生成器。</p>
+<p>生成器可以用上节的生成器解析式来生成。</p>
+<p>由于生成器也是迭代器，所以也可以使用next方法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">In [35]: g = (x for x in range(3))</span><br><span class="line"></span><br><span class="line">In [36]: g</span><br><span class="line">Out[36]: &lt;generator object &lt;genexpr&gt; at 0x10e6c0e08&gt;</span><br><span class="line"></span><br><span class="line">In [37]: next(g)</span><br><span class="line">Out[37]: 0</span><br><span class="line"></span><br><span class="line">In [38]: next(g)</span><br><span class="line">Out[38]: 1</span><br><span class="line"></span><br><span class="line">In [39]: next(g)</span><br><span class="line">Out[39]: 2</span><br><span class="line"></span><br><span class="line">In [40]: next(g)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">StopIteration                             Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-40-5f315c5de15b&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 next(g)</span><br><span class="line"></span><br><span class="line">StopIteration: </span><br><span class="line"></span><br><span class="line">In [41]: next(g,-1)</span><br><span class="line">Out[41]: -1</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="非生成器的迭代器的用处"><a href="#非生成器的迭代器的用处" class="headerlink" title="非生成器的迭代器的用处"></a>非生成器的迭代器的用处</h2><p>其他迭代器不如生成器那样能节省内存，还让可迭代对象只能next往后。那其他迭代器到底有什么用呢？</p>
+<p>iter的一种使用场景，用的最少的一种场景。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">47</span>]: lst = [</span><br><span class="line">   ....: [<span class="string">'温度'</span>, <span class="number">28</span>, <span class="number">29</span>, <span class="number">32</span>, <span class="number">35</span>, <span class="number">30</span>, <span class="number">29</span>, <span class="number">27</span>],</span><br><span class="line">   ....: [<span class="string">'湿度'</span>, <span class="number">30</span>, <span class="number">35</span>, <span class="number">45</span>, <span class="number">50</span>, <span class="number">39</span>, <span class="number">35</span>, <span class="number">30</span>]</span><br><span class="line">   ....: ]</span><br><span class="line">In [<span class="number">48</span>]: <span class="keyword">for</span> seq <span class="keyword">in</span> lst:</span><br><span class="line">   ....:     it = iter(seq)</span><br><span class="line">   ....:     name = next(it)</span><br><span class="line">   ....:     print(name)</span><br><span class="line">   ....:     <span class="keyword">for</span> x <span class="keyword">in</span> it:</span><br><span class="line">   ....:         print(x, end=<span class="string">' '</span>)</span><br><span class="line">   ....:     print()    </span><br><span class="line">温度</span><br><span class="line"><span class="number">28</span> <span class="number">29</span> <span class="number">32</span> <span class="number">35</span> <span class="number">30</span> <span class="number">29</span> <span class="number">27</span> </span><br><span class="line">湿度</span><br><span class="line"><span class="number">30</span> <span class="number">35</span> <span class="number">45</span> <span class="number">50</span> <span class="number">39</span> <span class="number">35</span> <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>help(iter)我们可以看到第二种用法：<code>iter(callable, sentinel) -&gt; iterator</code></p>
+<blockquote>
+<p><strong>iter(…)</strong><br>iter(iterable) -&gt; iterator<br>iter(callable, sentinel) -&gt; iterator</p>
+<p>Get an iterator from an object.  In the first form, the argument must<br>    supply its own iterator, or be a sequence.<br>In the second form, the callable is called until it returns the sentinel.</p>
+</blockquote>
+<p>第二种用法我们用的比较多，鉴于目前所学的知识还不够，后续会讲到。(可以实现非阻塞io）</p>
+
       
     </div>
     
@@ -355,9 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python3/" rel="tag">#Python3</a>
-          
-            <a href="/tags/tuple/" rel="tag">#tuple</a>
+            <a href="/tags/interator/" rel="tag">#interator</a>
           
         </div>
       
@@ -366,16 +411,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/05/05-lists/" rel="next" title="05-列表（Lists）">
-                <i class="fa fa-chevron-left"></i> 05-列表（Lists）
+              <a href="/2016/07/16/3-08-sets/" rel="next" title="3.8 集合（Sets）">
+                <i class="fa fa-chevron-left"></i> 3.8 集合（Sets）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/05/07-dicts/" rel="prev" title="07-字典（Dicts)">
-                07-字典（Dicts) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/21/3-09-dicts/" rel="prev" title="3.9 字典（Dictionarys）">
+                3.9 字典（Dictionarys） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,8 +470,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/05/06-tuples/"
-           data-title="06-元组（Tuples)" data-url="http://yoursite.com/2016/04/05/06-tuples/">
+      <div class="ds-thread" data-thread-key="2016/07/20/3-12-interators/"
+           data-title="3.12 迭代器（Interators）" data-url="http://yoursite.com/2016/07/20/3-12-interators/">
       </div>
     
   </div>
@@ -585,7 +630,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单内容，暂时略过，后续再写。"><span class="nav-number">1.</span> <span class="nav-text">简单内容，暂时略过，后续再写。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器（iterator）"><span class="nav-number">1.</span> <span class="nav-text">迭代器（iterator）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器（generator）"><span class="nav-number">2.</span> <span class="nav-text">生成器（generator）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非生成器的迭代器的用处"><span class="nav-number">3.</span> <span class="nav-text">非生成器的迭代器的用处</span></a></li></ol></div>
             
           </div>
         </section>
