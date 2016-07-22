@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python3,dict," />
+  <meta name="keywords" content="bytes,bytearray," />
 
 
 
@@ -82,16 +82,19 @@
 
 
 
-<meta name="description" content="简单内容，暂时略过，后续再写。">
+<meta name="description" content="bytesPython 3 特有的，Python2是不区分bytes和str。
+bytes是不可变的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="07-字典（Dicts)">
-<meta property="og:url" content="http://yoursite.com/2016/04/05/07-dicts/index.html">
+<meta property="og:title" content="3.10 bytes和bytearray">
+<meta property="og:url" content="http://yoursite.com/2016/07/22/3-10-bytes-bytearray/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="简单内容，暂时略过，后续再写。">
-<meta property="og:updated_time" content="2016-04-06T12:28:51.000Z">
+<meta property="og:description" content="bytesPython 3 特有的，Python2是不区分bytes和str。
+bytes是不可变的。">
+<meta property="og:updated_time" content="2016-07-22T06:57:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="07-字典（Dicts)">
-<meta name="twitter:description" content="简单内容，暂时略过，后续再写。">
+<meta name="twitter:title" content="3.10 bytes和bytearray">
+<meta name="twitter:description" content="bytesPython 3 特有的，Python2是不区分bytes和str。
+bytes是不可变的。">
 
 
 
@@ -109,7 +112,7 @@
   };
 </script>
 
-  <title> 07-字典（Dicts) | 于龙君的博客 </title>
+  <title> 3.10 bytes和bytearray | 于龙君的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +252,7 @@
             
             
               
-                07-字典（Dicts)
+                3.10 bytes和bytearray
               
             
           </h1>
@@ -261,8 +264,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-05T16:30:20+08:00" content="2016-04-05">
-              2016-04-05
+            <time itemprop="dateCreated" datetime="2016-07-22T14:57:10+08:00" content="2016-07-22">
+              2016-07-22
             </time>
           </span>
 
@@ -275,8 +278,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Python3成长之路/" itemprop="url" rel="index">
-                    <span itemprop="name">Python3成长之路</span>
+                  <a href="/categories/Learning-Python3/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning-Python3</span>
                   </a>
                 </span>
 
@@ -291,8 +294,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/05/07-dicts/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/07-dicts/" itemprop="commentsCount"></span>
+                <a href="/2016/07/22/3-10-bytes-bytearray/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/22/3-10-bytes-bytearray/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -314,7 +317,21 @@
       
 
       
-        <h1 id="简单内容，暂时略过，后续再写。"><a href="#简单内容，暂时略过，后续再写。" class="headerlink" title="简单内容，暂时略过，后续再写。"></a>简单内容，暂时略过，后续再写。</h1>
+        <h1 id="bytes"><a href="#bytes" class="headerlink" title="bytes"></a>bytes</h1><p>Python 3 特有的，Python2是不区分bytes和str。</p>
+<p>bytes是不可变的。</p>
+<a id="more"></a>
+<p>Python 2 中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> type(<span class="string">b'xxxx'</span>)</span><br><span class="line">&lt;type <span class="string">'str'</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">'xxxx'</span>)</span><br><span class="line">&lt;type <span class="string">'str'</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Python 3 中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: type(<span class="string">b'xxxx'</span>)</span><br><span class="line">Out[<span class="number">1</span>]: bytes</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: type(<span class="string">'xxxx'</span>)</span><br><span class="line">Out[<span class="number">3</span>]: str</span><br></pre></td></tr></table></figure>
+<p><code>bytes</code> 和 <code>str</code> 的区别在于，<code>bytes</code>是<code>byte</code>的序列，而<code>str</code>是<code>unicode</code>的序列。</p>
+<p><code>str</code>可使用<code>encode</code>的方法转化为<code>bytes</code>。</p>
+<p><code>bytes</code>使用<code>decode</code>的方法转化为<code>str</code>。</p>
+<p>(默认的<code>encode</code>和<code>decode</code>的编码方式为<code>utf-8</code>）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">4</span>]: s = <span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: b = s.encode()</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: b</span><br><span class="line">Out[<span class="number">6</span>]: <span class="string">b'\xe4\xba\x8e\xe9\xbe\x99\xe5\x90\x9b'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: b.decode()</span><br><span class="line">Out[<span class="number">7</span>]: <span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: <span class="keyword">for</span> x <span class="keyword">in</span> s:</span><br><span class="line">   ...:     print(x)</span><br><span class="line">   ...:     </span><br><span class="line">于</span><br><span class="line">龙</span><br><span class="line">君</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: <span class="keyword">for</span> x <span class="keyword">in</span> b:</span><br><span class="line">   ...:     print(x)</span><br><span class="line">   ...:     </span><br><span class="line"><span class="number">228</span></span><br><span class="line"><span class="number">186</span></span><br><span class="line"><span class="number">142</span></span><br><span class="line"><span class="number">233</span></span><br><span class="line"><span class="number">190</span></span><br><span class="line"><span class="number">153</span></span><br><span class="line"><span class="number">229</span></span><br><span class="line"><span class="number">144</span></span><br><span class="line"><span class="number">155</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="bytearray"><a href="#bytearray" class="headerlink" title="bytearray"></a>bytearray</h2><p>bytearray和bytes不一样的地方在于，bytearray是可变的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">10</span>]: s = <span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: ba = bytearray(s.encode())</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: ba</span><br><span class="line">Out[<span class="number">12</span>]: bytearray(<span class="string">b'\xe4\xba\x8e\xe9\xbe\x99\xe5\x90\x9b'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: ba.decode()</span><br><span class="line">Out[<span class="number">13</span>]: <span class="string">'于龙君'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: ba[:<span class="number">3</span>] = bytearray(<span class="string">'王'</span>.encode())</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: ba</span><br><span class="line">Out[<span class="number">16</span>]: bytearray(<span class="string">b'\xe7\x8e\x8b\xe9\xbe\x99\xe5\x90\x9b'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: ba.decode()</span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">'王龙君'</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -355,9 +372,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python3/" rel="tag">#Python3</a>
+            <a href="/tags/bytes/" rel="tag">#bytes</a>
           
-            <a href="/tags/dict/" rel="tag">#dict</a>
+            <a href="/tags/bytearray/" rel="tag">#bytearray</a>
           
         </div>
       
@@ -366,16 +383,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/05/06-tuples/" rel="next" title="06-元组（Tuples)">
-                <i class="fa fa-chevron-left"></i> 06-元组（Tuples)
+              <a href="/2016/07/21/3-09-dicts/" rel="next" title="3.9 字典（Dictionarys）">
+                <i class="fa fa-chevron-left"></i> 3.9 字典（Dictionarys）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/05/08-sets/" rel="prev" title="08-集合（Sets)">
-                08-集合（Sets) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/11/00-1-contents/" rel="prev" title="【置顶】Python3课程目录">
+                【置顶】Python3课程目录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,8 +442,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/05/07-dicts/"
-           data-title="07-字典（Dicts)" data-url="http://yoursite.com/2016/04/05/07-dicts/">
+      <div class="ds-thread" data-thread-key="2016/07/22/3-10-bytes-bytearray/"
+           data-title="3.10 bytes和bytearray" data-url="http://yoursite.com/2016/07/22/3-10-bytes-bytearray/">
       </div>
     
   </div>
@@ -585,7 +602,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单内容，暂时略过，后续再写。"><span class="nav-number">1.</span> <span class="nav-text">简单内容，暂时略过，后续再写。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bytes"><span class="nav-number">1.</span> <span class="nav-text">bytes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bytearray"><span class="nav-number">1.1.</span> <span class="nav-text">bytearray</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
