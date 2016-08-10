@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-24T07:58:14.000Z</updated>
+  <updated>2016-08-10T03:36:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/11/11/00-1-contents/"/>
     <id>http://yoursite.com/2016/11/11/00-1-contents/</id>
     <published>2016-11-11T03:11:11.000Z</published>
-    <updated>2016-07-24T07:58:14.000Z</updated>
+    <updated>2016-08-10T03:36:49.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;strong&gt;此文章集合更像是一个笔记，记录了我在学习Python3中学到的东西。目录结构参考&lt;a href=&quot;http://www.magedu.com/course/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;马哥教育&lt;/a&gt; 的课程目录。（安利一下，本人正在马哥教育学习Python，Python的课程老师是Comyn老师， 乃python大神级人物，原大众点评运维平台架构师，原腾讯广告部核心运维专家，现任饿了么Python运维开发高级总监，如果有想学习的同学，请联系 &lt;a href=&quot;http://www.magedu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;马哥教育&lt;/a&gt;。）&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -77,11 +77,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;第4章-函数&quot;&gt;&lt;a href=&quot;#第4章-函数&quot; class=&quot;headerlink&quot; title=&quot;第4章  函数&quot;&gt;&lt;/a&gt;第4章  函数&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;函数的基本定义与函数调用&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/08/09/4-01-function-define/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt; 4.1 函数的基本定义与函数调用&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;函数参数&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;函数的执行流程&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/08/09/4-02-function-process/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt; 4.2 函数的执行过程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.yulongjun.com/2016/08/10/4-03-function-argument/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;✔&lt;/code&gt; 4.3 函数的参数&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;递归&lt;/p&gt;
 &lt;/li&gt;
@@ -230,10 +232,9 @@
     <link href="http://yoursite.com/2016/08/09/4-02-function-process/"/>
     <id>http://yoursite.com/2016/08/09/4-02-function-process/</id>
     <published>2016-08-09T06:42:09.000Z</published>
-    <updated>2016-08-10T03:26:31.000Z</updated>
+    <updated>2016-08-10T03:37:03.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;4-2-函数执行过程&quot;&gt;&lt;a href=&quot;#4-2-函数执行过程&quot; class=&quot;headerlink&quot; title=&quot;4.2  函数执行过程&quot;&gt;&lt;/a&gt;4.2  函数执行过程&lt;/h1&gt;&lt;p&gt;@(Learning-Python3)&lt;/p&gt;
-&lt;p&gt;我们用&lt;a href=&quot;http://www.pythontutor.com/visualize.html#mode=edit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pythontutor&lt;/a&gt;来分析下面的函数的执行过程。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;我们用&lt;a href=&quot;http://www.pythontutor.com/visualize.html#mode=edit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pythontutor&lt;/a&gt;来分析下面的函数的执行过程。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;inc&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(x)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; x + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;inc_add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(x, y)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; inc(x) + inc(y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;y = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;z = inc_add(x, y)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;iframe width=&quot;800&quot; height=&quot;500&quot; frameborder=&quot;0&quot; src=&quot;http://pythontutor.com/iframe-embed.html#code=def%20inc(x%29%3A%0A%20%20%20%20return%20x%20%2B%201%0Adef%20inc_add(x,%20y%29%3A%0A%20%20%20%20return%20inc(x%29%20%2B%20inc(y%29%0A%20%20%20%20%0Ax%20%3D%201%0Ay%20%3D%202%0A%0Az%20%3D%20inc_add(x,%20y%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false&quot;&gt; &lt;/iframe&gt;
 
@@ -241,8 +242,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;4-2-函数执行过程&quot;&gt;&lt;a href=&quot;#4-2-函数执行过程&quot; class=&quot;headerlink&quot; title=&quot;4.2  函数执行过程&quot;&gt;&lt;/a&gt;4.2  函数执行过程&lt;/h1&gt;&lt;p&gt;@(Learning-Python3)&lt;/p&gt;
-&lt;p&gt;我们用&lt;a href=&quot;http://www.pythontutor.com/visualize.html#mode=edit&quot;&gt;pythontutor&lt;/a&gt;来分析下面的函数的执行过程。&lt;br&gt;
+      &lt;p&gt;我们用&lt;a href=&quot;http://www.pythontutor.com/visualize.html#mode=edit&quot;&gt;pythontutor&lt;/a&gt;来分析下面的函数的执行过程。&lt;br&gt;
     
     </summary>
     
