@@ -82,16 +82,19 @@
 
 
 
-<meta name="description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：">
+<meta name="description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：
+123456789In [1]: def inc(init):   ...:     return init + 1   ...: In [2]: inc(3)Out[2]: 4In [3]: inc(4)Out[3]: 5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4.3 函数的参数">
 <meta property="og:url" content="http://yoursite.com/2016/08/10/4-03-function-argument/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：">
-<meta property="og:updated_time" content="2016-08-25T14:49:36.000Z">
+<meta property="og:description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：
+123456789In [1]: def inc(init):   ...:     return init + 1   ...: In [2]: inc(3)Out[2]: 4In [3]: inc(4)Out[3]: 5">
+<meta property="og:updated_time" content="2016-08-30T15:52:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4.3 函数的参数">
-<meta name="twitter:description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：">
+<meta name="twitter:description" content="1. 函数定义时的参数1.1 普通参数init是普通参数：
+123456789In [1]: def inc(init):   ...:     return init + 1   ...: In [2]: inc(3)Out[2]: 4In [3]: inc(4)Out[3]: 5">
 
 
 
@@ -315,8 +318,8 @@
 
       
         <h2 id="1-函数定义时的参数"><a href="#1-函数定义时的参数" class="headerlink" title="1. 函数定义时的参数"></a>1. 函数定义时的参数</h2><h3 id="1-1-普通参数"><a href="#1-1-普通参数" class="headerlink" title="1.1 普通参数"></a>1.1 普通参数</h3><p>init是普通参数：</p>
-<a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(init)</span>:</span></span><br><span class="line">   ...:     <span class="keyword">return</span> init + <span class="number">1</span></span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: inc(<span class="number">3</span>)</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">4</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: inc(<span class="number">4</span>)</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="1-1-默认参数"><a href="#1-1-默认参数" class="headerlink" title="1.1 默认参数"></a>1.1 默认参数</h3><p>下面step = 1，是默认参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">4</span>]: <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(init, step=<span class="number">1</span>)</span>:</span></span><br><span class="line">   ...:     <span class="keyword">return</span> init + step</span><br><span class="line">   ...: </span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: inc(<span class="number">3</span>, <span class="number">2</span>) <span class="comment"># 覆盖掉默认参数</span></span><br><span class="line">Out[<span class="number">5</span>]: <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: inc(<span class="number">3</span>) <span class="comment"># 不填默认参数，默认用默认参数1</span></span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">4</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: inc(<span class="number">3</span>, <span class="number">1</span>) <span class="comment"># 效果和上面等同</span></span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">4</span></span><br></pre></td></tr></table></figure>
 <p>使用默认参数，一时可以让api更简洁，又不失灵活性，可以用通用性的默认参数，也可以自定义参数值，比较灵活。</p>
@@ -360,8 +363,14 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">22</span>]: <span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">(a, b, c, *args)</span>:</span></span><br><span class="line">   ....:     print(a, b, c)</span><br><span class="line">   ....:     </span><br><span class="line"></span><br><span class="line">In [<span class="number">23</span>]: lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">24</span>]: fn(*lst)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
 <p>也可以用<code>**kwargs</code>，去掉多余的参数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">25</span>]: d = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">In [<span class="number">26</span>]: <span class="function"><span class="keyword">def</span> <span class="title">fn</span><span class="params">(a, b, c, *args, **kwargs)</span>:</span></span><br><span class="line">   ....:     print(a, b, c )</span><br><span class="line">   ....:     </span><br><span class="line"></span><br><span class="line">In [<span class="number">27</span>]: fn(**d)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-9-传参的一个顺序"><a href="#2-9-传参的一个顺序" class="headerlink" title="2.9 传参的一个顺序"></a>2.9 传参的一个顺序</h3><p>位置参数，关键字参数，线性解构解构，字典解构</p>
+<h3 id="2-9-传参的一个顺序"><a href="#2-9-传参的一个顺序" class="headerlink" title="2.9 传参的一个顺序"></a>2.9 传参的一个顺序</h3><p>位置参数，线性结构解构，关键字参数，字典解构</p>
+<p>解构的时候，线性结构的解构后是位置参数，字典结构成关键字参数。</p>
 <p>在传入时候注意冲突。</p>
+<p>尽量不要同时使用两种结构，除非你真的知道在做什么。</p>
+<h3 id="2-10-参数槽（keyword-only）"><a href="#2-10-参数槽（keyword-only）" class="headerlink" title="2.10 参数槽（keyword-only）"></a>2.10 参数槽（keyword-only）</h3><p>*之后的参数，必须以关键字参数的形式传递，称之为参数槽（又叫keyword-only）。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [4]: def fn(a, b, *, c):</span><br><span class="line">   ...:     print(a, b ,c)</span><br><span class="line">   ...:     </span><br><span class="line"></span><br><span class="line">In [6]: fn(1, 2, c=3)</span><br><span class="line">1 2 3</span><br><span class="line"></span><br><span class="line">In [7]: fn(a=1, b=2, c=3)</span><br><span class="line">1 2 3</span><br><span class="line"></span><br><span class="line">In [22]: fn(1, 2, 3)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-22-9ab6b0a400c3&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 fn(1, 2, 3)</span><br><span class="line"></span><br><span class="line">TypeError: fn() takes 2 positional arguments but 3 were given</span><br></pre></td></tr></table></figure>
+<p>参数槽通常和默认参数搭配使用</p>
+<p>参数槽通常在我们认为一些参数通常不会改变的情况下使用，如果需要使用，必须要用关键字参数来调用。</p>
 
       
     </div>
@@ -414,8 +423,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/11/00-1-contents/" rel="prev" title="【置顶】Python3课程目录">
-                【置顶】Python3课程目录 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/30/4-04-function-annotations/" rel="prev" title="4.4 函数注解（类型示意）">
+                4.4 函数注解（类型示意） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -511,7 +520,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -625,7 +634,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-函数定义时的参数"><span class="nav-number">1.</span> <span class="nav-text">1. 函数定义时的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-普通参数"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 普通参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-默认参数"><span class="nav-number">1.2.</span> <span class="nav-text">1.1 默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-可变位置参数"><span class="nav-number">1.3.</span> <span class="nav-text">1.2 可变位置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-可变关键字参数"><span class="nav-number">1.4.</span> <span class="nav-text">1.3 可变关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-可变关键字参数和可变关键字参数混用"><span class="nav-number">1.5.</span> <span class="nav-text">1.4 可变关键字参数和可变关键字参数混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-普通参数，可变位置参数，可变关键字参数混用"><span class="nav-number">1.6.</span> <span class="nav-text">1.5 普通参数，可变位置参数，可变关键字参数混用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数调用时的参数"><span class="nav-number">2.</span> <span class="nav-text">2. 函数调用时的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-位置参数（位置传参）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 位置参数（位置传参）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-关键字参数（关键字传参）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 关键字参数（关键字传参）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-位置参数和关键字参数混用"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 位置参数和关键字参数混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-使用规则"><span class="nav-number">2.4.</span> <span class="nav-text">2.7 使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-参数解构"><span class="nav-number">2.5.</span> <span class="nav-text">2.8 参数解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-传参的一个顺序"><span class="nav-number">2.6.</span> <span class="nav-text">2.9 传参的一个顺序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-函数定义时的参数"><span class="nav-number">1.</span> <span class="nav-text">1. 函数定义时的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-普通参数"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 普通参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-默认参数"><span class="nav-number">1.2.</span> <span class="nav-text">1.1 默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-可变位置参数"><span class="nav-number">1.3.</span> <span class="nav-text">1.2 可变位置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-可变关键字参数"><span class="nav-number">1.4.</span> <span class="nav-text">1.3 可变关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-可变关键字参数和可变关键字参数混用"><span class="nav-number">1.5.</span> <span class="nav-text">1.4 可变关键字参数和可变关键字参数混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-普通参数，可变位置参数，可变关键字参数混用"><span class="nav-number">1.6.</span> <span class="nav-text">1.5 普通参数，可变位置参数，可变关键字参数混用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-函数调用时的参数"><span class="nav-number">2.</span> <span class="nav-text">2. 函数调用时的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-位置参数（位置传参）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 位置参数（位置传参）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-关键字参数（关键字传参）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 关键字参数（关键字传参）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-位置参数和关键字参数混用"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 位置参数和关键字参数混用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-使用规则"><span class="nav-number">2.4.</span> <span class="nav-text">2.7 使用规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-参数解构"><span class="nav-number">2.5.</span> <span class="nav-text">2.8 参数解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-传参的一个顺序"><span class="nav-number">2.6.</span> <span class="nav-text">2.9 传参的一个顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-参数槽（keyword-only）"><span class="nav-number">2.7.</span> <span class="nav-text">2.10 参数槽（keyword-only）</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
