@@ -82,19 +82,16 @@
 
 
 
-<meta name="description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield
-12345678910111213141516171819In [85]: def gen():    ...:     yield 0    ...:     In [86]: g = gen()In [87]: type(g)Out[87]: generatorIn [89]: next(g)O">
+<meta name="description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4.6 生成器函数">
 <meta property="og:url" content="http://yoursite.com/2016/08/30/4-06-generator-function/index.html">
 <meta property="og:site_name" content="于龙君的博客">
-<meta property="og:description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield
-12345678910111213141516171819In [85]: def gen():    ...:     yield 0    ...:     In [86]: g = gen()In [87]: type(g)Out[87]: generatorIn [89]: next(g)O">
-<meta property="og:updated_time" content="2016-08-30T15:58:03.000Z">
+<meta property="og:description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield。">
+<meta property="og:updated_time" content="2016-08-30T15:59:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4.6 生成器函数">
-<meta name="twitter:description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield
-12345678910111213141516171819In [85]: def gen():    ...:     yield 0    ...:     In [86]: g = gen()In [87]: type(g)Out[87]: generatorIn [89]: next(g)O">
+<meta name="twitter:description" content="1 定义之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield。">
 
 
 
@@ -317,7 +314,8 @@
       
 
       
-        <h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h2><p>之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield</p>
+        <h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h2><p>之前有说过生成器解析式。这里我们来写一下生成器的函数，生成器函数就是在函数体里写yield。</p>
+<a id="more"></a>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [85]: def gen():</span><br><span class="line">    ...:     yield 0</span><br><span class="line">    ...:     </span><br><span class="line"></span><br><span class="line">In [86]: g = gen()</span><br><span class="line"></span><br><span class="line">In [87]: type(g)</span><br><span class="line">Out[87]: generator</span><br><span class="line"></span><br><span class="line">In [89]: next(g)</span><br><span class="line">Out[89]: 0</span><br><span class="line"></span><br><span class="line">In [90]: next(g)</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">StopIteration              Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-90-5f315c5de15b&gt; in &lt;module&gt;()</span><br><span class="line">----&gt; 1 next(g)</span><br><span class="line"></span><br><span class="line">StopIteration:</span><br></pre></td></tr></table></figure>
 <p>我们写一个复杂点的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">91</span>]: <span class="function"><span class="keyword">def</span> <span class="title">gen</span><span class="params">()</span>:</span></span><br><span class="line">    ...:     <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    ...:         <span class="keyword">yield</span> <span class="number">0</span></span><br><span class="line">    ...:         print(<span class="string">'.....'</span>)</span><br><span class="line">    ...:         </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">98</span>]: g = gen()</span><br><span class="line"></span><br><span class="line">In [<span class="number">99</span>]: next(g)</span><br><span class="line">Out[<span class="number">99</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">100</span>]: next(g)</span><br><span class="line">.....</span><br><span class="line">Out[<span class="number">100</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">101</span>]: next(g)</span><br><span class="line">.....</span><br><span class="line">Out[<span class="number">101</span>]: <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
 <p>我们可以看出，一执行next，就到yield那条语句执行完返回后面的值，然后暂停，等待下一次next，下一次再next就先执行剩下的部分，然后执行到下一次循环，到yield那条语句，返回yield后面的值，然后又暂停。</p>
